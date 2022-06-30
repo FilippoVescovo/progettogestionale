@@ -79,7 +79,7 @@ create table if not exists "utente" (
 
 create table if not exists "logfileapp" (
   "idlogapp" serial primary key,
-  "data" date USING data::date,
+  "data" date,
   "fk_idutente" int not null,
   "fk_idapp" int not null,
     "nome_app" text not null,
@@ -124,7 +124,7 @@ create table if not exists "logfileapp" (
 
 create table if not exists "logfilerescan" (
   "idlogrescan"serial primary key,
-  "data" date USING data::date,
+  "data" date,
   "fk_idutente" int not null,
   "fk_idrescan" int not null,
    "nrescan" int not null,
@@ -305,7 +305,7 @@ Call fatta il 22/01/2021, in attesa di informazioni ulteriori per svolgere il co
 Visual Studio / .NET Framework; .NET Standard; C#; WCF; PHP Core; Korn shell, Bourne shell, C shell; CSS; HTML; JavaScript; jQuery
 ','GestionDocumental_GESDOC_IT06132','NO',0,'E2AAWBCAAA00',NULL,'Done',NULL,'YES',NULL,0.5,'Yes','NO','Impossible',NULL,'Repository on svn','ok',NULL,NULL,NULL,'2021-03-03 00:00:00',NULL,NULL,NULL,NULL,NULL,'https://confluence.springlab.enel.com/pages/viewpage.action?pageId=183764369','High','Waterfall','Leonardo, Everis'),
     (default,'Gestion Sindical','IT05691','Casari','Minieri','DS Iberia','J2EE , Oracle',NULL,'NO',2,'E2AAWBCAAA02',NULL,'Done','Done','YES',NULL,NULL,'Yes','Yes','No check',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2-Average','Mixed',NULL),
-    (default,'Gestione Scarti','AP25191','Pescetelli','Minieri','DS Italy','J2EE - SQLSERVER - Jboss (Java)- Apache',NULL,'NO',5,'E6AAWBCAAA02','18/05: Venerdì 21 dovrebbero fornire SC e doc aggiornati
+    (default,'Gestione Scarti','AP25191','Pescetelli','Minieri','DS Italy','J2EE - SQLSERVER - Jboss (Java)- Apache',NULL,'NO',5,'E6AAWBCAAA02','18/05: Venerdi 21 dovrebbero fornire SC e doc aggiornati
 Ticket 29812 per mancata individuazione oggetti Java','Done',NULL,'YES',NULL,1.1,'Yes','Yes','No check',NULL,NULL,NULL,NULL,NULL,NULL,'12/05/2021 spostato al 14/05/2021',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
     (default,'Gestore IDRO','IT04283.06','Pescetelli',NULL,'GECM DH','.NET, HTML5, SQL','fit0428306','SI',2,'E2AAWBCAAA02',NULL,'Done','Done','YES',NULL,0.6,'Yes','NO','No check',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2-Average','Mixed',NULL),
     (default,'Gestore PEG','IT03061','Pescetelli',NULL,'GECM DH','.NET, SQL','fit03061','SI',1,'E2AAWBCAAA01',NULL,'Done','Done','YES',NULL,0.75,'Yes','NO','No check',NULL,NULL,'ok',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5-Mission Critical','Mixed',NULL),
