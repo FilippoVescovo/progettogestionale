@@ -51,7 +51,7 @@ public class GestionaleConfig {
 		ds.setDriverClassName("org.postgresql.Driver");
 		ds.setUsername("postgres");
 		ds.setPassword("root");
-		ds.setUrl("jdbc:postgresql://localhost:5432/prova");
+		ds.setUrl("jdbc:postgresql://localhost:5432/gestionale");
 		
 		return ds;
 	}
