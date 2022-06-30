@@ -87,6 +87,13 @@
 			<version>5.3.4</version>
 		</dependency>
 		
+		<!-- https://mvnrepository.com/artifact/org.freemarker/freemarker -->
+		<dependency>
+			<groupId>org.freemarker</groupId>
+			<artifactId>freemarker</artifactId>
+			<version>2.3.31</version>
+		</dependency>
+		
 		<!-- parte dati -->
 		
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->

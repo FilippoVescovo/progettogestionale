@@ -17,6 +17,8 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 
+
+
 @EnableWebMvc
 @Configuration
 @ComponentScan(basePackages ="it.progettogestionale.web.controller" )
@@ -46,10 +48,10 @@ public class GestionaleConfig {
 	@Bean
 	public DataSource getDbConnection() {
 		DriverManagerDataSource ds = new DriverManagerDataSource();
-		ds.setDriverClassName("org.postgresql.Driver ");
+		ds.setDriverClassName("org.postgresql.Driver");
 		ds.setUsername("postgres");
 		ds.setPassword("root");
-		ds.setUrl("jdbc:postgresql://localhost:5432/gestionale");
+		ds.setUrl("jdbc:postgresql://localhost:5432/prova");
 		
 		return ds;
 	}
@@ -72,4 +74,6 @@ public class GestionaleConfig {
 		//jtm.setEntityManagerFactory(getEntityManager().getObject());
 		return jtm;
 	}
+	
+	
 }

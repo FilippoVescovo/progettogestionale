@@ -5,6 +5,8 @@
 //import org.springframework.data.repository.CrudRepository;
 //import org.springframework.stereotype.Repository;
 //
+//import it.progettogestionale.web.model.Cliente;
+//
 ////interfaccia per operazioni crud
-//public interface CategoriaRepository extends CrudRepository<CLASSE, Integer>{
+//public interface ClienteRepository extends CrudRepository<Cliente, Integer>{
 //}

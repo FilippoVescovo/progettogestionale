@@ -15,7 +15,7 @@ public class AppInitializer  extends AbstractAnnotationConfigDispatcherServletIn
 
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
-		// TODO Auto-generated method stub
+		
 		return new Class<?>[] {GestionaleConfig.class};
 	}
 
