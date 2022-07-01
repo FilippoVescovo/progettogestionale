@@ -20,7 +20,7 @@ public class Applicazione {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idApplicazione;
+	private Integer idApplicazione;
 	@Column
 	private Integer nodoConsole;
 	@Column
@@ -30,7 +30,7 @@ public class Applicazione {
 	@Column
 	private Date automationEnablingDate;
 	@Column
-	private boolean done,exist;
+	private Boolean done,exist;
 	@Column
 	private String nome_App, apmCode, insertedInCastProgram, stakeholderEngagement,
 	stakeholderBrief, onBoardingKitDelivery, primaRestitution, ownerOnboarding, ownerAFP, gdsUnit, tecnologia, serverManager,
@@ -50,8 +50,8 @@ public class Applicazione {
 //	@JsonManagedReference
 	private Set<LogFileRescan> logFile;
 	
-	public Applicazione(int idApplicazione, Integer nodoConsole, Time launchingMeetingDataGatheringStarting,
-			BigDecimal avgAnalysisTime, Date automationEnablingDate, boolean done, boolean exist, String nome_App,
+	public Applicazione(Integer idApplicazione, Integer nodoConsole, Time launchingMeetingDataGatheringStarting,
+			BigDecimal avgAnalysisTime, Date automationEnablingDate, Boolean done, Boolean exist, String nome_App,
 			String apmCode, String insertedInCastProgram, String stakeholderEngagement, String stakeholderBrief,
 			String onBoardingKitDelivery, String primaRestitution, String ownerOnboarding, String ownerAFP,
 			String gdsUnit, String tecnologia, String serverManager, String soloCMS, String macchina,
@@ -107,10 +107,10 @@ public class Applicazione {
 	public Applicazione() {
 		super();
 	}
-	public int getIdApplicazione() {
+	public Integer getIdApplicazione() {
 		return idApplicazione;
 	}
-	public void setIdApplicazione(int idApplicazione) {
+	public void setIdApplicazione(Integer idApplicazione) {
 		this.idApplicazione = idApplicazione;
 	}
 	public Integer getNodoConsole() {
@@ -137,16 +137,16 @@ public class Applicazione {
 	public void setAutomationEnablingDate(Date automationEnablingDate) {
 		this.automationEnablingDate = automationEnablingDate;
 	}
-	public boolean isDone() {
+	public Boolean isDone() {
 		return done;
 	}
-	public void setDone(boolean done) {
+	public void setDone(Boolean done) {
 		this.done = done;
 	}
-	public boolean isExist() {
+	public Boolean isExist() {
 		return exist;
 	}
-	public void setExist(boolean exist) {
+	public void setExist(Boolean exist) {
 		this.exist = exist;
 	}
 	public String getNome_App() {

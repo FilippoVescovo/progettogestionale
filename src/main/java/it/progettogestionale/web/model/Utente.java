@@ -20,14 +20,14 @@ public class Utente {
 	@Column
 	private String nome, cognome, password, email;
 	@Column
-	private boolean ruolo;
+	private Boolean ruolo;
 	@OneToMany(mappedBy = "utente")
 //	@JsonManagedReference
 	private Set<LogFileApp> logfiles;
 	@OneToMany(mappedBy = "utente")
 //	@JsonManagedReference
 	private Set<LogFileRescan> logFile;
-	public Utente(Integer idUtente, String nome, String cognome, String password, String email, boolean ruolo,
+	public Utente(Integer idUtente, String nome, String cognome, String password, String email, Boolean ruolo,
 			Set<LogFileApp> logfiles, Set<LogFileRescan> logFile) {
 		super();
 		this.idUtente = idUtente;
@@ -72,10 +72,10 @@ public class Utente {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public boolean isRuolo() {
+	public Boolean isRuolo() {
 		return ruolo;
 	}
-	public void setRuolo(boolean ruolo) {
+	public void setRuolo(Boolean ruolo) {
 		this.ruolo = ruolo;
 	}
 	public Set<LogFileApp> getLogfiles() {

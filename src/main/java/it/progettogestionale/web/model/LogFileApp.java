@@ -34,7 +34,7 @@ public class LogFileApp {
 	@Column
 	private Date automationEnablingDate;
 	@Column
-	private boolean done;
+	private Boolean done;
 	@Column
 	private String nome_App, apmCode, insertedInCastProgram, stakeholderEngagement,
 	stakeholderBrief, onBoardingKitDelivery, primaRestitution, ownerOnboarding, ownerAFP, gdsUnit, tecnologia, serverManager,
@@ -42,7 +42,7 @@ public class LogFileApp {
 	repoAvailability, automationStatus, automationNotes, greenItIndex, onboardingKitClosing, sourceCodeFinalDelivery,
 	linkConfluence, businessCriticality, devMethodology, provider;
 	@Column
-	private int idPreUpdate;
+	private Integer idPreUpdate;
 	@ManyToOne(cascade = CascadeType.ALL , fetch = FetchType.EAGER)
 	@JoinColumn(name = "FK_idUtente", referencedColumnName = "idUtente")
 //	@JsonBackReference
@@ -53,13 +53,13 @@ public class LogFileApp {
 	private Applicazione applicazione;
 	public LogFileApp(Integer idLogApp, LocalDateTime data, Integer nodoConsole,
 			Time launchingMeetingDataGatheringStarting, BigDecimal avgAnalysisTime, Date automationEnablingDate,
-			boolean done, String nome_App, String apmCode, String insertedInCastProgram, String stakeholderEngagement,
+			Boolean done, String nome_App, String apmCode, String insertedInCastProgram, String stakeholderEngagement,
 			String stakeholderBrief, String onBoardingKitDelivery, String primaRestitution, String ownerOnboarding,
 			String ownerAFP, String gdsUnit, String tecnologia, String serverManager, String soloCMS, String macchina,
 			String noteOnboarding, String fase, String afpStatus, String pubblicatoDashboard, String noteAppOwner,
 			String jiraautomationActivation, String repoAvailability, String automationStatus, String automationNotes,
 			String greenItIndex, String onboardingKitClosing, String sourceCodeFinalDelivery, String linkConfluence,
-			String businessCriticality, String devMethodology, String provider, int idPreUpdate, Utente utente,
+			String businessCriticality, String devMethodology, String provider, Integer idPreUpdate, Utente utente,
 			Applicazione applicazione) {
 		super();
 		this.idLogApp = idLogApp;
@@ -142,10 +142,10 @@ public class LogFileApp {
 	public void setAutomationEnablingDate(Date automationEnablingDate) {
 		this.automationEnablingDate = automationEnablingDate;
 	}
-	public boolean isDone() {
+	public Boolean isDone() {
 		return done;
 	}
-	public void setDone(boolean done) {
+	public void setDone(Boolean done) {
 		this.done = done;
 	}
 	public String getNome_App() {
@@ -328,10 +328,10 @@ public class LogFileApp {
 	public void setProvider(String provider) {
 		this.provider = provider;
 	}
-	public int getIdPreUpdate() {
+	public Integer getIdPreUpdate() {
 		return idPreUpdate;
 	}
-	public void setIdPreUpdate(int idPreUpdate) {
+	public void setIdPreUpdate(Integer idPreUpdate) {
 		this.idPreUpdate = idPreUpdate;
 	}
 	public Utente getUtente() {

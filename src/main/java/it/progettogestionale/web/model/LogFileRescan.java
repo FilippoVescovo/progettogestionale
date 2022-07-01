@@ -22,11 +22,11 @@ public class LogFileRescan {
 	@Column(name="data")
 	private Date data;
 	@Column
-	private int nRescan;
+	private Integer nRescan;
 	@Column
-	private boolean ongoing;
+	private Boolean ongoing;
 	@Column
-	private boolean archive;
+	private Boolean archive;
 	@Column
 	private Integer newOb;
 	@Column
@@ -42,7 +42,7 @@ public class LogFileRescan {
 	@Column
 	private Date rkd;
 	@Column
-	private int idPreUpdate;
+	private Integer idPreUpdate;
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "FK_idUtente", referencedColumnName = "idUtente")
 //	@JsonBackReference
@@ -52,8 +52,8 @@ public class LogFileRescan {
 //	@JsonBackReference
 	private Rescan rescan;
 	
-	public LogFileRescan(Integer idLogRescan, Date data, int nRescan, boolean ongoing, boolean archive, Integer newOb,
-			Integer py, Integer ytd, String afpe, String yoyRolling, String last_Rescan, Date rkd, int idPreUpdate,
+	public LogFileRescan(Integer idLogRescan, Date data, Integer nRescan, Boolean ongoing, Boolean archive, Integer newOb,
+			Integer py, Integer ytd, String afpe, String yoyRolling, String last_Rescan, Date rkd, Integer idPreUpdate,
 			Utente utente, Rescan rescan) {
 		super();
 		this.idLogRescan = idLogRescan;
@@ -89,22 +89,22 @@ public class LogFileRescan {
 	public void setData(Date data) {
 		this.data = data;
 	}
-	public int getnRescan() {
+	public Integer getnRescan() {
 		return nRescan;
 	}
-	public void setnRescan(int nRescan) {
+	public void setnRescan(Integer nRescan) {
 		this.nRescan = nRescan;
 	}
-	public boolean isOngoing() {
+	public Boolean isOngoing() {
 		return ongoing;
 	}
-	public void setOngoing(boolean ongoing) {
+	public void setOngoing(Boolean ongoing) {
 		this.ongoing = ongoing;
 	}
-	public boolean isArchive() {
+	public Boolean isArchive() {
 		return archive;
 	}
-	public void setArchive(boolean archive) {
+	public void setArchive(Boolean archive) {
 		this.archive = archive;
 	}
 	public Integer getNewOb() {
@@ -149,10 +149,10 @@ public class LogFileRescan {
 	public void setRkd(Date rkd) {
 		this.rkd = rkd;
 	}
-	public int getIdPreUpdate() {
+	public Integer getIdPreUpdate() {
 		return idPreUpdate;
 	}
-	public void setIdPreUpdate(int idPreUpdate) {
+	public void setIdPreUpdate(Integer idPreUpdate) {
 		this.idPreUpdate = idPreUpdate;
 	}
 	public Utente getUtente() {

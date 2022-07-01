@@ -18,9 +18,9 @@ public class Rescan {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idRescan;
+	private Integer idRescan;
 	@Column
-	private int nRescan;
+	private Integer nRescan;
 	@Column
 	private Integer newOb;
 	@Column
@@ -34,11 +34,11 @@ public class Rescan {
 	@Column
 	private String last_Rescan;
 	@Column
-	private boolean onGoing;
+	private Boolean onGoing;
 	@Column
-	private boolean archive;
+	private Boolean archive;
 	@Column
-	private boolean exist;
+	private Boolean exist;
 	@Column
 	private Date rkd;
 	@ManyToOne(cascade = CascadeType.ALL)
@@ -49,8 +49,8 @@ public class Rescan {
 	@JoinColumn(name = "FK_idAppOwner", referencedColumnName = "idAppOwner")
 //	@JsonBackReference
 	private AppOwner appOwner;
-	public Rescan(int idRescan, int nRescan, Integer newOb, Integer py, Integer ytd, String afpe, String yoyRolling,
-			String last_Rescan, boolean onGoing, boolean archive, boolean exist, Date rkd, Applicazione applicazione,
+	public Rescan(Integer idRescan, Integer nRescan, Integer newOb, Integer py, Integer ytd, String afpe, String yoyRolling,
+			String last_Rescan, Boolean onGoing, Boolean archive, Boolean exist, Date rkd, Applicazione applicazione,
 			AppOwner appOwner) {
 		super();
 		this.idRescan = idRescan;
@@ -71,16 +71,16 @@ public class Rescan {
 	public Rescan() {
 		super();
 	}
-	public int getIdRescan() {
+	public Integer getIdRescan() {
 		return idRescan;
 	}
-	public void setIdRescan(int idRescan) {
+	public void setIdRescan(Integer idRescan) {
 		this.idRescan = idRescan;
 	}
-	public int getnRescan() {
+	public Integer getnRescan() {
 		return nRescan;
 	}
-	public void setnRescan(int nRescan) {
+	public void setnRescan(Integer nRescan) {
 		this.nRescan = nRescan;
 	}
 	public Integer getNewOb() {
@@ -119,22 +119,22 @@ public class Rescan {
 	public void setLast_Rescan(String last_Rescan) {
 		this.last_Rescan = last_Rescan;
 	}
-	public boolean isOnGoing() {
+	public Boolean isOnGoing() {
 		return onGoing;
 	}
-	public void setOnGoing(boolean onGoing) {
+	public void setOnGoing(Boolean onGoing) {
 		this.onGoing = onGoing;
 	}
-	public boolean isArchive() {
+	public Boolean isArchive() {
 		return archive;
 	}
-	public void setArchive(boolean archive) {
+	public void setArchive(Boolean archive) {
 		this.archive = archive;
 	}
-	public boolean isExist() {
+	public Boolean isExist() {
 		return exist;
 	}
-	public void setExist(boolean exist) {
+	public void setExist(Boolean exist) {
 		this.exist = exist;
 	}
 	public Date getRkd() {
