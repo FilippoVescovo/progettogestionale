@@ -1,5 +1,7 @@
 package it.progettogestionale.web.dao;
 
-public interface LogFileRescanDao {
+import it.progettogestionale.web.model.LogFileRescan;
 
+public interface LogFileRescanDao {
+	public LogFileRescan getById(int id);
 }

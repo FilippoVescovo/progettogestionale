@@ -1,5 +1,7 @@
 package it.progettogestionale.web.dao;
 
-public interface UtenteDao {
+import it.progettogestionale.web.model.Utente;
 
+public interface UtenteDao {
+	public Utente getById(int id);
 }

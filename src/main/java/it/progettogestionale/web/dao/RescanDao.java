@@ -1,5 +1,7 @@
 package it.progettogestionale.web.dao;
 
-public interface RescanDao {
+import it.progettogestionale.web.model.Rescan;
 
+public interface RescanDao {
+	public Rescan getById(int id);
 }
