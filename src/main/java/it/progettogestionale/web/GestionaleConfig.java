@@ -17,8 +17,8 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 
-import it.progettogestionale.dao.ApplicazioneDao;
-import it.progettogestionale.dao.impl.ApplicazioneDaoImpl;
+import it.progettogestionale.web.dao.ApplicazioneDao;
+import it.progettogestionale.web.dao.impl.ApplicazioneDaoImpl;
 
 
 

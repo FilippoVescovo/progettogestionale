@@ -1,9 +1,9 @@
-package it.progettogestionale.dao.impl;
+package it.progettogestionale.web.dao.impl;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import it.progettogestionale.dao.ApplicazioneDao;
+import it.progettogestionale.web.dao.ApplicazioneDao;
 import it.progettogestionale.web.model.Applicazione;
 
 public class ApplicazioneDaoImpl implements ApplicazioneDao{
