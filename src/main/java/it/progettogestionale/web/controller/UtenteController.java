@@ -19,11 +19,7 @@ public class UtenteController {
 	@ResponseBody
 	@GetMapping("/getbyid")
 	public String getById() {
-		Utente u = new Utente();
-		if(u.getIdUtente() != null) {
-			u = utenteService.getById(1);
+			Utente u = utenteService.getById(4);
 			return u.getNome();
-		}
-		return null;
 	}
 }

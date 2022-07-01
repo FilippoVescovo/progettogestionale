@@ -1336,3 +1336,7 @@ INSERT INTO "monitoraggio" VALUES
     (312,312,88),
     (313,313,88),
     (314,314,88);
+    
+    --------------------------------------correzioni-----------------------------------------
+    alter table rescan add column exist boolean ;
+    
