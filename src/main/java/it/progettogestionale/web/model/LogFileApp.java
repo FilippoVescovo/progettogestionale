@@ -41,7 +41,7 @@ public class LogFileApp implements Serializable{
 	soloCMS, macchina, noteOnboarding, fase, afpStatus, pubblicatoDashboard, noteAppOwner,  jiraautomationActivation,
 	repoAvailability, automationStatus, automationNotes, greenItIndex, onboardingKitClosing, sourceCodeFinalDelivery,
 	linkConfluence, businessCriticality, devMethodology, provider;
-	@Column
+	@Column(name="idpreupdate")
 	private Integer idPreUpdate;
 	@ManyToOne(cascade = CascadeType.ALL , fetch = FetchType.EAGER)
 	@JoinColumn(name = "FK_idUtente", referencedColumnName = "idUtente")

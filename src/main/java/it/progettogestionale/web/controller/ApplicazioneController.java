@@ -17,7 +17,7 @@ public class ApplicazioneController {
 	public ApplicazioneDao applicazioService;
 	
 	@ResponseBody
-	@GetMapping("/get")
+	@GetMapping("/getbyid")
 	public String getById() {
 		Applicazione a = applicazioService.getById(1);
 		return a.getNome_App();

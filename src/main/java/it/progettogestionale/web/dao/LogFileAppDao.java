@@ -1,5 +1,8 @@
 package it.progettogestionale.web.dao;
 
-public interface LogFileAppDao {
+import it.progettogestionale.web.model.Applicazione;
+import it.progettogestionale.web.model.LogFileApp;
 
+public interface LogFileAppDao {
+	public LogFileApp getById(int i);
 }

@@ -17,8 +17,18 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 
+import it.progettogestionale.web.dao.AppOwnerDao;
 import it.progettogestionale.web.dao.ApplicazioneDao;
+import it.progettogestionale.web.dao.LogFileAppDao;
+import it.progettogestionale.web.dao.LogFileRescanDao;
+import it.progettogestionale.web.dao.RescanDao;
+import it.progettogestionale.web.dao.UtenteDao;
+import it.progettogestionale.web.dao.impl.AppOwnerDaoImpl;
 import it.progettogestionale.web.dao.impl.ApplicazioneDaoImpl;
+import it.progettogestionale.web.dao.impl.LogFileAppDaoImpl;
+import it.progettogestionale.web.dao.impl.LogFileRescanDaoImpl;
+import it.progettogestionale.web.dao.impl.RescanDaoImpl;
+import it.progettogestionale.web.dao.impl.UtenteDaoImpl;
 
 
 
@@ -78,10 +88,35 @@ public class GestionaleConfig {
 		return jtm;
 	}
 	
+	//--------------------------------------------BEAN-----------------------------------------------
 	@Bean
 	public ApplicazioneDao getAppService() {
 		return new ApplicazioneDaoImpl();
 	}
 	
+	@Bean
+	public AppOwnerDao getAppOwnerService() {
+		return new AppOwnerDaoImpl();
+	}
+	
+	@Bean
+	public LogFileAppDao getLogFileAppService() {
+		return new LogFileAppDaoImpl();
+	}
+	
+	@Bean
+	public LogFileRescanDao getLogFileRescanService() {
+		return new LogFileRescanDaoImpl();
+	}
+	
+	@Bean
+	public RescanDao getRescanService() {
+		return new RescanDaoImpl();
+	}
+	
+	@Bean
+	public UtenteDao getUtenteService() {
+		return new UtenteDaoImpl();
+	}
 	
 }

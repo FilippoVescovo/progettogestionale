@@ -117,7 +117,7 @@ create table if not exists "logfileapp" (
     "businesscriticality" text,
     "devmethodology" text,
     "provider" text,
-    "idPreUpdate" int,
+    "idpreupdate" int,
   foreign key(fk_idutente) references utente(idutente),
   foreign key(fk_idapp) references applicazione(idapplicazione)
 );
@@ -137,7 +137,7 @@ create table if not exists "logfilerescan" (
     "ytd" int,
     "yoyrolling" text,
     "last_rescan" text,
-    "idPreUpdate" int,
+    "idpreupdate" int,
   foreign key(fk_idutente) references utente(idutente),
   foreign key(fk_idrescan) references rescan(idrescan)
 );
