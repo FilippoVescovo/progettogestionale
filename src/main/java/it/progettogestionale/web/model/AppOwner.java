@@ -15,7 +15,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "appowner")
 public class AppOwner implements Serializable {
 
 	@Id
