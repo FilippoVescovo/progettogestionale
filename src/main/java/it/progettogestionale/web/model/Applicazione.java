@@ -20,7 +20,7 @@ public class Applicazione {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idApplicazione;
+	private Integer idApplicazione;
 	@Column
 	private Integer nodoConsole;
 	@Column

@@ -1,4 +1,4 @@
-package it.progettogestionale.dao;
+package it.progettogestionale.web.dao;
 import it.progettogestionale.web.model.Applicazione;
 
 public interface ApplicazioneDao {
