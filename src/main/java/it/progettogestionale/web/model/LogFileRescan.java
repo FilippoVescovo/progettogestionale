@@ -51,6 +51,7 @@ public class LogFileRescan {
 	@JoinColumn(name = "FK_idRescan", referencedColumnName = "idRescan")
 //	@JsonBackReference
 	private Rescan rescan;
+	
 	public LogFileRescan(Integer idLogRescan, Date data, int nRescan, boolean ongoing, boolean archive, Integer newOb,
 			Integer py, Integer ytd, String afpe, String yoyRolling, String last_Rescan, Date rkd, int idPreUpdate,
 			Utente utente, Rescan rescan) {
@@ -71,9 +72,11 @@ public class LogFileRescan {
 		this.utente = utente;
 		this.rescan = rescan;
 	}
+	
 	public LogFileRescan() {
 		super();
 	}
+	
 	public Integer getIdLogRescan() {
 		return idLogRescan;
 	}

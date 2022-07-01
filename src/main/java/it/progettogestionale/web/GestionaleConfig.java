@@ -17,6 +17,9 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 
+import it.progettogestionale.dao.ApplicazioneDao;
+import it.progettogestionale.dao.impl.ApplicazioneDaoImpl;
+
 
 
 @EnableWebMvc
@@ -73,6 +76,11 @@ public class GestionaleConfig {
 		JpaTransactionManager jtm = new JpaTransactionManager(getEntityManager().getObject());
 		//jtm.setEntityManagerFactory(getEntityManager().getObject());
 		return jtm;
+	}
+	
+	@Bean
+	public ApplicazioneDao getAppService() {
+		return new ApplicazioneDaoImpl();
 	}
 	
 	
