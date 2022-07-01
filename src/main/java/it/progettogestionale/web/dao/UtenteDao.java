@@ -1,5 +1,5 @@
 package it.progettogestionale.web.dao;
 
-public interface ClienteDao {
+public interface UtenteDao {
 
 }
