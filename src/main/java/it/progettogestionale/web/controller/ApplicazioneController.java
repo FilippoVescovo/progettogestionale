@@ -10,7 +10,7 @@ import it.progettogestionale.web.dao.ApplicazioneDao;
 import it.progettogestionale.web.model.Applicazione;
 
 @Controller
-@RequestMapping("/controller")
+@RequestMapping("/applicazione")
 public class ApplicazioneController {
 	
 	@Autowired
