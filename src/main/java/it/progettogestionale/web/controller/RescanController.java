@@ -22,4 +22,30 @@ public class RescanController {
 		Rescan r = rescanService.getById(110);
 		return r.getAfpe();
 	}
+	
+	@ResponseBody
+	@GetMapping("/add")
+	public String add() {
+		Rescan r = new Rescan();
+		r.setnRescan(5);
+		r.setAfpe("Filippo");
+		rescanService.add(r);
+		return "rescan inserito correttamente";
+	}
+	
+	@ResponseBody
+	@GetMapping("/update")
+	public String update() {
+		Rescan r = rescanService.getById(2);
+		r.setAfpe("Dario");
+		rescanService.update(r);
+		return "rescan aggiornato";
+	}
+	
+	@ResponseBody
+	@GetMapping("/delete")
+	public String delete() {
+		rescanService.delete(2);
+		return "rescan eliminato correttamente";
+	}
 }

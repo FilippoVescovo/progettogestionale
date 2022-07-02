@@ -18,50 +18,57 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
+@Table(name = "logfileapp")
 public class LogFileApp implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idLogApp;
-	@Column
+	
+	@Column(name = "data")
 	private LocalDateTime data;
-	@Column
+	@Column(name = "nodoconsole")
 	private Integer nodoConsole;
-	@Column
+	@Column(name = "launchingmeetingdatagatheringstarting")
 	private Time launchingMeetingDataGatheringStarting;
-	@Column
+	@Column(name = "avganalysistime")
 	private BigDecimal avgAnalysisTime;
-	@Column
+	@Column(name = "automationenablingdate")
 	private Date automationEnablingDate;
-	@Column
+	@Column(name = "done")
 	private Boolean done;
+	@Column(name="idpreupdate")
+	private Integer idPreUpdate;
 	@Column
 	private String nome_App, apmCode, insertedInCastProgram, stakeholderEngagement,
 	stakeholderBrief, onBoardingKitDelivery, primaRestitution, ownerOnboarding, ownerAFP, gdsUnit, tecnologia, serverManager,
 	soloCMS, macchina, noteOnboarding, fase, afpStatus, pubblicatoDashboard, noteAppOwner,  jiraautomationActivation,
 	repoAvailability, automationStatus, automationNotes, greenItIndex, onboardingKitClosing, sourceCodeFinalDelivery,
 	linkConfluence, businessCriticality, devMethodology, provider;
-	@Column(name="idpreupdate")
-	private Integer idPreUpdate;
+	
 	@ManyToOne(cascade = CascadeType.ALL , fetch = FetchType.EAGER)
 	@JoinColumn(name = "FK_idUtente", referencedColumnName = "idUtente")
 //	@JsonBackReference
 	private Utente utente;
+	
 	@ManyToOne(cascade = CascadeType.ALL , fetch = FetchType.EAGER)
 	@JoinColumn(name = "FK_idApp", referencedColumnName = "idApplicazione")
 //	@JsonBackReference
 	private Applicazione applicazione;
+	
+	
+	public LogFileApp() {}
+	
 	public LogFileApp(Integer idLogApp, LocalDateTime data, Integer nodoConsole,
 			Time launchingMeetingDataGatheringStarting, BigDecimal avgAnalysisTime, Date automationEnablingDate,
-			Boolean done, String nome_App, String apmCode, String insertedInCastProgram, String stakeholderEngagement,
+			Boolean done, Integer idPreUpdate, String nome_App, String apmCode, String insertedInCastProgram, String stakeholderEngagement,
 			String stakeholderBrief, String onBoardingKitDelivery, String primaRestitution, String ownerOnboarding,
 			String ownerAFP, String gdsUnit, String tecnologia, String serverManager, String soloCMS, String macchina,
 			String noteOnboarding, String fase, String afpStatus, String pubblicatoDashboard, String noteAppOwner,
 			String jiraautomationActivation, String repoAvailability, String automationStatus, String automationNotes,
 			String greenItIndex, String onboardingKitClosing, String sourceCodeFinalDelivery, String linkConfluence,
-			String businessCriticality, String devMethodology, String provider, Integer idPreUpdate, Utente utente,
+			String businessCriticality, String devMethodology, String provider, Utente utente,
 			Applicazione applicazione) {
-		super();
 		this.idLogApp = idLogApp;
 		this.data = data;
 		this.nodoConsole = nodoConsole;
@@ -69,6 +76,7 @@ public class LogFileApp implements Serializable{
 		this.avgAnalysisTime = avgAnalysisTime;
 		this.automationEnablingDate = automationEnablingDate;
 		this.done = done;
+		this.idPreUpdate = idPreUpdate;
 		this.nome_App = nome_App;
 		this.apmCode = apmCode;
 		this.insertedInCastProgram = insertedInCastProgram;
@@ -99,13 +107,11 @@ public class LogFileApp implements Serializable{
 		this.businessCriticality = businessCriticality;
 		this.devMethodology = devMethodology;
 		this.provider = provider;
-		this.idPreUpdate = idPreUpdate;
 		this.utente = utente;
 		this.applicazione = applicazione;
 	}
-	public LogFileApp() {
-		super();
-	}
+
+	
 	public Integer getIdLogApp() {
 		return idLogApp;
 	}
@@ -147,6 +153,12 @@ public class LogFileApp implements Serializable{
 	}
 	public void setDone(Boolean done) {
 		this.done = done;
+	}
+	public Integer getIdPreUpdate() {
+		return idPreUpdate;
+	}
+	public void setIdPreUpdate(Integer idPreUpdate) {
+		this.idPreUpdate = idPreUpdate;
 	}
 	public String getNome_App() {
 		return nome_App;
@@ -328,12 +340,6 @@ public class LogFileApp implements Serializable{
 	public void setProvider(String provider) {
 		this.provider = provider;
 	}
-	public Integer getIdPreUpdate() {
-		return idPreUpdate;
-	}
-	public void setIdPreUpdate(Integer idPreUpdate) {
-		this.idPreUpdate = idPreUpdate;
-	}
 	public Utente getUtente() {
 		return utente;
 	}
@@ -346,25 +352,30 @@ public class LogFileApp implements Serializable{
 	public void setApplicazione(Applicazione applicazione) {
 		this.applicazione = applicazione;
 	}
+
+	
 	@Override
 	public String toString() {
-		return "LogFileApp [idLogApp=" + idLogApp + ", data=" + data + ", nodoConsole=" + nodoConsole
-				+ ", launchingMeetingDataGatheringStarting=" + launchingMeetingDataGatheringStarting
-				+ ", avgAnalysisTime=" + avgAnalysisTime + ", automationEnablingDate=" + automationEnablingDate
-				+ ", done=" + done + ", nome_App=" + nome_App + ", apmCode=" + apmCode + ", insertedInCastProgram="
-				+ insertedInCastProgram + ", stakeholderEngagement=" + stakeholderEngagement + ", stakeholderBrief="
-				+ stakeholderBrief + ", onBoardingKitDelivery=" + onBoardingKitDelivery + ", primaRestitution="
-				+ primaRestitution + ", ownerOnboarding=" + ownerOnboarding + ", ownerAFP=" + ownerAFP + ", gdsUnit="
-				+ gdsUnit + ", tecnologia=" + tecnologia + ", serverManager=" + serverManager + ", soloCMS=" + soloCMS
-				+ ", macchina=" + macchina + ", noteOnboarding=" + noteOnboarding + ", fase=" + fase + ", afpStatus="
-				+ afpStatus + ", pubblicatoDashboard=" + pubblicatoDashboard + ", noteAppOwner=" + noteAppOwner
-				+ ", jiraautomationActivation=" + jiraautomationActivation + ", repoAvailability=" + repoAvailability
-				+ ", automationStatus=" + automationStatus + ", automationNotes=" + automationNotes + ", greenItIndex="
-				+ greenItIndex + ", onboardingKitClosing=" + onboardingKitClosing + ", sourceCodeFinalDelivery="
-				+ sourceCodeFinalDelivery + ", linkConfluence=" + linkConfluence + ", businessCriticality="
-				+ businessCriticality + ", devMethodology=" + devMethodology + ", provider=" + provider
-				+ ", idPreUpdate=" + idPreUpdate + ", utente=" + utente + ", applicazione=" + applicazione + "]";
+		return "LogFileApp [getIdLogApp()=" + getIdLogApp() + ", getData()=" + getData() + ", getNodoConsole()="
+				+ getNodoConsole() + ", getLaunchingMeetingDataGatheringStarting()="
+				+ getLaunchingMeetingDataGatheringStarting() + ", getAvgAnalysisTime()=" + getAvgAnalysisTime()
+				+ ", getAutomationEnablingDate()=" + getAutomationEnablingDate() + ", isDone()=" + isDone()
+				+ ", getIdPreUpdate()=" + getIdPreUpdate() + ", getNome_App()=" + getNome_App() + ", getApmCode()="
+				+ getApmCode() + ", getInsertedInCastProgram()=" + getInsertedInCastProgram()
+				+ ", getStakeholderEngagement()=" + getStakeholderEngagement() + ", getStakeholderBrief()="
+				+ getStakeholderBrief() + ", getOnBoardingKitDelivery()=" + getOnBoardingKitDelivery()
+				+ ", getPrimaRestitution()=" + getPrimaRestitution() + ", getOwnerOnboarding()=" + getOwnerOnboarding()
+				+ ", getOwnerAFP()=" + getOwnerAFP() + ", getGdsUnit()=" + getGdsUnit() + ", getTecnologia()="
+				+ getTecnologia() + ", getServerManager()=" + getServerManager() + ", getSoloCMS()=" + getSoloCMS()
+				+ ", getMacchina()=" + getMacchina() + ", getNoteOnboarding()=" + getNoteOnboarding() + ", getFase()="
+				+ getFase() + ", getAfpStatus()=" + getAfpStatus() + ", getPubblicatoDashboard()="
+				+ getPubblicatoDashboard() + ", getNoteAppOwner()=" + getNoteAppOwner()
+				+ ", getJiraautomationActivation()=" + getJiraautomationActivation() + ", getRepoAvailability()="
+				+ getRepoAvailability() + ", getAutomationStatus()=" + getAutomationStatus() + ", getAutomationNotes()="
+				+ getAutomationNotes() + ", getGreenItIndex()=" + getGreenItIndex() + ", getOnboardingKitClosing()="
+				+ getOnboardingKitClosing() + ", getSourceCodeFinalDelivery()=" + getSourceCodeFinalDelivery()
+				+ ", getLinkConfluence()=" + getLinkConfluence() + ", getBusinessCriticality()="
+				+ getBusinessCriticality() + ", getDevMethodology()=" + getDevMethodology() + ", getProvider()="
+				+ getProvider() + ", getUtente()=" + getUtente() + ", getApplicazione()=" + getApplicazione() + "]";
 	}
-	
-	
 }

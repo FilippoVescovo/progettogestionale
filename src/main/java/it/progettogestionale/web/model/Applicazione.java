@@ -16,39 +16,50 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
+@Table(name = "applicazione")
 public class Applicazione implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idApplicazione;
-	@Column
+	
+	@Column(name = "nodoconsole")
 	private Integer nodoConsole;
-	@Column
+	@Column(name = "launchingmeetingdatagatheringstarting")
 	private Time launchingMeetingDataGatheringStarting;
-	@Column
+	@Column(name = "avganalysistime")
 	private BigDecimal avgAnalysisTime;
-	@Column
+	@Column(name = "automationenablingdate")
 	private Date automationEnablingDate;
-	@Column
-	private Boolean done,exist;
+	@Column(name = "done")
+	private Boolean done;
+	@Column(name = "exist")
+	private Boolean exist;
 	@Column
 	private String nome_App, apmCode, insertedInCastProgram, stakeholderEngagement,
 	stakeholderBrief, onBoardingKitDelivery, primaRestitution, ownerOnboarding, ownerAFP, gdsUnit, tecnologia, serverManager,
 	soloCMS, macchina, noteOnboarding, fase, afpStatus, pubblicatoDashboard, noteAppOwner,  jiraautomationActivation,
 	repoAvailability, automationStatus, automationNotes, greenItIndex, onboardingKitClosing, sourceCodeFinalDelivery,
 	linkConfluence, businessCriticality, devMethodology, provider;
-	@OneToMany(mappedBy="applicazione")
+	
+	@OneToMany(mappedBy = "applicazione")
 //	@JsonManagedReference
 	private Set<Rescan> rescans;
-	@ManyToMany(mappedBy="applicazione")
+	
+	@ManyToMany(mappedBy = "applicazione")
 //	@JsonIgnoreProperties("applicazione")
 	private Set<AppOwner> owners;
+	
 	@OneToMany (mappedBy = "applicazione")
 //	@JsonManagedReference
 	private Set<LogFileApp> logFiles;
+	
 	@OneToMany(mappedBy = "rescan")
 //	@JsonManagedReference
 	private Set<LogFileRescan> logFile;
+	
+	
+	public Applicazione() {}
 	
 	public Applicazione(Integer idApplicazione, Integer nodoConsole, Time launchingMeetingDataGatheringStarting,
 			BigDecimal avgAnalysisTime, Date automationEnablingDate, Boolean done, Boolean exist, String nome_App,
@@ -60,7 +71,6 @@ public class Applicazione implements Serializable{
 			String greenItIndex, String onboardingKitClosing, String sourceCodeFinalDelivery, String linkConfluence,
 			String businessCriticality, String devMethodology, String provider, Set<Rescan> rescans,
 			Set<AppOwner> owners, Set<LogFileApp> logFiles, Set<LogFileRescan> logFile) {
-		super();
 		this.idApplicazione = idApplicazione;
 		this.nodoConsole = nodoConsole;
 		this.launchingMeetingDataGatheringStarting = launchingMeetingDataGatheringStarting;
@@ -104,9 +114,7 @@ public class Applicazione implements Serializable{
 		this.logFile = logFile;
 	}
 	
-	public Applicazione() {
-		super();
-	}
+	
 	public Integer getIdApplicazione() {
 		return idApplicazione;
 	}
@@ -353,27 +361,31 @@ public class Applicazione implements Serializable{
 	public void setLogFile(Set<LogFileRescan> logFile) {
 		this.logFile = logFile;
 	}
-
+	
+	
 	@Override
 	public String toString() {
-		return "Applicazione [idApplicazione=" + idApplicazione + ", nodoConsole=" + nodoConsole
-				+ ", launchingMeetingDataGatheringStarting=" + launchingMeetingDataGatheringStarting
-				+ ", avgAnalysisTime=" + avgAnalysisTime + ", automationEnablingDate=" + automationEnablingDate
-				+ ", done=" + done + ", exist=" + exist + ", nome_App=" + nome_App + ", apmCode=" + apmCode
-				+ ", insertedInCastProgram=" + insertedInCastProgram + ", stakeholderEngagement="
-				+ stakeholderEngagement + ", stakeholderBrief=" + stakeholderBrief + ", onBoardingKitDelivery="
-				+ onBoardingKitDelivery + ", primaRestitution=" + primaRestitution + ", ownerOnboarding="
-				+ ownerOnboarding + ", ownerAFP=" + ownerAFP + ", gdsUnit=" + gdsUnit + ", tecnologia=" + tecnologia
-				+ ", serverManager=" + serverManager + ", soloCMS=" + soloCMS + ", macchina=" + macchina
-				+ ", noteOnboarding=" + noteOnboarding + ", fase=" + fase + ", afpStatus=" + afpStatus
-				+ ", pubblicatoDashboard=" + pubblicatoDashboard + ", noteAppOwner=" + noteAppOwner
-				+ ", jiraautomationActivation=" + jiraautomationActivation + ", repoAvailability=" + repoAvailability
-				+ ", automationStatus=" + automationStatus + ", automationNotes=" + automationNotes + ", greenItIndex="
-				+ greenItIndex + ", onboardingKitClosing=" + onboardingKitClosing + ", sourceCodeFinalDelivery="
-				+ sourceCodeFinalDelivery + ", linkConfluence=" + linkConfluence + ", businessCriticality="
-				+ businessCriticality + ", devMethodology=" + devMethodology + ", provider=" + provider + ", rescans="
-				+ rescans + "]";
+		return "Applicazione [getIdApplicazione()= " + getIdApplicazione() + ", getNodoConsole()= " + getNodoConsole()
+				+ ", getLaunchingMeetingDataGatheringStarting()= " + getLaunchingMeetingDataGatheringStarting()
+				+ ", getAvgAnalysisTime()= " + getAvgAnalysisTime() + ", getAutomationEnablingDate()= "
+				+ getAutomationEnablingDate() + ", isDone()= " + isDone() + ", isExist()= " + isExist()
+				+ ", getNome_App()= " + getNome_App() + ", getApmCode()= " + getApmCode()
+				+ ", getInsertedInCastProgram()= " + getInsertedInCastProgram() + ", getStakeholderEngagement()= "
+				+ getStakeholderEngagement() + ", getStakeholderBrief()= " + getStakeholderBrief()
+				+ ", getOnBoardingKitDelivery()= " + getOnBoardingKitDelivery() + ", getPrimaRestitution()= "
+				+ getPrimaRestitution() + ", getOwnerOnboarding()= " + getOwnerOnboarding() + ", getOwnerAFP()= "
+				+ getOwnerAFP() + ", getGdsUnit()= " + getGdsUnit() + ", getTecnologia()= " + getTecnologia()
+				+ ", getServerManager()= " + getServerManager() + ", getSoloCMS()= " + getSoloCMS() + ", getMacchina()= "
+				+ getMacchina() + ", getNoteOnboarding()= " + getNoteOnboarding() + ", getFase()= " + getFase()
+				+ ", getAfpStatus()= " + getAfpStatus() + ", getPubblicatoDashboard()= " + getPubblicatoDashboard()
+				+ ", getNoteAppOwner()= " + getNoteAppOwner() + ", getJiraautomationActivation()= "
+				+ getJiraautomationActivation() + ", getRepoAvailability()= " + getRepoAvailability()
+				+ ", getAutomationStatus()= " + getAutomationStatus() + ", getAutomationNotes()= " + getAutomationNotes()
+				+ ", getGreenItIndex()= " + getGreenItIndex() + ", getOnboardingKitClosing()= "
+				+ getOnboardingKitClosing() + ", getSourceCodeFinalDelivery()= " + getSourceCodeFinalDelivery()
+				+ ", getLinkConfluence()= " + getLinkConfluence() + ", getBusinessCriticality()= "
+				+ getBusinessCriticality() + ", getDevMethodology()= " + getDevMethodology() + ", getProvider()= "
+				+ getProvider() + ", getRescans()= " + getRescans() + ", getOwners()= " + getOwners() + ", getLogFiles()= "
+				+ getLogFiles() + ", getLogFile()= " + getLogFile() + "]";
 	}
-	
-	
 }

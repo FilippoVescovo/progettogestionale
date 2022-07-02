@@ -12,24 +12,37 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
+@Table(name = "utente")
 public class Utente implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idUtente;
-	@Column
-	private String nome, cognome, password, email;
-	@Column
+	
+	@Column(name = "nome")
+	private String nome;
+	@Column(name = "cognome")
+	private String cognome;
+	@Column(name = "password")
+	private String password;
+	@Column(name = "email")
+	private String email;
+	@Column(name = "ruolo")
 	private Boolean ruolo;
+	
 	@OneToMany(mappedBy = "utente")
 //	@JsonManagedReference
 	private Set<LogFileApp> logfiles;
+	
 	@OneToMany(mappedBy = "utente")
 //	@JsonManagedReference
 	private Set<LogFileRescan> logFile;
+	
+	
+	public Utente() {}
+	
 	public Utente(Integer idUtente, String nome, String cognome, String password, String email, Boolean ruolo,
 			Set<LogFileApp> logfiles, Set<LogFileRescan> logFile) {
-		super();
 		this.idUtente = idUtente;
 		this.nome = nome;
 		this.cognome = cognome;
@@ -39,9 +52,8 @@ public class Utente implements Serializable{
 		this.logfiles = logfiles;
 		this.logFile = logFile;
 	}
-	public Utente() {
-		super();
-	}
+	
+	
 	public Integer getIdUtente() {
 		return idUtente;
 	}
@@ -90,6 +102,12 @@ public class Utente implements Serializable{
 	public void setLogFile(Set<LogFileRescan> logFile) {
 		this.logFile = logFile;
 	}
+
 	
-	
+	@Override
+	public String toString() {
+		return "Utente [getIdUtente()= " + getIdUtente() + ", getNome()= " + getNome() + ", getCognome()= " + getCognome()
+				+ ", getEmail()= " + getEmail() + ", isRuolo()= " + isRuolo() + ", getLogfiles()= " + getLogfiles()
+				+ ", getLogFile()= " + getLogFile() + "]";
+	}
 }

@@ -14,45 +14,52 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
+@Table(name = "rescan")
 public class Rescan implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idRescan;
-	@Column
+	
+	@Column(name = "nrescan")
 	private Integer nRescan;
-	@Column
+	@Column(name = "newob")
 	private Integer newOb;
-	@Column
+	@Column(name = "py")
 	private Integer py;
-	@Column
+	@Column(name = "ytd")
 	private Integer ytd;
-	@Column
+	@Column(name = "afpe")
 	private String afpe;
-	@Column
+	@Column(name = "yoyrolling")
 	private String yoyRolling;
-	@Column
+	@Column(name = "last_rescan")
 	private String last_Rescan;
-	@Column
+	@Column(name = "ongoing")
 	private Boolean onGoing;
-	@Column
+	@Column(name = "archive")
 	private Boolean archive;
-	@Column
+	@Column(name = "exist")
 	private Boolean exist;
-	@Column
+	@Column(name = "rkd")
 	private Date rkd;
+	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "FK_idApplicazione", referencedColumnName = "idApplicazione")
 //	@JsonBackReference
 	private Applicazione applicazione;
+	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "FK_idAppOwner", referencedColumnName = "idAppOwner")
 //	@JsonBackReference
 	private AppOwner appOwner;
+	
+	
+	public Rescan() {}
+	
 	public Rescan(Integer idRescan, Integer nRescan, Integer newOb, Integer py, Integer ytd, String afpe, String yoyRolling,
 			String last_Rescan, Boolean onGoing, Boolean archive, Boolean exist, Date rkd, Applicazione applicazione,
 			AppOwner appOwner) {
-		super();
 		this.idRescan = idRescan;
 		this.nRescan = nRescan;
 		this.newOb = newOb;
@@ -68,9 +75,8 @@ public class Rescan implements Serializable{
 		this.applicazione = applicazione;
 		this.appOwner = appOwner;
 	}
-	public Rescan() {
-		super();
-	}
+	
+	
 	public Integer getIdRescan() {
 		return idRescan;
 	}
@@ -157,4 +163,12 @@ public class Rescan implements Serializable{
 	}
 	
 	
+	@Override
+	public String toString() {
+		return "Rescan [getIdRescan()= " + getIdRescan() + ", getnRescan()= " + getnRescan() + ", getNewOb()= "
+				+ getNewOb() + ", getPy()= " + getPy() + ", getYtd()= " + getYtd() + ", getAfpe()= " + getAfpe()
+				+ ", getYoyRolling()= " + getYoyRolling() + ", getLast_Rescan()= " + getLast_Rescan() + ", isOnGoing()= "
+				+ isOnGoing() + ", isArchive()= " + isArchive() + ", isExist()= " + isExist() + ", getRkd()= " + getRkd()
+				+ ", getApplicazione()= " + getApplicazione() + ", getAppOwner()= " + getAppOwner() + "]";
+	}
 }

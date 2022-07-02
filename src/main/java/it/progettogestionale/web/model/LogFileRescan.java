@@ -14,48 +14,54 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
+@Table(name = "logfilerescan")
 public class LogFileRescan implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idLogRescan;
-	@Column(name="data")
+	
+	@Column(name = "data")
 	private Date data;
-	@Column
+	@Column(name = "nrescan")
 	private Integer nRescan;
-	@Column
+	@Column(name = "ongoing")
 	private Boolean ongoing;
-	@Column
+	@Column(name = "archive")
 	private Boolean archive;
-	@Column
+	@Column(name = "newob")
 	private Integer newOb;
-	@Column
+	@Column(name = "py")
 	private Integer py;
-	@Column
+	@Column(name = "ytd")
 	private Integer ytd;
-	@Column
+	@Column(name = "afpe")
 	private String afpe;
-	@Column
+	@Column(name = "yoyrolling")
 	private String yoyRolling;
-	@Column
+	@Column(name = "last_rescan")
 	private String last_Rescan;
-	@Column
+	@Column(name = "rkd")
 	private Date rkd;
-	@Column
+	@Column(name = "idpreupdate")
 	private Integer idPreUpdate;
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "FK_idUtente", referencedColumnName = "idUtente")
+	
+	@ManyToOne
+	@JoinColumn(name = "fk_idUtente", referencedColumnName = "idUtente")
 //	@JsonBackReference
 	private Utente utente;
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "FK_idRescan", referencedColumnName = "idRescan")
+	
+	@ManyToOne
+	@JoinColumn(name = "fk_idRescan", referencedColumnName = "idRescan")
 //	@JsonBackReference
 	private Rescan rescan;
+	
+	
+	public LogFileRescan() {}
 	
 	public LogFileRescan(Integer idLogRescan, Date data, Integer nRescan, Boolean ongoing, Boolean archive, Integer newOb,
 			Integer py, Integer ytd, String afpe, String yoyRolling, String last_Rescan, Date rkd, Integer idPreUpdate,
 			Utente utente, Rescan rescan) {
-		super();
 		this.idLogRescan = idLogRescan;
 		this.data = data;
 		this.nRescan = nRescan;
@@ -73,9 +79,6 @@ public class LogFileRescan implements Serializable{
 		this.rescan = rescan;
 	}
 	
-	public LogFileRescan() {
-		super();
-	}
 	
 	public Integer getIdLogRescan() {
 		return idLogRescan;
@@ -167,13 +170,15 @@ public class LogFileRescan implements Serializable{
 	public void setRescan(Rescan rescan) {
 		this.rescan = rescan;
 	}
+	
+	
 	@Override
 	public String toString() {
-		return "LogFileRescan [idLogRescan=" + idLogRescan + ", data=" + data + ", nRescan=" + nRescan + ", ongoing="
-				+ ongoing + ", archive=" + archive + ", newOb=" + newOb + ", py=" + py + ", ytd=" + ytd + ", afpe="
-				+ afpe + ", yoyRolling=" + yoyRolling + ", last_Rescan=" + last_Rescan + ", rkd=" + rkd
-				+ ", idPreUpdate=" + idPreUpdate + ", utente=" + utente + ", rescan=" + rescan + "]";
+		return "LogFileRescan [getIdLogRescan()= " + getIdLogRescan() + ", getData()= " + getData() + ", getnRescan()= "
+				+ getnRescan() + ", isOngoing()= " + isOngoing() + ", isArchive()= " + isArchive() + ", getNewOb()= "
+				+ getNewOb() + ", getPy()= " + getPy() + ", getYtd()= " + getYtd() + ", getAfpe()= " + getAfpe()
+				+ ", getYoyRolling()= " + getYoyRolling() + ", getLast_Rescan()= " + getLast_Rescan() + ", getRkd()= "
+				+ getRkd() + ", getIdPreUpdate()= " + getIdPreUpdate() + ", getUtente()= " + getUtente()
+				+ ", getRescan()= " + getRescan() + "]";
 	}
-	
-	
 }

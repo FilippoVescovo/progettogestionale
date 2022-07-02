@@ -15,34 +15,41 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
+@Table(name = "appowner")
 public class AppOwner implements Serializable {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idAppOwner;
-	@Column(name="nome")
+	
+	@Column(name = "nome")
 	private String nome;
-	@Column(name="cognome")
+	@Column(name = "cognome")
 	private String cognome;
-	@Column(name="email")
+	@Column(name = "email")
 	private String email;
-	@Column(name="cell")
+	@Column(name = "cell")
 	private String cell;
-	@Column(name="dsUnit")
+	@Column(name = "dsUnit")
 	private String dsUnit;
-	@OneToMany(mappedBy="appOwner")
+	
+	@OneToMany(mappedBy = "appOwner")
 //	@JsonManagedReference
 	private Set<Rescan> appOwners;
+	
 	@ManyToMany
 	@JoinTable(
 			name = "monitoraggio",
-			joinColumns = @JoinColumn(name="fk_idAppOwner"),
+			joinColumns = @JoinColumn(name = "fk_idAppOwner"),
 			inverseJoinColumns = @JoinColumn(name = "fk_idApplicazione")
 		)
 	private Set<Applicazione> applicazione;
+	
+	
+	public AppOwner() {}
+	
 	public AppOwner(Integer idAppOwner, String nome, String cognome, String email, String cell, String dsUnit,
 			Set<Rescan> appOwners, Set<Applicazione> applicazione) {
-		super();
 		this.idAppOwner = idAppOwner;
 		this.nome = nome;
 		this.cognome = cognome;
@@ -52,9 +59,8 @@ public class AppOwner implements Serializable {
 		this.appOwners = appOwners;
 		this.applicazione = applicazione;
 	}
-	public AppOwner() {
-		super();
-	}
+	
+	
 	public Integer getIdAppOwner() {
 		return idAppOwner;
 	}
@@ -105,4 +111,10 @@ public class AppOwner implements Serializable {
 	}
 	
 	
+	@Override
+	public String toString() {
+		return "AppOwner [getIdAppOwner()= " + getIdAppOwner() + ", getNome()= " + getNome() + ", getCognome()= "
+				+ getCognome() + ", getEmail()= " + getEmail() + ", getCell()= " + getCell() + ", getDsUnit()= "
+				+ getDsUnit() + ", getAppOwners()= " + getAppOwners() + ", getApplicazione()= " + getApplicazione() + "]";
+	}
 }

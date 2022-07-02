@@ -22,4 +22,32 @@ public class UtenteController {
 			Utente u = utenteService.getById(4);
 			return u.getNome();
 	}
+	
+	@ResponseBody
+	@GetMapping("/add")
+	public String add() {
+		Utente u = new Utente();
+		u.setNome("francesco");
+		u.setCognome("verdi");
+		u.setPassword("password");
+		u.setEmail("fraver@email.gg");
+		utenteService.add(u);
+		return "utente aggiunto";
+	}
+	
+	@ResponseBody
+	@GetMapping("/update")
+	public String update() {
+		Utente u = utenteService.getById(1);
+		u.setNome("Giuseppe");
+		utenteService.update(u);
+		return "l'utente e' stato modificato correttamente";
+	}
+	
+	@ResponseBody
+	@GetMapping("/delete")
+	public String delete() {
+		utenteService.delete(1);
+		return "utente eliminato correttamente";
+	}
 }
