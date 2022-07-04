@@ -28,7 +28,7 @@ public class RescanController {
 	public String add() {
 		Rescan r = new Rescan();
 		r.setnRescan(5);
-		r.setAfpe("Filippo");
+		r.setAfpe("Federico");
 		rescanService.add(r);
 		return "rescan inserito correttamente";
 	}
@@ -45,7 +45,7 @@ public class RescanController {
 	@ResponseBody
 	@GetMapping("/delete")
 	public String delete() {
-		rescanService.delete(2);
+		rescanService.delete(22);
 		return "rescan eliminato correttamente";
 	}
 }

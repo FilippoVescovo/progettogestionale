@@ -11,8 +11,13 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.json.JSONPropertyIgnore;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "utente")
+@JsonIgnoreProperties({"logfiles", "logFile"})
 public class Utente implements Serializable{
 
 	@Id
