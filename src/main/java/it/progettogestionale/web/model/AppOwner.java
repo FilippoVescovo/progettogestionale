@@ -60,7 +60,15 @@ public class AppOwner implements Serializable {
 		this.applicazione = applicazione;
 	}
 	
-	
+	//costruttore con attributi not null
+	public AppOwner( String nome, String cognome, String email, String dsUnit) {
+		super();
+		this.nome = nome;
+		this.cognome = cognome;
+		this.email = email;
+		this.dsUnit = dsUnit;
+	}
+
 	public Integer getIdAppOwner() {
 		return idAppOwner;
 	}

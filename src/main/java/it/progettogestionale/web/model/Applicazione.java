@@ -21,6 +21,7 @@ public class Applicazione implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
 	private Integer idApplicazione;
 	
 	@Column(name = "nodoconsole")
@@ -114,7 +115,12 @@ public class Applicazione implements Serializable{
 		this.logFile = logFile;
 	}
 	
-	
+	//costruttore con attributi not null
+	public Applicazione(String nome_App) {
+		super();
+		this.nome_App = nome_App;
+	}
+
 	public Integer getIdApplicazione() {
 		return idApplicazione;
 	}
