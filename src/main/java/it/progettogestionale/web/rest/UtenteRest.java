@@ -1,4 +1,4 @@
-package it.progettogestionale.web.controller;
+package it.progettogestionale.web.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
