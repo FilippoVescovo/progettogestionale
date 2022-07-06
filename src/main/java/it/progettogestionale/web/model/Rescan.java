@@ -161,6 +161,17 @@ public class Rescan implements Serializable{
 	public void setAppOwner(AppOwner appOwner) {
 		this.appOwner = appOwner;
 	}
+	public Boolean getOnGoing() {
+		return onGoing;
+	}
+
+	public Boolean getArchive() {
+		return archive;
+	}
+
+	public Boolean getExist() {
+		return exist;
+	}
 	
 	
 	@Override
@@ -169,6 +180,7 @@ public class Rescan implements Serializable{
 				+ getNewOb() + ", getPy()= " + getPy() + ", getYtd()= " + getYtd() + ", getAfpe()= " + getAfpe()
 				+ ", getYoyRolling()= " + getYoyRolling() + ", getLast_Rescan()= " + getLast_Rescan() + ", isOnGoing()= "
 				+ isOnGoing() + ", isArchive()= " + isArchive() + ", isExist()= " + isExist() + ", getRkd()= " + getRkd()
-				+ ", getApplicazione()= " + getApplicazione() + ", getAppOwner()= " + getAppOwner() + "]";
+				+ ", getApplicazione()= " + getApplicazione() + ", getAppOwner()= " + getAppOwner() + ", getOnGoing()= "
+				+ getOnGoing() + ", getArchive()= " + getArchive() + ", getExist()= " + getExist() + "]";
 	}
 }
