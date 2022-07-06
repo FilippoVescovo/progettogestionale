@@ -369,26 +369,24 @@ public class LogFileApp implements Serializable{
 
 	@Override
 	public String toString() {
-		return "LogFileApp [getIdLogApp()=" + getIdLogApp() + ", getData()=" + getData() + ", getNodoConsole()="
-				+ getNodoConsole() + ", getLaunchingMeetingDataGatheringStarting()="
-				+ getLaunchingMeetingDataGatheringStarting() + ", getAvgAnalysisTime()=" + getAvgAnalysisTime()
-				+ ", getAutomationEnablingDate()=" + getAutomationEnablingDate() + ", isDone()=" + isDone()
-				+ ", getIdPreUpdate()=" + getIdPreUpdate() + ", getNome_App()=" + getNome_App() + ", getApmCode()="
-				+ getApmCode() + ", getInsertedInCastProgram()=" + getInsertedInCastProgram()
-				+ ", getStakeholderEngagement()=" + getStakeholderEngagement() + ", getStakeholderBrief()="
-				+ getStakeholderBrief() + ", getOnBoardingKitDelivery()=" + getOnBoardingKitDelivery()
-				+ ", getPrimaRestitution()=" + getPrimaRestitution() + ", getOwnerOnboarding()=" + getOwnerOnboarding()
-				+ ", getOwnerAFP()=" + getOwnerAFP() + ", getGdsUnit()=" + getGdsUnit() + ", getTecnologia()="
-				+ getTecnologia() + ", getServerManager()=" + getServerManager() + ", getSoloCMS()=" + getSoloCMS()
-				+ ", getMacchina()=" + getMacchina() + ", getNoteOnboarding()=" + getNoteOnboarding() + ", getFase()="
-				+ getFase() + ", getAfpStatus()=" + getAfpStatus() + ", getPubblicatoDashboard()="
-				+ getPubblicatoDashboard() + ", getNoteAppOwner()=" + getNoteAppOwner()
-				+ ", getJiraautomationActivation()=" + getJiraautomationActivation() + ", getRepoAvailability()="
-				+ getRepoAvailability() + ", getAutomationStatus()=" + getAutomationStatus() + ", getAutomationNotes()="
-				+ getAutomationNotes() + ", getGreenItIndex()=" + getGreenItIndex() + ", getOnboardingKitClosing()="
-				+ getOnboardingKitClosing() + ", getSourceCodeFinalDelivery()=" + getSourceCodeFinalDelivery()
-				+ ", getLinkConfluence()=" + getLinkConfluence() + ", getBusinessCriticality()="
-				+ getBusinessCriticality() + ", getDevMethodology()=" + getDevMethodology() + ", getProvider()="
-				+ getProvider() + ", getUtente()=" + getUtente() + ", getApplicazione()=" + getApplicazione() + "]";
+		return "LogFileApp [idLogApp=" + idLogApp + ", data=" + data + ", nodoConsole=" + nodoConsole
+				+ ", launchingMeetingDataGatheringStarting=" + launchingMeetingDataGatheringStarting
+				+ ", avgAnalysisTime=" + avgAnalysisTime + ", automationEnablingDate=" + automationEnablingDate
+				+ ", done=" + done + ", idPreUpdate=" + idPreUpdate + ", nome_App=" + nome_App + ", apmCode=" + apmCode
+				+ ", insertedInCastProgram=" + insertedInCastProgram + ", stakeholderEngagement="
+				+ stakeholderEngagement + ", stakeholderBrief=" + stakeholderBrief + ", onBoardingKitDelivery="
+				+ onBoardingKitDelivery + ", primaRestitution=" + primaRestitution + ", ownerOnboarding="
+				+ ownerOnboarding + ", ownerAFP=" + ownerAFP + ", gdsUnit=" + gdsUnit + ", tecnologia=" + tecnologia
+				+ ", serverManager=" + serverManager + ", soloCMS=" + soloCMS + ", macchina=" + macchina
+				+ ", noteOnboarding=" + noteOnboarding + ", fase=" + fase + ", afpStatus=" + afpStatus
+				+ ", pubblicatoDashboard=" + pubblicatoDashboard + ", noteAppOwner=" + noteAppOwner
+				+ ", jiraautomationActivation=" + jiraautomationActivation + ", repoAvailability=" + repoAvailability
+				+ ", automationStatus=" + automationStatus + ", automationNotes=" + automationNotes + ", greenItIndex="
+				+ greenItIndex + ", onboardingKitClosing=" + onboardingKitClosing + ", sourceCodeFinalDelivery="
+				+ sourceCodeFinalDelivery + ", linkConfluence=" + linkConfluence + ", businessCriticality="
+				+ businessCriticality + ", devMethodology=" + devMethodology + ", provider=" + provider + ", utente="
+				+ utente + ", applicazione=" + applicazione + "]";
 	}
+
+	
 }

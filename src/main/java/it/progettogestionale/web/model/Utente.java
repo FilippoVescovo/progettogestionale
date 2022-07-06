@@ -13,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.json.JSONPropertyIgnore;
@@ -26,6 +27,9 @@ public class Utente implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq")
+//	@SequenceGenerator(name = "seq", sequenceName = "*nome sequenza database*", initialValue = 666) 
+//	alter sequence *nome sequenza database* restart with 666;(modo alternativo per risolvere)
 	private Integer idUtente;
 	
 	@Column(name = "nome")
@@ -38,7 +42,7 @@ public class Utente implements Serializable{
 	private String email;
 	@Column(name = "ruolo")
 	private Boolean ruolo;
-	
+		//cascade:serve modificare a cascata tutto cio che è relazionato all'entity,fetch: download dei dati eage tutti lazy quando richiamo il getter
 	@OneToMany(mappedBy = "utente",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 //	@JsonManagedReference
 	private Set<LogFileApp> logfiles;

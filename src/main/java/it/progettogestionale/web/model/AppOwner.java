@@ -117,12 +117,14 @@ public class AppOwner implements Serializable {
 	public void setApplicazione(Set<Applicazione> applicazione) {
 		this.applicazione = applicazione;
 	}
-	
-	
+
 	@Override
 	public String toString() {
-		return "AppOwner [getIdAppOwner()= " + getIdAppOwner() + ", getNome()= " + getNome() + ", getCognome()= "
-				+ getCognome() + ", getEmail()= " + getEmail() + ", getCell()= " + getCell() + ", getDsUnit()= "
-				+ getDsUnit() + ", getAppOwners()= " + getAppOwners() + ", getApplicazione()= " + getApplicazione() + "]";
+		return "AppOwner [idAppOwner=" + idAppOwner + ", nome=" + nome + ", cognome=" + cognome + ", email=" + email
+				+ ", cell=" + cell + ", dsUnit=" + dsUnit + ", appOwners=" + appOwners + ", applicazione="
+				+ applicazione + "]";
 	}
+	
+	
+	
 }
