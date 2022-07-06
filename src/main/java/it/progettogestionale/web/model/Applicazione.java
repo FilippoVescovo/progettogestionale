@@ -17,6 +17,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "applicazione")
 public class Applicazione implements Serializable{
@@ -46,22 +48,26 @@ public class Applicazione implements Serializable{
 	soloCMS, macchina, noteOnboarding, fase, afpStatus, pubblicatoDashboard, noteAppOwner,  jiraautomationActivation,
 	repoAvailability, automationStatus, automationNotes, greenItIndex, onboardingKitClosing, sourceCodeFinalDelivery,
 	linkConfluence, businessCriticality, devMethodology, provider;
-	//cascade:serve modificare a cascata tutto cio che è relazionato all'entity,fetch: download dei dati eage tutti lazy quando richiamo il getter
+	//cascade:serve modificare a cascata tutto cio che è relazionato all'entity,fetch: download dei dati eager tutti lazy quando richiamo il getter
 	//@OneToMany(mappedBy = "utente",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	@OneToMany(mappedBy = "applicazione")
 //	@JsonManagedReference
+	@JsonIgnore
 	private Set<Rescan> rescans;
 	
 	@ManyToMany(mappedBy = "applicazione")
 //	@JsonIgnoreProperties("applicazione")
+	@JsonIgnore
 	private Set<AppOwner> owners;
 	
 	@OneToMany (mappedBy = "applicazione")
 //	@JsonManagedReference
+	@JsonIgnore
 	private Set<LogFileApp> logFiles;
 	
 	@OneToMany(mappedBy = "rescan")
 //	@JsonManagedReference
+	@JsonIgnore
 	private Set<LogFileRescan> logFile;
 	
 	

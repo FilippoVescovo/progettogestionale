@@ -14,6 +14,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "appowner")
 public class AppOwner implements Serializable {
@@ -35,6 +37,7 @@ public class AppOwner implements Serializable {
 	
 	@OneToMany(mappedBy = "appOwner")
 //	@JsonManagedReference
+	@JsonIgnore
 	private Set<Rescan> appOwners;
 	
 	@ManyToMany
@@ -43,6 +46,7 @@ public class AppOwner implements Serializable {
 			joinColumns = @JoinColumn(name = "fk_idAppOwner"),
 			inverseJoinColumns = @JoinColumn(name = "fk_idApplicazione")
 		)
+	@JsonIgnore
 	private Set<Applicazione> applicazione;
 	
 	
