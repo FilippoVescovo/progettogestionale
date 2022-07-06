@@ -1,9 +1,7 @@
 package it.progettogestionale.web.model;
 
 import java.io.Serializable;
-import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -14,10 +12,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import org.json.JSONPropertyIgnore;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "utente")
@@ -111,12 +105,16 @@ public class Utente implements Serializable{
 	public void setLogFile(Set<LogFileRescan> logFile) {
 		this.logFile = logFile;
 	}
+	public Boolean getRuolo() {
+		return ruolo;
+	}
 
 	
 	@Override
 	public String toString() {
 		return "Utente [getIdUtente()= " + getIdUtente() + ", getNome()= " + getNome() + ", getCognome()= " + getCognome()
-				+ ", getEmail()= " + getEmail() + ", isRuolo()= " + isRuolo() + ", getLogfiles()= " + getLogfiles()
-				+ ", getLogFile()= " + getLogFile() + "]";
+				+ ", getPassword()= " + getPassword() + ", getEmail()= " + getEmail() + ", isRuolo()= " + isRuolo()
+				+ ", getLogfiles()= " + getLogfiles() + ", getLogFile()= " + getLogFile() + ", getRuolo()= " + getRuolo()
+				+ "]";
 	}
 }

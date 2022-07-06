@@ -180,6 +180,7 @@ public class LogFileRescan implements Serializable{
 		return archive;
 	}
 
+	
 	@Override
 	public String toString() {
 		return "LogFileRescan [getIdLogRescan()= " + getIdLogRescan() + ", getData()= " + getData() + ", getnRescan()= "
@@ -187,6 +188,7 @@ public class LogFileRescan implements Serializable{
 				+ getNewOb() + ", getPy()= " + getPy() + ", getYtd()= " + getYtd() + ", getAfpe()= " + getAfpe()
 				+ ", getYoyRolling()= " + getYoyRolling() + ", getLast_Rescan()= " + getLast_Rescan() + ", getRkd()= "
 				+ getRkd() + ", getIdPreUpdate()= " + getIdPreUpdate() + ", getUtente()= " + getUtente()
-				+ ", getRescan()= " + getRescan() + "]";
+				+ ", getRescan()= " + getRescan() + ", getOngoing()= " + getOngoing() + ", getArchive()= " + getArchive()
+				+ "]";
 	}
 }
