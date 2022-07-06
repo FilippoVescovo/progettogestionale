@@ -6,8 +6,10 @@ import java.sql.Date;
 import java.sql.Time;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,7 +23,9 @@ public class Applicazione implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
+//	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq")
+//	@SequenceGenerator(name = "seq", sequenceName = "*nome sequenza database*", initialValue = 666) 
+//	alter sequence *nome sequenza database* restart with 666;(modo alternativo per risolvere)
 	private Integer idApplicazione;
 	
 	@Column(name = "nodoconsole")
@@ -42,7 +46,8 @@ public class Applicazione implements Serializable{
 	soloCMS, macchina, noteOnboarding, fase, afpStatus, pubblicatoDashboard, noteAppOwner,  jiraautomationActivation,
 	repoAvailability, automationStatus, automationNotes, greenItIndex, onboardingKitClosing, sourceCodeFinalDelivery,
 	linkConfluence, businessCriticality, devMethodology, provider;
-	
+	//cascade:serve modificare a cascata tutto cio che è relazionato all'entity,fetch: download dei dati eage tutti lazy quando richiamo il getter
+	//@OneToMany(mappedBy = "utente",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	@OneToMany(mappedBy = "applicazione")
 //	@JsonManagedReference
 	private Set<Rescan> rescans;
