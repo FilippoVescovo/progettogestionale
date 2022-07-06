@@ -49,13 +49,11 @@ public class Rescan implements Serializable{
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "FK_idApplicazione", referencedColumnName = "idApplicazione")
 //	@JsonBackReference
-	@JsonIgnore
 	private Applicazione applicazione;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "FK_idAppOwner", referencedColumnName = "idAppOwner")
 //	@JsonBackReference
-	@JsonIgnore
 	private AppOwner appOwner;
 	
 	
