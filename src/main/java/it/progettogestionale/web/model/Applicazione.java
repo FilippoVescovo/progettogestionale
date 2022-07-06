@@ -50,22 +50,22 @@ public class Applicazione implements Serializable{
 	linkConfluence, businessCriticality, devMethodology, provider;
 	//cascade:serve modificare a cascata tutto cio che è relazionato all'entity,fetch: download dei dati eager tutti lazy quando richiamo il getter
 	//@OneToMany(mappedBy = "utente",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-	@OneToMany(mappedBy = "applicazione")
+	@OneToMany(mappedBy = "applicazione", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 //	@JsonManagedReference
 	@JsonIgnore
 	private Set<Rescan> rescans;
 	
-	@ManyToMany(mappedBy = "applicazione")
+	@ManyToMany(mappedBy = "applicazione", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 //	@JsonIgnoreProperties("applicazione")
 	@JsonIgnore
 	private Set<AppOwner> owners;
 	
-	@OneToMany (mappedBy = "applicazione")
+	@OneToMany (mappedBy = "applicazione", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 //	@JsonManagedReference
 	@JsonIgnore
 	private Set<LogFileApp> logFiles;
 	
-	@OneToMany(mappedBy = "rescan")
+	@OneToMany(mappedBy = "rescan", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 //	@JsonManagedReference
 	@JsonIgnore
 	private Set<LogFileRescan> logFile;

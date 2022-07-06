@@ -27,8 +27,8 @@ public class LogFileAppRest {
 	@Autowired
 	private LogFileAppRepository appRe;
 	
-	@GetMapping("/getappbyid/{id}")
-	public LogFileAppDTO getAppById(@PathVariable("id") Integer id) {
+	@GetMapping("/getbyid/{id}")
+	public LogFileAppDTO getById(@PathVariable("id") Integer id) {
 		LogFileAppDTO l = new LogFileAppDTO(appRe.findById(id).get());
 		return l ;
 	}

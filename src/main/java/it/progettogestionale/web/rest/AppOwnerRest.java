@@ -21,8 +21,8 @@ public class AppOwnerRest {
 	@Autowired
 	private AppOwnerRepository appRe;
 	
-	@GetMapping("/getappbyid/{id}")
-	public AppOwner getAppById(@PathVariable("id") Integer id) {
+	@GetMapping("/getbyid/{id}")
+	public AppOwner getById(@PathVariable("id") Integer id) {
 		return appRe.findById(id).get();
 	}
 	
