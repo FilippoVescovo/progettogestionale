@@ -31,9 +31,9 @@ public class RescanDTO {
 		afpe = r.getAfpe();
 		yoyRolling = r.getYoyRolling();
 		last_Rescan = r.getLast_Rescan();
-		onGoing = r.getOnGoing();
-		archive = r.getArchive();
-		exist = r.getExist();
+		onGoing = r.isOnGoing();
+		archive = r.isArchive();
+		exist = r.isExist();
 		rkd = r.getRkd();
 		applicazione = r.getApplicazione().getIdApplicazione();
 		appOwner = r.getAppOwner().getIdAppOwner();
