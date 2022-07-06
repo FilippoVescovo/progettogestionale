@@ -52,22 +52,22 @@ public class Applicazione implements Serializable{
 	//@OneToMany(mappedBy = "utente",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	@OneToMany(mappedBy = "applicazione", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 //	@JsonManagedReference
-	@JsonIgnore
+//	@JsonIgnore
 	private Set<Rescan> rescans;
 	
 	@ManyToMany(mappedBy = "applicazione", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 //	@JsonIgnoreProperties("applicazione")
-	@JsonIgnore
+//	@JsonIgnore
 	private Set<AppOwner> owners;
 	
 	@OneToMany (mappedBy = "applicazione", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 //	@JsonManagedReference
-	@JsonIgnore
+//	@JsonIgnore
 	private Set<LogFileApp> logFiles;
 	
 	@OneToMany(mappedBy = "rescan", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 //	@JsonManagedReference
-	@JsonIgnore
+//	@JsonIgnore
 	private Set<LogFileRescan> logFile;
 	
 	

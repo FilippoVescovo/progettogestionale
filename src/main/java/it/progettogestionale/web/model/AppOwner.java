@@ -37,7 +37,7 @@ public class AppOwner implements Serializable {
 	
 	@OneToMany(mappedBy = "appOwner")
 //	@JsonManagedReference
-	@JsonIgnore
+//	@JsonIgnore
 	private Set<Rescan> appOwners;
 	
 	@ManyToMany
@@ -46,7 +46,7 @@ public class AppOwner implements Serializable {
 			joinColumns = @JoinColumn(name = "fk_idAppOwner"),
 			inverseJoinColumns = @JoinColumn(name = "fk_idApplicazione")
 		)
-	@JsonIgnore
+//	@JsonIgnore
 	private Set<Applicazione> applicazione;
 	
 	
