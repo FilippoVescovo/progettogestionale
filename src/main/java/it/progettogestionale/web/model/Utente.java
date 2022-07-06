@@ -1,10 +1,14 @@
 package it.progettogestionale.web.model;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "utente")
-@JsonIgnoreProperties({"logfiles", "logFile"})
+//@JsonIgnoreProperties({"logfiles", "logFile"})
 public class Utente implements Serializable{
 
 	@Id
@@ -35,11 +39,11 @@ public class Utente implements Serializable{
 	@Column(name = "ruolo")
 	private Boolean ruolo;
 	
-	@OneToMany(mappedBy = "utente")
+	@OneToMany(mappedBy = "utente",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 //	@JsonManagedReference
 	private Set<LogFileApp> logfiles;
 	
-	@OneToMany(mappedBy = "utente")
+	@OneToMany(mappedBy = "utente",fetch = FetchType.EAGER)
 //	@JsonManagedReference
 	private Set<LogFileRescan> logFile;
 	

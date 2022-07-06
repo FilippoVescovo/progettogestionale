@@ -46,13 +46,13 @@ public class LogFileApp implements Serializable{
 	repoAvailability, automationStatus, automationNotes, greenItIndex, onboardingKitClosing, sourceCodeFinalDelivery,
 	linkConfluence, businessCriticality, devMethodology, provider;
 	
-	@ManyToOne//(cascade = CascadeType.ALL , fetch = FetchType.EAGER)
-	@JoinColumn(name = "FK_idUtente", referencedColumnName = "idUtente")
+	@ManyToOne(cascade = CascadeType.ALL , fetch = FetchType.LAZY)
+	@JoinColumn(name = "FK_idUtente")
 //	@JsonBackReference
 	private Utente utente;
 	
-	@ManyToOne//(cascade = CascadeType.ALL , fetch = FetchType.EAGER)
-	@JoinColumn(name = "FK_idApp", referencedColumnName = "idApplicazione")
+	@ManyToOne(cascade = CascadeType.ALL , fetch = FetchType.LAZY)
+	@JoinColumn(name = "FK_idApp")
 //	@JsonBackReference
 	private Applicazione applicazione;
 	
@@ -119,6 +119,7 @@ public class LogFileApp implements Serializable{
 		this.applicazione = applicazione;
 	}
 
+	
 	
 	public Integer getIdLogApp() {
 		return idLogApp;
@@ -361,8 +362,11 @@ public class LogFileApp implements Serializable{
 	public void setApplicazione(Applicazione applicazione) {
 		this.applicazione = applicazione;
 	}
-
 	
+	public Boolean getDone() {
+		return done;
+	}
+
 	@Override
 	public String toString() {
 		return "LogFileApp [getIdLogApp()=" + getIdLogApp() + ", getData()=" + getData() + ", getNodoConsole()="

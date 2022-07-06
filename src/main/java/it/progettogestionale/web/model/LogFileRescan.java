@@ -6,6 +6,7 @@ import java.sql.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -46,13 +47,13 @@ public class LogFileRescan implements Serializable{
 	@Column(name = "idpreupdate")
 	private Integer idPreUpdate;
 	
-	@ManyToOne
-	@JoinColumn(name = "fk_idUtente", referencedColumnName = "idUtente")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "fk_idUtente")
 //	@JsonBackReference
 	private Utente utente;
 	
-	@ManyToOne
-	@JoinColumn(name = "fk_idRescan", referencedColumnName = "idRescan")
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "fk_idRescan")
 //	@JsonBackReference
 	private Rescan rescan;
 	
@@ -171,7 +172,14 @@ public class LogFileRescan implements Serializable{
 		this.rescan = rescan;
 	}
 	
-	
+	public Boolean getOngoing() {
+		return ongoing;
+	}
+
+	public Boolean getArchive() {
+		return archive;
+	}
+
 	@Override
 	public String toString() {
 		return "LogFileRescan [getIdLogRescan()= " + getIdLogRescan() + ", getData()= " + getData() + ", getnRescan()= "

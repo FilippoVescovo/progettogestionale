@@ -7,4 +7,6 @@ public interface RescanDao {
 	public void add(Rescan r);
 	public void update(Rescan r);
 	public void delete(int id);
+	
+//	public void emptyCheck(Rescan r);
 }
