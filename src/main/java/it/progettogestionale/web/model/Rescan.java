@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "rescan")
 public class Rescan implements Serializable{
@@ -47,11 +49,13 @@ public class Rescan implements Serializable{
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "FK_idApplicazione", referencedColumnName = "idApplicazione")
 //	@JsonBackReference
+	@JsonIgnore
 	private Applicazione applicazione;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "FK_idAppOwner", referencedColumnName = "idAppOwner")
 //	@JsonBackReference
+	@JsonIgnore
 	private AppOwner appOwner;
 	
 	

@@ -1,8 +1,5 @@
 package it.progettogestionale.web.rest;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,8 +17,6 @@ public class RescanRest {
 	
 	@Autowired
 	private RescanRepository rescanRepo;
-	@PersistenceContext
-	private EntityManager em;
 	
 	@GetMapping("rescan/{id}")
 	public Rescan getRescan(@PathVariable("id") Integer id) {
@@ -31,5 +26,10 @@ public class RescanRest {
 	@PostMapping("/add")
 	public Rescan add(@RequestBody Rescan r) {
 		return rescanRepo.save(r);
+	}
+	
+	@GetMapping("/allrescan")
+	public Iterable<Rescan> getRescans(){
+		return rescanRepo.findAll();
 	}
 }

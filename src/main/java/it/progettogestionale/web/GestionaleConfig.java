@@ -34,7 +34,7 @@ import it.progettogestionale.web.dao.impl.UtenteDaoImpl;
 
 @EnableWebMvc
 @Configuration
-@ComponentScan(basePackages ="it.progettogestionale.web.controller" )
+@ComponentScan(basePackages = "it.progettogestionale.web.rest")
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = "it.progettogestionale.repository", entityManagerFactoryRef = "ref",transactionManagerRef = "tmf")
 public class GestionaleConfig {
