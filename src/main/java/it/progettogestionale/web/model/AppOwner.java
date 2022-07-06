@@ -3,8 +3,10 @@ package it.progettogestionale.web.model;
 import java.io.Serializable;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -35,12 +37,12 @@ public class AppOwner implements Serializable {
 	@Column(name = "dsUnit")
 	private String dsUnit;
 	
-	@OneToMany(mappedBy = "appOwner")
+	@OneToMany(mappedBy = "appOwner", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 //	@JsonManagedReference
 //	@JsonIgnore
 	private Set<Rescan> appOwners;
 	
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	@JoinTable(
 			name = "monitoraggio",
 			joinColumns = @JoinColumn(name = "fk_idAppOwner"),

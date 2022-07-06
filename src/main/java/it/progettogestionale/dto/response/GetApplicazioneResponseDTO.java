@@ -10,10 +10,7 @@ public class GetApplicazioneResponseDTO {
 
 	private List<ApplicazioneDTO> lista;
 
-	public GetApplicazioneResponseDTO() {
-		
-		
-	}
+	public GetApplicazioneResponseDTO() {}
 
 	public GetApplicazioneResponseDTO(Iterable<Applicazione> l) {
 		lista = new ArrayList<>();

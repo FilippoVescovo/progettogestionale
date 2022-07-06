@@ -1,6 +1,8 @@
 package it.progettogestionale.web.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import it.progettogestionale.dto.generic.AppOwnerDTO;
+import it.progettogestionale.dto.response.GetAppOwnerResponseDTO;
+import it.progettogestionale.dto.response.GetApplicazioneResponseDTO;
 import it.progettogestionale.repository.AppOwnerRepository;
 import it.progettogestionale.repository.ApplicazioneRepository;
 import it.progettogestionale.web.model.AppOwner;
@@ -22,13 +27,15 @@ public class AppOwnerRest {
 	private AppOwnerRepository appRe;
 	
 	@GetMapping("/getbyid/{id}")
-	public AppOwner getById(@PathVariable("id") Integer id) {
-		return appRe.findById(id).get();
+	public AppOwnerDTO getById(@PathVariable("id") Integer id) {
+		AppOwnerDTO a = new AppOwnerDTO(appRe.findById(id).get());
+		return a;
 	}
 	
 	@GetMapping("/getall")
-	public Iterable<AppOwner> getAll(){
-		return appRe.findAll();
+	public ResponseEntity<GetAppOwnerResponseDTO> getAll(){
+		Iterable<AppOwner> i = appRe.findAll();
+		return ResponseEntity.status(HttpStatus.OK).body(new GetAppOwnerResponseDTO(i));
 	}
 	
 	@PostMapping("/save")
