@@ -44,6 +44,8 @@ public class UtenteRest {
 //			}
 //		}
 //		return ResponseEntity.status(HttpStatus.OK).body(new GetUtenteResponseDTO(listaUtenti));
+//		
+//		metodo sbagliato per l'eliminazione tramite id ma che potrebbe tornare utile se si volessero eliminare più utenti insieme selezionado il parametro di riferimento
 //	}
 	
 	@PostMapping("/save") //il save aggiunge e modifica
@@ -58,6 +60,9 @@ public class UtenteRest {
 			utenteRepo.delete(u);
 		}else {
 			System.out.println("id scelto non presente nel db!");
+			/*nell'else ci andrà il reindirizzamento alla pagina dell'id 
+			non trovato. Per adesso stampiamo solo un messaggio in 
+			console.*/
 		}
 	}
 	

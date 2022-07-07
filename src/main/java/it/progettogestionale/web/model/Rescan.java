@@ -6,14 +6,13 @@ import java.sql.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "rescan")
@@ -46,13 +45,13 @@ public class Rescan implements Serializable{
 	@Column(name = "rkd")
 	private Date rkd;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "FK_idApplicazione", referencedColumnName = "idApplicazione")
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "FK_idApplicazione")
 //	@JsonBackReference
 	private Applicazione applicazione;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "FK_idAppOwner", referencedColumnName = "idAppOwner")
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "FK_idAppOwner")
 //	@JsonBackReference
 	private AppOwner appOwner;
 	

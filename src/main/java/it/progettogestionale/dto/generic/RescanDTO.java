@@ -35,8 +35,8 @@ public class RescanDTO {
 		archive = r.isArchive();
 		exist = r.isExist();
 		rkd = r.getRkd();
-		applicazione = r.getApplicazione().getIdApplicazione();
-		appOwner = r.getAppOwner().getIdAppOwner();
+		if(r.getApplicazione() != null) applicazione = r.getApplicazione().getIdApplicazione();
+		if(r.getAppOwner() != null) appOwner = r.getAppOwner().getIdAppOwner();
 	}
 	
 	
