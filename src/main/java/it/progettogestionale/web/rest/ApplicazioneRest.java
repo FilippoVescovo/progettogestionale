@@ -50,6 +50,16 @@ public class ApplicazioneRest {
         return ResponseEntity.status(HttpStatus.OK).body(ldto);
     }
 	
+	@GetMapping("/getappeliminate")
+	public ResponseEntity<List<ApplicazioneDTO>> getAppEliminate(){
+        Iterable<Applicazione> i=appRe.findAll();
+        List<ApplicazioneDTO> ldto = new ArrayList<>();
+        for(Applicazione u : i) {
+        	if(u.isExist() == false) ldto.add(new ApplicazioneDTO(u));
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(ldto);
+    }
+	
 	//se nel json gli passo una nuova app salva, se gli passo un app gia esistente salva pero devo dargli anche l'id
 	@PostMapping("/save")
 	public Applicazione save(@RequestBody Applicazione a) {
