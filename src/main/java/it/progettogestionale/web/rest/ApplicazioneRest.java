@@ -76,9 +76,7 @@ public class ApplicazioneRest {
 	@PutMapping("/logicdelete/{id}")
 	public Applicazione logicDelete(@PathVariable("id") Integer id) {
 		if(appRe.existsById(id)) {
-			Applicazione a = appRe.findById(id).get();
-			a.setExist(false);
-			return appRe.save(a);
+			appRe.logicDelete(id);
 		}
 		return null;
 	}
