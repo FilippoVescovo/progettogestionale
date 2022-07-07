@@ -13,4 +13,9 @@ public interface ApplicazioneRepository extends CrudRepository<Applicazione, Int
 	@Transactional
 	@Query("update Applicazione a set a.exist = false where a.idApplicazione = ?1")
 	public void logicDelete(int id);
+	
+	@Modifying
+	@Transactional
+	@Query("update Applicazione a set a.exist = true where a.idApplicazione = ?1")
+	public void recuperoApp(int id);
 }

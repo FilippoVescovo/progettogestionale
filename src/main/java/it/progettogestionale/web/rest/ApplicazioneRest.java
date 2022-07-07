@@ -74,20 +74,16 @@ public class ApplicazioneRest {
 	}
 	
 	@PutMapping("/logicdelete/{id}")
-	public Applicazione logicDelete(@PathVariable("id") Integer id) {
+	public void logicDelete(@PathVariable("id") Integer id) {
 		if(appRe.existsById(id)) {
 			appRe.logicDelete(id);
 		}
-		return null;
 	}
 	
 	@PutMapping("/recuperoapp/{id}")
-	public Applicazione recuperoApp(@PathVariable("id") Integer id) {
+	public void recuperoApp(@PathVariable("id") Integer id) {
 		if(appRe.existsById(id)) {
-			Applicazione a = appRe.findById(id).get();
-			a.setExist(true);
-			return appRe.save(a);
+			appRe.recuperoApp(id);
 		}
-		return null;
 	}
 }
