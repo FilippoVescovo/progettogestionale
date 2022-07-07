@@ -4,14 +4,7 @@ import java.math.BigDecimal;
 import java.sql.Date;
 import java.sql.Time;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
-
-import javax.persistence.Column;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import it.progettogestionale.web.model.AppOwner;
 import it.progettogestionale.web.model.Applicazione;
@@ -37,6 +30,7 @@ public class ApplicazioneDTO {
 	private List<Integer> idOwners;	
 	private List<Integer> idLogFileApp;
 	private List<Integer> idLogFileRescan;
+	
 	
 	public ApplicazioneDTO() {}
 
@@ -86,6 +80,7 @@ public class ApplicazioneDTO {
 			
 	}
 
+	
 	public Integer getIdApplicazione() {
 		return idApplicazione;
 	}
@@ -413,11 +408,4 @@ public class ApplicazioneDTO {
 	public void setIdLogFileRescan(List<Integer> idLogFileRescan) {
 		this.idLogFileRescan = idLogFileRescan;
 	}
-	
-	
-	
-	
-	
-	
-
 }

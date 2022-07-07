@@ -6,6 +6,7 @@ import it.progettogestionale.web.model.Rescan;
 
 public class RescanDTO {
 	
+	private Integer idRescan;
 	private Integer nRescan;
 	private Integer newOb;
 	private Integer py;
@@ -24,6 +25,7 @@ public class RescanDTO {
 	public RescanDTO() {}
 
 	public RescanDTO(Rescan r) {
+		idRescan = r.getIdRescan();
 		nRescan = r.getnRescan();
 		newOb = r.getNewOb();
 		py = r.getPy();
@@ -40,6 +42,15 @@ public class RescanDTO {
 	}
 	
 	
+	
+	public Integer getIdRescan() {
+		return idRescan;
+	}
+
+	public void setIdRescan(Integer idRescan) {
+		this.idRescan = idRescan;
+	}
+
 	public Integer getnRescan() {
 		return nRescan;
 	}

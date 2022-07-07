@@ -31,6 +31,8 @@ public class UtenteRest {
 //	public ResponseEntity<GetUtentiResponseDTO> getAllUtenti(){
 //		Iterable<Utente> i=utenteRepo.findAll();
 //		return ResponseEntity.status(HttpStatus.OK).body(new GetUtentiResponseDTO(i));
+//
+//		metodo che torna un json contenente una lista di json
 //	}
 	
 	@GetMapping("/getallutenti")

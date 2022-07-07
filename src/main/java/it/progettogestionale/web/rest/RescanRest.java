@@ -40,11 +40,11 @@ public class RescanRest {
 //		return rescanRepo.findAll();
 //	}
 	
-	@GetMapping("/getallrescan")
-	public ResponseEntity<GetRescanResponseDTO> getAllRescan(){
-		Iterable<Rescan> rescans = rescanRepo.findAll();
-		return ResponseEntity.status(HttpStatus.OK).body(new GetRescanResponseDTO(rescans));
-	}
+//	@GetMapping("/getallrescan")
+//	public ResponseEntity<GetRescanResponseDTO> getAllRescan(){
+//		Iterable<Rescan> rescans = rescanRepo.findAll();
+//		return ResponseEntity.status(HttpStatus.OK).body(new GetRescanResponseDTO(rescans));
+//	}
 	
 	@GetMapping("/getrescanbyid/{id}")
 	public RescanDTO getRescanById(@PathVariable("id") Integer id ) {
@@ -56,16 +56,16 @@ public class RescanRest {
 		return rescanRepo.save(r);
 	}
 	
-	@DeleteMapping("/delete/{id}")
-	public void delete(@PathVariable("id") Integer id) {
-		if(rescanRepo.existsById(id)) {
-			Rescan r = rescanRepo.findById(id).get();
-			rescanRepo.delete(r);
-		}else {
-			System.out.println("id scelto non presente nel db!");
-			/*nell'else ci andrà il reindirizzamento alla pagina dell'id 
-			non trovato. Per adesso stampiamo solo un messaggio in 
-			console.*/
-		}
-	}
+//	@DeleteMapping("/delete/{id}")
+//	public void delete(@PathVariable("id") Integer id) {
+//		if(rescanRepo.existsById(id)) {
+//			Rescan r = rescanRepo.findById(id).get();
+//			rescanRepo.delete(r);
+//		}else {
+//			System.out.println("id scelto non presente nel db!");
+//			/*nell'else ci andrà il reindirizzamento alla pagina dell'id 
+//			non trovato. Per adesso stampiamo solo un messaggio in 
+//			console.*/
+//		}
+//	}
 }
