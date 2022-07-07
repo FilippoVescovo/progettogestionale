@@ -1340,3 +1340,4 @@ INSERT INTO "monitoraggio" VALUES
     --------------------------------------correzioni-----------------------------------------
     alter table rescan add column exist boolean ;
     
+    
