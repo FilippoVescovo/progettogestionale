@@ -69,8 +69,8 @@ public class ApplicazioneRest {
 	@DeleteMapping("/delete/{id}")
 	public Applicazione delete(@PathVariable("id") Integer id) {
 		Applicazione a = appRe.findById(id).get();
-		 appRe.deleteById(id);
-		 return a;
+		appRe.deleteById(id);
+		return a;
 	}
 	
 	@PutMapping("/logicdelete/{id}")
@@ -78,6 +78,16 @@ public class ApplicazioneRest {
 		if(appRe.existsById(id)) {
 			Applicazione a = appRe.findById(id).get();
 			a.setExist(false);
+			return appRe.save(a);
+		}
+		return null;
+	}
+	
+	@PutMapping("/recuperoapp/{id}")
+	public Applicazione recuperoApp(@PathVariable("id") Integer id) {
+		if(appRe.existsById(id)) {
+			Applicazione a = appRe.findById(id).get();
+			a.setExist(true);
 			return appRe.save(a);
 		}
 		return null;
