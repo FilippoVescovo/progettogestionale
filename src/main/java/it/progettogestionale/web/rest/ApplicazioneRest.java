@@ -17,14 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import it.progettogestionale.dto.generic.ApplicazioneDTO;
-import it.progettogestionale.dto.response.GetApplicazioneResponseDTO;
-import it.progettogestionale.dto.response.GetLogFileAppResposeDTO;
-import it.progettogestionale.dto.response.GetUtentiResponseDTO;
 import it.progettogestionale.repository.ApplicazioneRepository;
 import it.progettogestionale.web.model.Applicazione;
-import it.progettogestionale.web.model.LogFileApp;
-import it.progettogestionale.web.model.Rescan;
-import it.progettogestionale.web.model.Utente;
 
 @RestController
 @RequestMapping("/applicazionerest")
@@ -51,7 +45,7 @@ public class ApplicazioneRest {
         Iterable<Applicazione> i=appRe.findAll();
         List<ApplicazioneDTO> ldto = new ArrayList<>();
         for(Applicazione u : i) {
-            ldto.add(new ApplicazioneDTO(u));
+        	if(u.isExist() == true) ldto.add(new ApplicazioneDTO(u));
         }
         return ResponseEntity.status(HttpStatus.OK).body(ldto);
     }
@@ -74,9 +68,8 @@ public class ApplicazioneRest {
 		if(appRe.existsById(id)) {
 			Applicazione a = appRe.findById(id).get();
 			a.setExist(false);
-			return a;
+			return appRe.save(a);
 		}
 		return null;
 	}
-	
 }
