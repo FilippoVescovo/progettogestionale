@@ -45,7 +45,7 @@ public class ApplicazioneRest {
         Iterable<Applicazione> i=appRe.findAll();
         List<ApplicazioneDTO> ldto = new ArrayList<>();
         for(Applicazione u : i) {
-        	if(u.isExist() == true) ldto.add(new ApplicazioneDTO(u));
+        	if(u.isExist() == true || u.isExist() == null) ldto.add(new ApplicazioneDTO(u));
         }
         return ResponseEntity.status(HttpStatus.OK).body(ldto);
     }
