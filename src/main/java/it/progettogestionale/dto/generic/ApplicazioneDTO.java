@@ -21,6 +21,7 @@ import it.progettogestionale.web.model.Rescan;
 
 public class ApplicazioneDTO {
 	
+	private Integer idApplicazione;
 	private Integer nodoConsole;
 	private Time launchingMeetingDataGatheringStarting;
 	private BigDecimal avgAnalysisTime;
@@ -41,6 +42,7 @@ public class ApplicazioneDTO {
 
 	public ApplicazioneDTO(Applicazione l) {
 		
+		idApplicazione = l.getIdApplicazione();
 		nodoConsole = l.getNodoConsole();
 		launchingMeetingDataGatheringStarting = l.getLaunchingMeetingDataGatheringStarting();
 		avgAnalysisTime = l.getAvgAnalysisTime();
@@ -82,6 +84,14 @@ public class ApplicazioneDTO {
 		idLogFileApp = l.getLogFiles().stream().map(LogFileApp::getIdLogApp).collect(Collectors.toList());
 		idLogFileRescan = l.getLogFile().stream().map(LogFileRescan::getIdLogRescan).collect(Collectors.toList());
 			
+	}
+
+	public Integer getIdApplicazione() {
+		return idApplicazione;
+	}
+
+	public void setIdApplicazione(Integer idApplicazione) {
+		this.idApplicazione = idApplicazione;
 	}
 
 	public Integer getNodoConsole() {

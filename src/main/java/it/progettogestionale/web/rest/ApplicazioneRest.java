@@ -1,5 +1,8 @@
 package it.progettogestionale.web.rest;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -36,18 +39,27 @@ public class ApplicazioneRest {
 		return a;
 	}
 	
-	@GetMapping("/getall")
-	public ResponseEntity<GetApplicazioneResponseDTO> getAll(){
-		Iterable<Applicazione> i= appRe.findAll();
-		return ResponseEntity.status(HttpStatus.OK).body(new GetApplicazioneResponseDTO(i));
-	}
+//	@GetMapping("/getall")
+//	public ResponseEntity<GetApplicazioneResponseDTO> getAll(){
+//		Iterable<Applicazione> i= appRe.findAll();
+//		return ResponseEntity.status(HttpStatus.OK).body(new GetApplicazioneResponseDTO(i));
+//	}
+	
+	@GetMapping("/getallapp")
+    public ResponseEntity<List<ApplicazioneDTO>> getAllApp(){
+        Iterable<Applicazione> i=appRe.findAll();
+        List<ApplicazioneDTO> ldto = new ArrayList<>();
+        for(Applicazione u : i) {
+            ldto.add(new ApplicazioneDTO(u));
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(ldto);
+    }
 	
 	//se nel json gli passo una nuova app salva, se gli passo un app gia esistente salva pero devo dargli anche l'id
 	@PostMapping("/save")
 	public Applicazione save(@RequestBody Applicazione a) {
 		return appRe.save(a);
 	}
-	
 	
 	@DeleteMapping("/delete/{id}")
 	public Applicazione delete(@PathVariable("id") Integer id) {
