@@ -53,7 +53,7 @@ public class ApplicazioneRest {
         		recuperoApp(y.getIdApplicazione());
 				ldto.add(new ApplicazioneDTO(y));
 			}
-        	ldto.stream().forEach(t -> System.out.println(t.getIdApplicazione() + " " + t.getExist()));
+//        	ldto.stream().forEach(t -> System.out.println(t.getIdApplicazione() + " " + t.getExist()));
         }
         return ResponseEntity.status(HttpStatus.OK).body(ldto);
     }
