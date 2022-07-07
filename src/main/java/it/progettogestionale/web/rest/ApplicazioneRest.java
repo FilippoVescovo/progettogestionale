@@ -45,7 +45,15 @@ public class ApplicazioneRest {
         Iterable<Applicazione> i=appRe.findAll();
         List<ApplicazioneDTO> ldto = new ArrayList<>();
         for(Applicazione u : i) {
-        	if(u.isExist() == true || u.isExist() == null) ldto.add(new ApplicazioneDTO(u));
+//        	if(u.isExist() == true) ldto.add(new ApplicazioneDTO(u));
+        	try {
+        		if(u.isExist() == true) ldto.add(new ApplicazioneDTO(u));
+        	}catch (NullPointerException e) {
+        		Applicazione y = appRe.findById(u.getIdApplicazione()).get();
+        		recuperoApp(y.getIdApplicazione());
+				ldto.add(new ApplicazioneDTO(y));
+			}
+        	ldto.stream().forEach(t -> System.out.println(t.getIdApplicazione() + " " + t.getExist()));
         }
         return ResponseEntity.status(HttpStatus.OK).body(ldto);
     }

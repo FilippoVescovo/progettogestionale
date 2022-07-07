@@ -41,7 +41,7 @@ public class Applicazione implements Serializable{
 	@Column(name = "done")
 	private Boolean done;
 	@Column(name = "exist")
-	private Boolean exist = true;
+	private Boolean exist;
 	@Column
 	private String nome_App, apmCode, insertedInCastProgram, stakeholderEngagement,
 	stakeholderBrief, onBoardingKitDelivery, primaRestitution, ownerOnboarding, ownerAFP, gdsUnit, tecnologia, serverManager,
