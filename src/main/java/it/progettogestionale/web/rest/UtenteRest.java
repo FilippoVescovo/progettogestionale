@@ -1,5 +1,7 @@
 package it.progettogestionale.web.rest;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,10 +32,15 @@ public class UtenteRest {
 //		return utenteRepo.findById(id).get();
 //	}
 	
-	@GetMapping("/getallutenti")
-	public ResponseEntity<GetUtentiResponseDTO> getAllUtenti(){
-		Iterable<Utente> i=utenteRepo.findAll();
-		return ResponseEntity.status(HttpStatus.OK).body(new GetUtentiResponseDTO(i));
+//	@GetMapping("/getallutenti")
+//	public ResponseEntity<GetUtentiResponseDTO> getAllUtenti(){
+//		Iterable<Utente> i=utenteRepo.findAll();
+//		return ResponseEntity.status(HttpStatus.OK).body(new GetUtentiResponseDTO(i));
+//	}
+	
+	@GetMapping("/getall")
+	public List<Utente> getAll(){
+		return (List<Utente>) utenteRepo.findAll();
 	}
 	
 //	@GetMapping("/utente/{id}")
