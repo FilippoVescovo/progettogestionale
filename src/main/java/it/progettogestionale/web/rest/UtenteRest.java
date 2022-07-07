@@ -1,5 +1,6 @@
 package it.progettogestionale.web.rest;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import it.progettogestionale.dto.generic.UtenteDTO;
-import it.progettogestionale.dto.response.GetUtentiResponseDTO;
 import it.progettogestionale.repository.UteneteRepository;
 import it.progettogestionale.web.model.Utente;
 
@@ -27,20 +27,20 @@ public class UtenteRest {
 	@Autowired
 	private UteneteRepository utenteRepo;
 	
-//	@GetMapping("/utente/{id}")
-//	public Utente getById(@PathVariable("id") Integer id) {
-//		return utenteRepo.findById(id).get();
-//	}
-	
 //	@GetMapping("/getallutenti")
 //	public ResponseEntity<GetUtentiResponseDTO> getAllUtenti(){
 //		Iterable<Utente> i=utenteRepo.findAll();
 //		return ResponseEntity.status(HttpStatus.OK).body(new GetUtentiResponseDTO(i));
 //	}
 	
-	@GetMapping("/getall")
-	public List<Utente> getAll(){
-		return (List<Utente>) utenteRepo.findAll();
+	@GetMapping("/getallutenti")
+	public ResponseEntity<List<UtenteDTO>> getAllUtenti(){
+		Iterable<Utente> i=utenteRepo.findAll();
+		List<UtenteDTO> ldto = new ArrayList<>();
+		for(Utente u : i) {
+			ldto.add(new UtenteDTO(u));
+		}
+		return ResponseEntity.status(HttpStatus.OK).body(ldto);
 	}
 	
 //	@GetMapping("/utente/{id}")
