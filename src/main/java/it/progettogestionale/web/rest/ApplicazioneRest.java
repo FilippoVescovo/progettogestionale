@@ -70,9 +70,9 @@ public class ApplicazioneRest {
 	}
 	
 	@PutMapping("/logicdelete/{id}")
-	public ApplicazioneDTO logicDelete(@PathVariable("id") Integer id) {
+	public Applicazione logicDelete(@PathVariable("id") Integer id) {
 		if(appRe.existsById(id)) {
-			ApplicazioneDTO a = new ApplicazioneDTO(appRe.findById(id).get());
+			Applicazione a = appRe.findById(id).get();
 			a.setExist(false);
 			return a;
 		}
