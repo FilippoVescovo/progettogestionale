@@ -1,5 +1,6 @@
 package it.progettogestionale.web.rest;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -108,7 +109,8 @@ public class ApplicazioneRest {
 	public Applicazione modificaApp(@RequestBody Applicazione a, @RequestBody Utente u) {
 		LogFileApp lfa = new LogFileApp();
 		Utente alfonso = utenteRepo.findById(u.getIdUtente()).get();
-		if(a.getIdApplicazione() != null) {
+		if(appRe.findById(a.getIdApplicazione()) != null) {
+			lfa.setData(LocalDateTime.now());
 			lfa.setUtente(alfonso);
 			lfa.setApplicazione(a);
 			logRepo.save(lfa);
