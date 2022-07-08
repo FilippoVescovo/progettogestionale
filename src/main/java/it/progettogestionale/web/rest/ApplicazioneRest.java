@@ -10,11 +10,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import it.progettogestionale.dto.generic.ApplicazioneDTO;
@@ -97,8 +99,24 @@ public class ApplicazioneRest {
 //		return appRe.save(a);
 //	}
 	
-	@PostMapping("/save") //update e insert con save
-	public Applicazione save(@RequestBody Applicazione a) {
+	@PostMapping("/save/{id}") //update e insert con save
+	public Applicazione save(@RequestBody Applicazione a, @PathVariable("id") Integer id) {
+		
+		Applicazione app = a;
+		Utente alfonso = utenteRepo.findById(id).get();
+		LogFileApp lfa = new LogFileApp();
+		
+		System.out.println(app.getIdApplicazione() + " " + app.getNome_App());
+		
+		if(app.getIdApplicazione() != null) {
+			System.out.println("Dovrei effetturare la modifica");
+			lfa.setData(LocalDateTime.now());
+			lfa.setUtente(alfonso);
+			lfa.setApplicazione(app);
+			lfa.setNome_App(app.getNome_App());
+			logRepo.save(lfa);
+		}
+		
 		if(a.isExist() == null) {
 			a.setExist(true);
 		}
@@ -108,13 +126,18 @@ public class ApplicazioneRest {
 	@PostMapping("/modificaapp")
 	public Applicazione modificaApp(@RequestBody Applicazione a, Utente u) {
 		LogFileApp lfa = new LogFileApp();
-		Utente alfonso = utenteRepo.findById(u.getIdUtente()).get();
-		if(appRe.findById(a.getIdApplicazione()) != null) {
-			lfa.setData(LocalDateTime.now());
-			lfa.setUtente(alfonso);
-			lfa.setApplicazione(a);
-			logRepo.save(lfa);
-		}
+		Utente alfonso = u;
+		
+		System.out.println(alfonso.getIdUtente());
+//		System.out.println(alfonso.getIdUtente());
+//		if(a.getIdApplicazione() != null) {
+//			lfa.setData(LocalDateTime.now());
+//			lfa.setUtente(alfonso);
+//			lfa.setApplicazione(a);
+//			logRepo.save(lfa);
+//			save(a);
+//		}
+//		return null;
 		return appRe.save(a);
 	}
 	
