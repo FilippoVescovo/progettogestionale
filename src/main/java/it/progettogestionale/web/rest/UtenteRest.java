@@ -69,7 +69,7 @@ public class UtenteRest {
 		try {
 			if(alfonso.getEmail().equals(u.getEmail())) return ResponseEntity.status(HttpStatus.IM_USED).build();
 		}catch(NullPointerException e) {
-			u.setEmail("emaildidefault@mail.it");
+			u.setEmail(u.getEmail());
 		}
 		return ResponseEntity.ok(utenteRepo.save(u));
 //		return utenteRepo.save(u);
