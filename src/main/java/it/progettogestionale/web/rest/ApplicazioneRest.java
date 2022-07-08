@@ -18,7 +18,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import it.progettogestionale.dto.generic.ApplicazioneDTO;
 import it.progettogestionale.repository.ApplicazioneRepository;
+import it.progettogestionale.repository.LogFileAppRepository;
+import it.progettogestionale.repository.UtenteRepository;
 import it.progettogestionale.web.model.Applicazione;
+import it.progettogestionale.web.model.LogFileApp;
+import it.progettogestionale.web.model.Utente;
 
 @RestController
 @RequestMapping("/applicazionerest")
@@ -31,6 +35,10 @@ public class ApplicazioneRest {
 
 	@Autowired
 	private ApplicazioneRepository appRe;
+	@Autowired
+	private LogFileAppRepository logRepo;
+	@Autowired
+	private UtenteRepository utenteRepo;
 	
 	@GetMapping("/getbyid/{id}")
 	public ApplicazioneDTO getById(@PathVariable("id") Integer id) {
@@ -88,10 +96,22 @@ public class ApplicazioneRest {
 //		return appRe.save(a);
 //	}
 	
-	@PostMapping("/save")
+	@PostMapping("/save") //update e insert con save
 	public Applicazione save(@RequestBody Applicazione a) {
 		if(a.isExist() == null) {
 			a.setExist(true);
+		}
+		return appRe.save(a);
+	}
+	
+	@PostMapping("/modificaapp")
+	public Applicazione modificaApp(@RequestBody Applicazione a, @RequestBody Utente u) {
+		LogFileApp lfa = new LogFileApp();
+		Utente alfonso = utenteRepo.findById(u.getIdUtente()).get();
+		if(a.getIdApplicazione() != null) {
+			lfa.setUtente(alfonso);
+			lfa.setApplicazione(a);
+			logRepo.save(lfa);
 		}
 		return appRe.save(a);
 	}
