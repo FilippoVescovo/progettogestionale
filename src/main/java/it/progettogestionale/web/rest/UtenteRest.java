@@ -93,4 +93,14 @@ public class UtenteRest {
 	public UtenteDTO getUtenteById(@PathVariable("id") Integer id){
 		return new UtenteDTO(utenteRepo.findById(id).get());
 	}
+	
+	@PostMapping("/login")
+	public ResponseEntity<Utente> login(@RequestBody Utente u){
+			Utente alfonso = utenteRepo.findByEmail(u.getEmail());
+			if( alfonso.getEmail().equals(u.getEmail()) && alfonso.getPassword().equals(u.getPassword()) ) {
+				alfonso.setAccesso(true);
+				return ResponseEntity.ok(alfonso);
+			}
+			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+	}
 }
