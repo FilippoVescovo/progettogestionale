@@ -40,20 +40,30 @@ public class ApplicazioneRest {
 //		return ResponseEntity.status(HttpStatus.OK).body(new GetApplicazioneResponseDTO(i));
 //	}
 	
+//	@GetMapping("/getallapp")
+//    public ResponseEntity<List<ApplicazioneDTO>> getAllApp(){
+//        Iterable<Applicazione> i=appRe.findAll();
+//        List<ApplicazioneDTO> ldto = new ArrayList<>();
+//        for(Applicazione u : i) {
+////        	if(u.isExist() == true) ldto.add(new ApplicazioneDTO(u));
+//        	try {
+//        		if(u.isExist() == true) ldto.add(new ApplicazioneDTO(u));
+//        	}catch (NullPointerException e) {
+//        		Applicazione y = appRe.findById(u.getIdApplicazione()).get();
+//        		recuperoApp(y.getIdApplicazione());
+//				ldto.add(new ApplicazioneDTO(y));
+//			}
+////        	ldto.stream().forEach(t -> System.out.println(t.getIdApplicazione() + " " + t.getExist()));
+//        }
+//        return ResponseEntity.status(HttpStatus.OK).body(ldto);
+//    }
+	
 	@GetMapping("/getallapp")
-    public ResponseEntity<List<ApplicazioneDTO>> getAllApp(){
+	public ResponseEntity<List<ApplicazioneDTO>> getAllApp(){
         Iterable<Applicazione> i=appRe.findAll();
         List<ApplicazioneDTO> ldto = new ArrayList<>();
         for(Applicazione u : i) {
-//        	if(u.isExist() == true) ldto.add(new ApplicazioneDTO(u));
-        	try {
-        		if(u.isExist() == true) ldto.add(new ApplicazioneDTO(u));
-        	}catch (NullPointerException e) {
-        		Applicazione y = appRe.findById(u.getIdApplicazione()).get();
-        		recuperoApp(y.getIdApplicazione());
-				ldto.add(new ApplicazioneDTO(y));
-			}
-//        	ldto.stream().forEach(t -> System.out.println(t.getIdApplicazione() + " " + t.getExist()));
+        	if(u.isExist() == true) ldto.add(new ApplicazioneDTO(u));
         }
         return ResponseEntity.status(HttpStatus.OK).body(ldto);
     }
@@ -69,17 +79,26 @@ public class ApplicazioneRest {
     }
 	
 	//se nel json gli passo una nuova app salva, se gli passo un app gia esistente salva pero devo dargli anche l'id
+//	@PostMapping("/save")
+//	public Applicazione save(@RequestBody Applicazione a) {
+//		return appRe.save(a);
+//	}
+	
 	@PostMapping("/save")
 	public Applicazione save(@RequestBody Applicazione a) {
+		if(a.getNome_App() == null && a.isExist() == null) {
+			a.setNome_App("Nome app di default");
+			a.setExist(true);
+		}
 		return appRe.save(a);
 	}
 	
-	@DeleteMapping("/delete/{id}")
-	public Applicazione delete(@PathVariable("id") Integer id) {
-		Applicazione a = appRe.findById(id).get();
-		appRe.deleteById(id);
-		return a;
-	}
+//	@DeleteMapping("/delete/{id}")
+//	public Applicazione delete(@PathVariable("id") Integer id) {
+//		Applicazione a = appRe.findById(id).get();
+//		appRe.deleteById(id);
+//		return a;
+//	}
 	
 	@PutMapping("/logicdelete/{id}")
 	public void logicDelete(@PathVariable("id") Integer id) {
