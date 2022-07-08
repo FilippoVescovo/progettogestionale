@@ -90,8 +90,7 @@ public class ApplicazioneRest {
 	
 	@PostMapping("/save")
 	public Applicazione save(@RequestBody Applicazione a) {
-		if(a.getNome_App() == null && a.isExist() == null) {
-			a.setNome_App("Nome app di default");
+		if(a.isExist() == null) {
 			a.setExist(true);
 		}
 		return appRe.save(a);
