@@ -96,15 +96,15 @@ public class UtenteRest {
 	
 	@PostMapping("/login")
 	public ResponseEntity<Utente> login(@RequestBody Utente u){
-			Utente alfonso = utenteRepo.findByEmail(u.getEmail());
-//			if(alfonso.getEmail() != u.getEmail() || alfonso.getPassword() != u.getPassword() || 
-//					alfonso.getEmail().equals(null) || alfonso.getPassword().equals(null)) {
-//				return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-//			}
+		Utente alfonso = utenteRepo.findByEmail(u.getEmail());
+		try {
 			if( alfonso.getEmail().equals(u.getEmail()) && alfonso.getPassword().equals(u.getPassword()) ) {
 				alfonso.setAccesso(true);
 				return ResponseEntity.ok(alfonso);
 			}
 			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+		}catch(NullPointerException e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+		}
 	}
 }
