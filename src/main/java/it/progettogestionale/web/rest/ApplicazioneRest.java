@@ -24,6 +24,10 @@ import it.progettogestionale.web.model.Applicazione;
 @RequestMapping("/applicazionerest")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ApplicazioneRest {
+	
+	/* NON CANCELLARE NESSUN SERVIZIO COMMENTATO PERCHE' SONO TUTTI FUNZIONANTI E FUNZIONALI AD ALTRE SITUAZIONI */
+	/* NON CANCELLARE NESSUN SERVIZIO COMMENTATO PERCHE' SONO TUTTI FUNZIONANTI E FUNZIONALI AD ALTRE SITUAZIONI */
+	/* NON CANCELLARE NESSUN SERVIZIO COMMENTATO PERCHE' SONO TUTTI FUNZIONANTI E FUNZIONALI AD ALTRE SITUAZIONI */
 
 	@Autowired
 	private ApplicazioneRepository appRe;
