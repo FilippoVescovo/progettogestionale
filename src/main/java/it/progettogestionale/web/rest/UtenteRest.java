@@ -99,6 +99,7 @@ public class UtenteRest {
 		Utente alfonso = utenteRepo.findByEmail(u.getEmail());
 		try {
 			if( alfonso.getEmail().equals(u.getEmail()) && alfonso.getPassword().equals(u.getPassword()) ) {
+				u = alfonso;
 				u.setAccesso(true);
 				return ResponseEntity.ok(u);
 			}
