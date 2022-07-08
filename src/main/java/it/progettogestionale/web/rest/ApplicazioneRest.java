@@ -106,7 +106,7 @@ public class ApplicazioneRest {
 	}
 	
 	@PostMapping("/modificaapp")
-	public Applicazione modificaApp(@RequestBody Applicazione a, @RequestBody Utente u) {
+	public Applicazione modificaApp(@RequestBody Applicazione a, Utente u) {
 		LogFileApp lfa = new LogFileApp();
 		Utente alfonso = utenteRepo.findById(u.getIdUtente()).get();
 		if(appRe.findById(a.getIdApplicazione()) != null) {
