@@ -1340,4 +1340,5 @@ INSERT INTO "monitoraggio" VALUES
     --------------------------------------correzioni-----------------------------------------
     alter table rescan add column exist boolean ;
     
+    ALTER TABLE utente ADD COLUMN accesso boolean DEFAULT false;
     

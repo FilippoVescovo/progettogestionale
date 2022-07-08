@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import it.progettogestionale.dto.generic.UtenteDTO;
-import it.progettogestionale.repository.UteneteRepository;
+import it.progettogestionale.repository.UtenteRepository;
 import it.progettogestionale.web.model.Utente;
 
 @RestController
@@ -29,7 +29,7 @@ public class UtenteRest {
 	/* NON CANCELLARE NESSUN SERVIZIO COMMENTATO PERCHE' SONO TUTTI FUNZIONANTI E FUNZIONALI AD ALTRE SITUAZIONI */
 	
 	@Autowired
-	private UteneteRepository utenteRepo;
+	private UtenteRepository utenteRepo;
 	
 //	@GetMapping("/getallutenti")
 //	public ResponseEntity<GetUtentiResponseDTO> getAllUtenti(){
@@ -64,8 +64,13 @@ public class UtenteRest {
 //	}
 	
 	@PostMapping("/save") //il save aggiunge e modifica
-	public Utente save(@RequestBody Utente u) {
-		return utenteRepo.save(u);
+	public ResponseEntity<Utente> save(@RequestBody Utente u) {
+		Utente alfonso = utenteRepo.findByEmail(u.getEmail());
+		if(alfonso.getEmail().equals(u.getEmail())) {
+			return ResponseEntity.status(HttpStatus.IM_USED).build();
+		}
+		return ResponseEntity.ok(utenteRepo.save(u));
+//		return utenteRepo.save(u);
 	}
 	
 	@DeleteMapping("/delete/{id}")

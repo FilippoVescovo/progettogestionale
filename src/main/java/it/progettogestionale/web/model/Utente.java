@@ -42,6 +42,8 @@ public class Utente implements Serializable{
 	private String email;
 	@Column(name = "ruolo")
 	private Boolean ruolo;
+	@Column(name = "accesso")
+	private Boolean accesso;
 		//cascade:serve modificare a cascata tutto cio che è relazionato all'entity,fetch: download dei dati eage tutti lazy quando richiamo il getter
 	@OneToMany(mappedBy = "utente",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 //	@JsonManagedReference
@@ -54,7 +56,7 @@ public class Utente implements Serializable{
 	
 	public Utente() {}
 	
-	public Utente(Integer idUtente, String nome, String cognome, String password, String email, Boolean ruolo,
+	public Utente(Integer idUtente, String nome, String cognome, String password, String email, Boolean ruolo, Boolean accesso,
 			Set<LogFileApp> logfiles, Set<LogFileRescan> logFile) {
 		this.idUtente = idUtente;
 		this.nome = nome;
@@ -62,6 +64,7 @@ public class Utente implements Serializable{
 		this.password = password;
 		this.email = email;
 		this.ruolo = ruolo;
+		this.accesso = accesso;
 		this.logfiles = logfiles;
 		this.logFile = logFile;
 	}
@@ -103,6 +106,15 @@ public class Utente implements Serializable{
 	public void setRuolo(Boolean ruolo) {
 		this.ruolo = ruolo;
 	}
+	public Boolean isAccesso() {
+		return accesso;
+	}
+	public void setAccesso(Boolean accesso) {
+		this.accesso = accesso;
+	}
+	public Boolean getRuolo() {
+		return ruolo;
+	}
 	public Set<LogFileApp> getLogfiles() {
 		return logfiles;
 	}
@@ -120,7 +132,8 @@ public class Utente implements Serializable{
 	@Override
 	public String toString() {
 		return "Utente [getIdUtente()= " + getIdUtente() + ", getNome()= " + getNome() + ", getCognome()= " + getCognome()
-				+ ", getEmail()= " + getEmail() + ", isRuolo()= " + isRuolo() + ", getLogfiles()= " + getLogfiles()
+				+ ", getPassword()= " + getPassword() + ", getEmail()= " + getEmail() + ", isRuolo()= " + isRuolo()
+				+ ", getAccesso()= " + isAccesso() + ", getRuolo()= " + getRuolo() + ", getLogfiles()= " + getLogfiles()
 				+ ", getLogFile()= " + getLogFile() + "]";
 	}
 }

@@ -14,6 +14,7 @@ public class UtenteDTO {
 	private String cognome;
 	private String email;
 	private Boolean ruolo;
+	private Boolean accesso;
 	private List<Integer> idLogFileApp;
 	private List<Integer> idLogFileRescan;
 	
@@ -25,6 +26,7 @@ public class UtenteDTO {
 		cognome=u.getCognome();
 		email=u.getEmail();
 		ruolo=u.isRuolo();
+		accesso = u.isAccesso();
 		idLogFileApp=u.getLogfiles().stream().map(LogFileApp::getIdLogApp).collect(Collectors.toList());
 		idLogFileRescan=u.getLogFile().stream().map(LogFileRescan::getIdLogRescan).collect(Collectors.toList());
 	}
@@ -69,6 +71,14 @@ public class UtenteDTO {
 
 	public void setRuolo(Boolean ruolo) {
 		this.ruolo = ruolo;
+	}
+
+	public Boolean getAccesso() {
+		return accesso;
+	}
+
+	public void setAccesso(Boolean accesso) {
+		this.accesso = accesso;
 	}
 
 	public List<Integer> getIdLogFileApp() {
