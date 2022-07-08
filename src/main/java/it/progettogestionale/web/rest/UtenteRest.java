@@ -66,8 +66,10 @@ public class UtenteRest {
 	@PostMapping("/save") //il save aggiunge e modifica
 	public ResponseEntity<Utente> save(@RequestBody Utente u) {
 		Utente alfonso = utenteRepo.findByEmail(u.getEmail());
-		if(alfonso.getEmail().equals(u.getEmail())) {
-			return ResponseEntity.status(HttpStatus.IM_USED).build();
+		try {
+			if(alfonso.getEmail().equals(u.getEmail())) return ResponseEntity.status(HttpStatus.IM_USED).build();
+		}catch(NullPointerException e) {
+			u.setEmail("emaildidefault@mail.it");
 		}
 		return ResponseEntity.ok(utenteRepo.save(u));
 //		return utenteRepo.save(u);
