@@ -1,5 +1,6 @@
 package it.progettogestionale.web.rest;
 
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -116,23 +117,6 @@ public class ApplicazioneRest {
 		return appRe.save(a);
 	}
 	
-//	@PostMapping("/modificaapp")
-//	public ResponseEntity<LogFileAppDTO> modificaApp (@RequestBody ModificaAppDTO modifica){
-//		Utente u = utenteRepo.findById(modifica.getIdUtente()).get();
-//		Applicazione a = appRe.findById(modifica.getIdApplicazione()).get();
-//		LogFileAppDTO lfaDTO = new LogFileAppDTO();
-//		if(a.getIdApplicazione() != null) {
-//			lfaDTO.setData(LocalDateTime.now());
-//			lfaDTO.setIdUtente(u.getIdUtente());
-//			lfaDTO.setIdApplicazione(a.getIdApplicazione());
-//			lfaDTO.setNome_App(a.getNome_App());
-//			appRe.save(a);
-//			logRepo.save(lfaDTO);
-//			return ResponseEntity.ok(lfaDTO);
-//		}
-//		return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-//	}
-	
 	@PostMapping("/modificaapp")
 	public ResponseEntity<LogFileAppDTO> modificaApp (@RequestBody LogFileAppDTO modifica){
 		
@@ -145,7 +129,7 @@ public class ApplicazioneRest {
 		LogFileApp lfa = new LogFileApp();
 		
 		if(a.getIdApplicazione() != null) {
-//			lfa.setData(LocalDate);
+			lfa.setData(LocalDateTime.now());
 			lfa.setUtente(u);
 			lfa.setApplicazione(a);
 			lfa.setNome_App(a.getNome_App());	
@@ -154,42 +138,11 @@ public class ApplicazioneRest {
 		appRe.save(a);
 		LogFileAppDTO pluto = new LogFileAppDTO(lfa);
 		System.out.println(pluto.toString());
-//		pluto = modelMapper.map(lfa, LogFileAppDTO.class);
 		logRepo.save(lfa);
 		
-		
-		
 		return new ResponseEntity<LogFileAppDTO>(pluto, HttpStatus.CREATED);
-	
-//		if(a.getIdApplicazione() != null) {
-//			lfa.setData(LocalDateTime.now());
-//			lfa.setUtente(u);
-//			lfa.setApplicazione(a);
-//			lfa.setNome_App(a.getNome_App());
-//			LogFileAppDTO lfaDTO = modelMapper.map(lfa, LogFileAppDTO.class);
-//			appRe.save(a);
-//			return ResponseEntity.ok(logRepo.save(lfaDTO));
-//		}
 		
 	}
-	
-//	@PostMapping("/modificaapp")
-//	public Applicazione modificaApp(@RequestBody Applicazione a, Utente u) {
-//		LogFileApp lfa = new LogFileApp();
-//		Utente alfonso = u;
-//		
-//		System.out.println(alfonso.getIdUtente());
-////		System.out.println(alfonso.getIdUtente());
-////		if(a.getIdApplicazione() != null) {
-////			lfa.setData(LocalDateTime.now());
-////			lfa.setUtente(alfonso);
-////			lfa.setApplicazione(a);
-////			logRepo.save(lfa);
-////			save(a);
-////		}
-////		return null;
-//		return appRe.save(a);
-//	}
 	
 //	@DeleteMapping("/delete/{id}")
 //	public Applicazione delete(@PathVariable("id") Integer id) {

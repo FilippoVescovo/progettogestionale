@@ -52,10 +52,5 @@ public class LogFileAppRest {
 		 appRe.deleteById(id);
 		 return a;
 	}
-	
-	@PostMapping("/salvataggio")
-    public LogFileAppDTO salvataggio(@RequestBody LogFileAppDTO lfadto) {
-        return appRe.save(lfadto);
-    }
 
 }

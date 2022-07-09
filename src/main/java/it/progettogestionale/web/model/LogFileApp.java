@@ -118,8 +118,6 @@ public class LogFileApp implements Serializable{
 		this.utente = utente;
 		this.applicazione = applicazione;
 	}
-
-	
 	
 	public Integer getIdLogApp() {
 		return idLogApp;
