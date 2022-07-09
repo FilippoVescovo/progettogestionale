@@ -13,13 +13,13 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-
 import it.progettogestionale.web.model.Applicazione;
 import it.progettogestionale.web.model.LogFileApp;
 import it.progettogestionale.web.model.Utente;
 
 public class LogFileAppDTO {
 
+	private Integer idLogApp;
 	private LocalDateTime data;
 	private Integer nodoConsole;
 	private Time launchingMeetingDataGatheringStarting;
@@ -27,18 +27,21 @@ public class LogFileAppDTO {
 	private Date automationEnablingDate;
 	private Boolean done;
 	private Integer idPreUpdate;
-	private String nome_App, apmCode, insertedInCastProgram, stakeholderEngagement,
-	stakeholderBrief, onBoardingKitDelivery, primaRestitution, ownerOnboarding, ownerAFP, gdsUnit, tecnologia, serverManager,
-	soloCMS, macchina, noteOnboarding, fase, afpStatus, pubblicatoDashboard, noteAppOwner,  jiraautomationActivation,
-	repoAvailability, automationStatus, automationNotes, greenItIndex, onboardingKitClosing, sourceCodeFinalDelivery,
-	linkConfluence, businessCriticality, devMethodology, provider;	
+	private String nome_App, apmCode, insertedInCastProgram, stakeholderEngagement, stakeholderBrief,
+			onBoardingKitDelivery, primaRestitution, ownerOnboarding, ownerAFP, gdsUnit, tecnologia, serverManager,
+			soloCMS, macchina, noteOnboarding, fase, afpStatus, pubblicatoDashboard, noteAppOwner,
+			jiraautomationActivation, repoAvailability, automationStatus, automationNotes, greenItIndex,
+			onboardingKitClosing, sourceCodeFinalDelivery, linkConfluence, businessCriticality, devMethodology,
+			provider;
 	private Integer idUtente;
 	private Integer idApplicazione;
-	
-	public LogFileAppDTO() {}
+
+	public LogFileAppDTO() {
+	}
 
 	public LogFileAppDTO(LogFileApp l) {
 		super();
+		idLogApp = l.getIdLogApp();
 		data = l.getData();
 		nodoConsole = l.getNodoConsole();
 		launchingMeetingDataGatheringStarting = l.getLaunchingMeetingDataGatheringStarting();
@@ -52,7 +55,7 @@ public class LogFileAppDTO {
 		stakeholderEngagement = l.getStakeholderEngagement();
 		stakeholderBrief = l.getStakeholderBrief();
 		onBoardingKitDelivery = l.getOnBoardingKitDelivery();
-		primaRestitution =l.getPrimaRestitution();
+		primaRestitution = l.getPrimaRestitution();
 		ownerOnboarding = l.getOwnerOnboarding();
 		ownerAFP = l.getOwnerAFP();
 		gdsUnit = l.getGdsUnit();
@@ -78,6 +81,14 @@ public class LogFileAppDTO {
 		provider = l.getProvider();
 		idUtente = l.getUtente().getIdUtente();
 		idApplicazione = l.getApplicazione().getIdApplicazione();
+	}
+
+	public Integer getIdLogApp() {
+		return idLogApp;
+	}
+
+	public void setIdLogApp(Integer idLogApp) {
+		this.idLogApp = idLogApp;
 	}
 
 	public LocalDateTime getData() {
@@ -391,10 +402,33 @@ public class LogFileAppDTO {
 	public void setIdApplicazione(Integer idApplicazione) {
 		this.idApplicazione = idApplicazione;
 	}
+
+	@Override
+	public String toString() {
+		return "LogFileAppDTO [getIdLogApp()=" + getIdLogApp() + ", getData()=" + getData() + ", getNodoConsole()="
+				+ getNodoConsole() + ", getLaunchingMeetingDataGatheringStarting()="
+				+ getLaunchingMeetingDataGatheringStarting() + ", getAvgAnalysisTime()=" + getAvgAnalysisTime()
+				+ ", getAutomationEnablingDate()=" + getAutomationEnablingDate() + ", getDone()=" + getDone()
+				+ ", getIdPreUpdate()=" + getIdPreUpdate() + ", getNome_App()=" + getNome_App() + ", getApmCode()="
+				+ getApmCode() + ", getInsertedInCastProgram()=" + getInsertedInCastProgram()
+				+ ", getStakeholderEngagement()=" + getStakeholderEngagement() + ", getStakeholderBrief()="
+				+ getStakeholderBrief() + ", getOnBoardingKitDelivery()=" + getOnBoardingKitDelivery()
+				+ ", getPrimaRestitution()=" + getPrimaRestitution() + ", getOwnerOnboarding()=" + getOwnerOnboarding()
+				+ ", getOwnerAFP()=" + getOwnerAFP() + ", getGdsUnit()=" + getGdsUnit() + ", getTecnologia()="
+				+ getTecnologia() + ", getServerManager()=" + getServerManager() + ", getSoloCMS()=" + getSoloCMS()
+				+ ", getMacchina()=" + getMacchina() + ", getNoteOnboarding()=" + getNoteOnboarding() + ", getFase()="
+				+ getFase() + ", getAfpStatus()=" + getAfpStatus() + ", getPubblicatoDashboard()="
+				+ getPubblicatoDashboard() + ", getNoteAppOwner()=" + getNoteAppOwner()
+				+ ", getJiraautomationActivation()=" + getJiraautomationActivation() + ", getRepoAvailability()="
+				+ getRepoAvailability() + ", getAutomationStatus()=" + getAutomationStatus() + ", getAutomationNotes()="
+				+ getAutomationNotes() + ", getGreenItIndex()=" + getGreenItIndex() + ", getOnboardingKitClosing()="
+				+ getOnboardingKitClosing() + ", getSourceCodeFinalDelivery()=" + getSourceCodeFinalDelivery()
+				+ ", getLinkConfluence()=" + getLinkConfluence() + ", getBusinessCriticality()="
+				+ getBusinessCriticality() + ", getDevMethodology()=" + getDevMethodology() + ", getProvider()="
+				+ getProvider() + ", getIdUtente()=" + getIdUtente() + ", getIdApplicazione()=" + getIdApplicazione()
+				+ "]";
+	}
 	
 	
-	
-	
-	
-	
+
 }
