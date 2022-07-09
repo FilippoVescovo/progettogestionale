@@ -26,7 +26,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import it.progettogestionale.dto.generic.ApplicazioneDTO;
 import it.progettogestionale.dto.generic.LogFileAppDTO;
-import it.progettogestionale.dto.generic.ModificaAppDTO;
 import it.progettogestionale.repository.ApplicazioneRepository;
 import it.progettogestionale.repository.LogFileAppRepository;
 import it.progettogestionale.repository.UtenteRepository;
