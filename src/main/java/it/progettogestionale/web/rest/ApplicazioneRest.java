@@ -135,6 +135,7 @@ public class ApplicazioneRest {
 	
 	@PostMapping("/modificaapp")
 	public ResponseEntity<LogFileAppDTO> modificaApp (@RequestBody LogFileAppDTO modifica){
+		
 		Applicazione a = appRe.findById(modifica.getIdApplicazione()).get();
 		System.out.println(a.getNome_App());
 		
@@ -149,11 +150,15 @@ public class ApplicazioneRest {
 			lfa.setApplicazione(a);
 			lfa.setNome_App(a.getNome_App());	
 		}
+		
 		appRe.save(a);
 		LogFileAppDTO pluto = new LogFileAppDTO(lfa);
 		System.out.println(pluto.toString());
 //		pluto = modelMapper.map(lfa, LogFileAppDTO.class);
-		logRepo.save(pluto);
+		logRepo.save(lfa);
+		
+		
+		
 		return new ResponseEntity<LogFileAppDTO>(pluto, HttpStatus.CREATED);
 	
 //		if(a.getIdApplicazione() != null) {

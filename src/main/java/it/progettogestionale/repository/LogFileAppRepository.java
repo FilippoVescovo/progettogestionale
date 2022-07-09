@@ -7,6 +7,5 @@ import it.progettogestionale.web.model.LogFileApp;
 
 public interface LogFileAppRepository extends CrudRepository<LogFileApp, Integer> {
 
-	public LogFileAppDTO save(LogFileAppDTO lfaDTO);
 
 }

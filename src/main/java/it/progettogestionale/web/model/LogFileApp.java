@@ -46,13 +46,12 @@ public class LogFileApp implements Serializable{
 	repoAvailability, automationStatus, automationNotes, greenItIndex, onboardingKitClosing, sourceCodeFinalDelivery,
 	linkConfluence, businessCriticality, devMethodology, provider;
 	
-	@ManyToOne(cascade = CascadeType.ALL , fetch = FetchType.LAZY)
+	@ManyToOne(cascade = CascadeType.MERGE , fetch = FetchType.LAZY)
 	@JoinColumn(name = "FK_idUtente")
 //	@JsonBackReference
-	
 	private Utente utente;
 	
-	@ManyToOne(cascade = CascadeType.ALL , fetch = FetchType.LAZY)
+	@ManyToOne(cascade = CascadeType.MERGE , fetch = FetchType.LAZY)
 	@JoinColumn(name = "FK_idApp")
 //	@JsonBackReference
 	private Applicazione applicazione;
