@@ -103,7 +103,7 @@ public class UtenteRest {
 			if( alfonso.getEmail().equals(u.getEmail()) && alfonso.getPassword().equals(u.getPassword()) ) {
 				alfonso.setAccesso(true);
 				utenteRepo.save(alfonso);
-				return new ResponseEntity<UtenteDTO>(utente, HttpStatus.CREATED);
+				return new ResponseEntity<UtenteDTO>(utente, HttpStatus.OK);
 			}
 			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
 		}catch(NullPointerException e) {
