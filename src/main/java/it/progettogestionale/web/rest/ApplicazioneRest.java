@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import it.progettogestionale.dto.generic.ApplicazioneDTO;
+import it.progettogestionale.dto.generic.LogFileAppDTO;
+import it.progettogestionale.dto.generic.ModificaAppDTO;
 import it.progettogestionale.repository.ApplicazioneRepository;
 import it.progettogestionale.repository.LogFileAppRepository;
 import it.progettogestionale.repository.UtenteRepository;
@@ -99,24 +101,8 @@ public class ApplicazioneRest {
 //		return appRe.save(a);
 //	}
 	
-	@PostMapping("/save/{id}") //update e insert con save
-	public Applicazione save(@RequestBody Applicazione a, @PathVariable("id") Integer id) {
-		
-		Applicazione app = a;
-		Utente alfonso = utenteRepo.findById(id).get();
-		LogFileApp lfa = new LogFileApp();
-		
-		System.out.println(app.getIdApplicazione() + " " + app.getNome_App());
-		
-		if(app.getIdApplicazione() != null) {
-			System.out.println("Dovrei effetturare la modifica");
-			lfa.setData(LocalDateTime.now());
-			lfa.setUtente(alfonso);
-			lfa.setApplicazione(app);
-			lfa.setNome_App(app.getNome_App());
-			logRepo.save(lfa);
-		}
-		
+	@PostMapping("/save") //update e insert con save
+	public Applicazione save(@RequestBody Applicazione a) {
 		if(a.isExist() == null) {
 			a.setExist(true);
 		}
@@ -124,22 +110,37 @@ public class ApplicazioneRest {
 	}
 	
 	@PostMapping("/modificaapp")
-	public Applicazione modificaApp(@RequestBody Applicazione a, Utente u) {
+	public ResponseEntity<LogFileApp> modificaApp (@RequestBody ModificaAppDTO modifica){
+		Utente u = utenteRepo.findById(modifica.getIdUtente()).get();
+		Applicazione a = appRe.findById(modifica.getIdApplicazione()).get();
 		LogFileApp lfa = new LogFileApp();
-		Utente alfonso = u;
-		
-		System.out.println(alfonso.getIdUtente());
-//		System.out.println(alfonso.getIdUtente());
-//		if(a.getIdApplicazione() != null) {
-//			lfa.setData(LocalDateTime.now());
-//			lfa.setUtente(alfonso);
-//			lfa.setApplicazione(a);
-//			logRepo.save(lfa);
-//			save(a);
-//		}
-//		return null;
-		return appRe.save(a);
+		if(a.getIdApplicazione() != null) {
+			lfa.setData(LocalDateTime.now());
+			lfa.setUtente(u);
+			lfa.setApplicazione(a);
+			lfa.setNome_App(a.getNome_App());
+			return ResponseEntity.ok(logRepo.save(lfa));
+		}
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 	}
+	
+//	@PostMapping("/modificaapp")
+//	public Applicazione modificaApp(@RequestBody Applicazione a, Utente u) {
+//		LogFileApp lfa = new LogFileApp();
+//		Utente alfonso = u;
+//		
+//		System.out.println(alfonso.getIdUtente());
+////		System.out.println(alfonso.getIdUtente());
+////		if(a.getIdApplicazione() != null) {
+////			lfa.setData(LocalDateTime.now());
+////			lfa.setUtente(alfonso);
+////			lfa.setApplicazione(a);
+////			logRepo.save(lfa);
+////			save(a);
+////		}
+////		return null;
+//		return appRe.save(a);
+//	}
 	
 //	@DeleteMapping("/delete/{id}")
 //	public Applicazione delete(@PathVariable("id") Integer id) {
