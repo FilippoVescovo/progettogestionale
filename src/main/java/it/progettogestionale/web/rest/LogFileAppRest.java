@@ -1,5 +1,8 @@
 package it.progettogestionale.web.rest;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,6 +29,10 @@ import it.progettogestionale.web.model.Utente;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class LogFileAppRest {
 	
+	/* NON CANCELLARE NESSUN SERVIZIO COMMENTATO PERCHE' SONO TUTTI FUNZIONANTI E FUNZIONALI AD ALTRE SITUAZIONI */
+	/* NON CANCELLARE NESSUN SERVIZIO COMMENTATO PERCHE' SONO TUTTI FUNZIONANTI E FUNZIONALI AD ALTRE SITUAZIONI */
+	/* NON CANCELLARE NESSUN SERVIZIO COMMENTATO PERCHE' SONO TUTTI FUNZIONANTI E FUNZIONALI AD ALTRE SITUAZIONI */
+	
 	@Autowired
 	private LogFileAppRepository appRe;
 	
@@ -35,10 +42,20 @@ public class LogFileAppRest {
 		return l ;
 	}
 	
-	@GetMapping("/getall")
-	public ResponseEntity<GetLogFileAppResposeDTO> getAll(){
-		Iterable<LogFileApp> i= appRe.findAll();
-		return ResponseEntity.status(HttpStatus.OK).body(new GetLogFileAppResposeDTO(i));
+//	@GetMapping("/getall")
+//	public ResponseEntity<GetLogFileAppResposeDTO> getAll(){
+//		Iterable<LogFileApp> i= appRe.findAll();
+//		return ResponseEntity.status(HttpStatus.OK).body(new GetLogFileAppResposeDTO(i));
+//	}
+	
+	@GetMapping("/getalllog")
+	public ResponseEntity<List<LogFileAppDTO>> getAllLog(){
+		Iterable<LogFileApp> logs = appRe.findAll();
+		List<LogFileAppDTO> lfaDTO = new ArrayList<>();
+		for(LogFileApp l : logs) {
+			lfaDTO.add(new LogFileAppDTO(l));
+		}
+		return ResponseEntity.status(HttpStatus.OK).body(lfaDTO);
 	}
 	
 	@PostMapping("/save")
