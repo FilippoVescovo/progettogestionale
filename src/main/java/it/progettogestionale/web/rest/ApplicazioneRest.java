@@ -114,9 +114,8 @@ public class ApplicazioneRest {
 		Applicazione a = appRe.findById(modifica.getIdApplicazione()).get();
 		Utente u = utenteRepo.findById(modifica.getIdUtente()).get();
 		LogFileApp lfa = new LogFileApp();
-		LocalDateTime ldt = LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS);
 		if(a.getIdApplicazione() != null) {
-			lfa.setData(ldt);
+			lfa.setData(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
 			lfa.setUtente(u);
 			lfa.setApplicazione(a);
 			lfa.setNome_App(a.getNome_App());	
