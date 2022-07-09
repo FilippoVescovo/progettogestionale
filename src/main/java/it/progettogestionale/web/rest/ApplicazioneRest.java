@@ -1,6 +1,9 @@
 package it.progettogestionale.web.rest;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -111,8 +114,9 @@ public class ApplicazioneRest {
 		Applicazione a = appRe.findById(modifica.getIdApplicazione()).get();
 		Utente u = utenteRepo.findById(modifica.getIdUtente()).get();
 		LogFileApp lfa = new LogFileApp();
+		LocalDateTime ldt = LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS);
 		if(a.getIdApplicazione() != null) {
-			lfa.setData(LocalDateTime.now());
+			lfa.setData(ldt);
 			lfa.setUtente(u);
 			lfa.setApplicazione(a);
 			lfa.setNome_App(a.getNome_App());	
