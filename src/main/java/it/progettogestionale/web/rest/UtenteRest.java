@@ -96,12 +96,14 @@ public class UtenteRest {
 	}
 	
 	@PostMapping("/login")
-	public ResponseEntity<Utente> login(@RequestBody Utente u){
+	public ResponseEntity<UtenteDTO> login(@RequestBody Utente u){
 		Utente alfonso = utenteRepo.findByEmail(u.getEmail());
+		UtenteDTO utente = new UtenteDTO(alfonso);
 		try {
 			if( alfonso.getEmail().equals(u.getEmail()) && alfonso.getPassword().equals(u.getPassword()) ) {
 				alfonso.setAccesso(true);
-				return ResponseEntity.ok(utenteRepo.save(alfonso));
+				utenteRepo.save(alfonso);
+				return new ResponseEntity<UtenteDTO>(utente, HttpStatus.CREATED);
 			}
 			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
 		}catch(NullPointerException e) {
