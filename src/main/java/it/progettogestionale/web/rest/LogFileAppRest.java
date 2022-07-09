@@ -17,12 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import it.progettogestionale.dto.generic.LogFileAppDTO;
 import it.progettogestionale.dto.response.GetLogFileAppResposeDTO;
-import it.progettogestionale.dto.response.GetUtentiResponseDTO;
-import it.progettogestionale.repository.AppOwnerRepository;
 import it.progettogestionale.repository.LogFileAppRepository;
-import it.progettogestionale.web.model.AppOwner;
 import it.progettogestionale.web.model.LogFileApp;
-import it.progettogestionale.web.model.Utente;
 
 @RestController
 @RequestMapping("/logfileapprest")
