@@ -111,52 +111,11 @@ public class ApplicazioneRest {
 	}
 	
 	//metodo di modifica esatto
-//	@PostMapping("/modificaapp")
-//	public ResponseEntity<LogFileAppDTO> modificaApp (@RequestBody LogFileAppDTO modifica){
-//		Applicazione a = appRe.findById(modifica.getIdApplicazione()).get();
-//		Utente u = utenteRepo.findById(modifica.getIdUtente()).get();
-//		LogFileApp lfa = new LogFileApp();
-//		if(a.getIdApplicazione() != null) {
-//			lfa.setData(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
-//			lfa.setUtente(u);
-//			lfa.setApplicazione(a);
-//			lfa.setNome_App(a.getNome_App());
-//		}
-//		appRe.save(a);
-//		LogFileAppDTO pluto = new LogFileAppDTO(lfa);
-//		logRepo.save(lfa);
-//		return new ResponseEntity<LogFileAppDTO>(pluto, HttpStatus.CREATED);
-//	}
-	
 	@PostMapping("/modificaapp")
 	public ResponseEntity<LogFileAppDTO> modificaApp (@RequestBody LogFileAppDTO modifica){
 		Applicazione a = appRe.findById(modifica.getIdApplicazione()).get();
 		Utente u = utenteRepo.findById(modifica.getIdUtente()).get();
 		LogFileApp lfa = new LogFileApp();
-		
-		
-		List elementi = new ArrayList();
-		List elements = new ArrayList();
-		for(Field field : a.getClass().getDeclaredFields()) {
-			elementi.add(field);
-		}
-		for(Field field : LogFileAppDTO.class.getDeclaredFields()) {
-			elements.add(field);
-		}
-		
-		List elementiCambiati = new ArrayList();
-		
-		for(int i = 0; i < elementi.size(); i++) {
-			if(!(elementi.get(i).equals(elements.get(i)))) {
-				elementiCambiati.add(elements.get(i));
-			}
-		}
-		
-		for(Object element : elementiCambiati) {
-			System.out.println("questi sono i campi cambiati");
-			System.out.println(element);
-		}
-		
 		if(a.getIdApplicazione() != null) {
 			lfa.setData(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
 			lfa.setUtente(u);
