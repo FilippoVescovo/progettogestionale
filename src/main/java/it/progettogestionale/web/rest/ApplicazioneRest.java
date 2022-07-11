@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import it.progettogestionale.dto.generic.ApplicazioneDTO;
@@ -131,6 +132,15 @@ public class ApplicazioneRest {
 		logRepo.save(lfa);
 		return new ResponseEntity<LogFileAppDTO>(pluto, HttpStatus.CREATED);
 	}
+	
+	
+//	@GetMapping("/prova")
+//	public Integer prova() {
+//		
+//		List<Integer> l = appRe.lastDate(1);
+//		
+//		return l.get(0);
+//	}
 	
 //	@DeleteMapping("/delete/{id}")
 //	public Applicazione delete(@PathVariable("id") Integer id) {
