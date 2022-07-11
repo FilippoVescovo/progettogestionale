@@ -1,12 +1,8 @@
 package it.progettogestionale.web.rest;
 
-import java.lang.reflect.Field;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,12 +15,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import it.progettogestionale.dto.generic.ApplicazioneDTO;
 import it.progettogestionale.dto.generic.LogFileAppDTO;
-import it.progettogestionale.dto.response.GetApplicazioneResponseDTO;
 import it.progettogestionale.repository.ApplicazioneRepository;
 import it.progettogestionale.repository.LogFileAppRepository;
 import it.progettogestionale.repository.UtenteRepository;
@@ -140,10 +134,13 @@ public class ApplicazioneRest {
 			lfa.setGdsUnit(a.getGdsUnit());
 			lfa.setTecnologia(a.getTecnologia());
 			lfa.setServerManager(a.getServerManager());
-			//
 			lfa.setSoloCMS(a.getSoloCMS());
 			lfa.setMacchina(a.getMacchina());
 			lfa.setNoteOnboarding(a.getNoteOnboarding());
+			//
+			lfa.setFase(a.getFase());
+			lfa.setAfpStatus(a.getAfpStatus());
+			lfa.setPubblicatoDashboard(a.getPubblicatoDashboard());
 			//
 			if(lfa.getIdPreUpdate() != null) {
 				lfa.setIdPreUpdate(lista.get(0));
