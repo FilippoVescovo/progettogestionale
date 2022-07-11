@@ -121,6 +121,11 @@ public class ApplicazioneRest {
 		List<Integer> lista = appRe.lastDate(a.getIdApplicazione());
 		if(a.getIdApplicazione() != null) {
 			lfa.setData(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
+			lfa.setNodoConsole(a.getNodoConsole());
+			lfa.setLaunchingMeetingDataGatheringStarting(a.getLaunchingMeetingDataGatheringStarting());
+			lfa.setAvgAnalysisTime(a.getAvgAnalysisTime());
+			lfa.setAutomationEnablingDate(a.getAutomationEnablingDate());
+			lfa.setDone(a.isDone());
 			lfa.setUtente(u);
 			lfa.setApplicazione(a);
 			lfa.setNome_App(a.getNome_App());
