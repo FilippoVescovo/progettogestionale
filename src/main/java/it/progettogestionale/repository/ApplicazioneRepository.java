@@ -22,6 +22,6 @@ public interface ApplicazioneRepository extends CrudRepository<Applicazione, Int
 	@Query("update Applicazione a set a.exist = true where a.idApplicazione = ?1")
 	public void recuperoApp(int id);
 	
-	@Query(value = "SELECT l FROM LogFileApp l WHERE l.fk_idapp = ?1 ORDER BY data DESC LIMIT 1", nativeQuery = true)
+	@Query("SELECT l FROM LogFileApp l WHERE l.fk_idapp = ?1 ORDER BY data DESC LIMIT 1")
 	public LogFileApp lastDate(int id);
 }
