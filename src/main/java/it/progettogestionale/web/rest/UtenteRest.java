@@ -117,4 +117,18 @@ public class UtenteRest {
 		alfonso.setAccesso(false);
 		utenteRepo.save(alfonso);
 	}
+	
+	@PutMapping("/rendimodificatore")
+	public void rendiModificatore(@RequestBody Utente u) {
+		Utente alfonso = utenteRepo.findById(u.getIdUtente()).get();
+		alfonso.setRuolo(true);
+		utenteRepo.save(alfonso);
+	}
+	
+	@PutMapping("/rendivisualizzatore")
+	public void rendiVisualizzatore(@RequestBody Utente u) {
+		Utente alfonso = utenteRepo.findById(u.getIdUtente()).get();
+		alfonso.setRuolo(false);
+		utenteRepo.save(alfonso);
+	}
 }
