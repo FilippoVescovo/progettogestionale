@@ -126,6 +126,8 @@ public class ApplicazioneRest {
 			lfa.setAvgAnalysisTime(a.getAvgAnalysisTime());
 			lfa.setAutomationEnablingDate(a.getAutomationEnablingDate());
 			lfa.setDone(a.isDone());
+			lfa.setOwnerOnboarding(a.getOwnerOnboarding());
+			lfa.setOwnerAFP(a.getOwnerAFP());
 			lfa.setUtente(u);
 			lfa.setApplicazione(a);
 			lfa.setNome_App(a.getNome_App());
