@@ -1,11 +1,14 @@
 package it.progettogestionale.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.transaction.annotation.Transactional;
 
 import it.progettogestionale.web.model.Applicazione;
+import it.progettogestionale.web.model.LogFileApp;
 
 public interface ApplicazioneRepository extends CrudRepository<Applicazione, Integer> {
 	
@@ -18,4 +21,9 @@ public interface ApplicazioneRepository extends CrudRepository<Applicazione, Int
 	@Transactional
 	@Query("update Applicazione a set a.exist = true where a.idApplicazione = ?1")
 	public void recuperoApp(int id);
+	
+	@Modifying
+	@Transactional
+	@Query("select * from LogFileApp l where l.fk_idapp = ?1 order by data desc limit 1")
+	public List<LogFileApp> lastDate(int id);
 }
