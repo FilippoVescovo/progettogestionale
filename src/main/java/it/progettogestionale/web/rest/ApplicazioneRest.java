@@ -137,10 +137,13 @@ public class ApplicazioneRest {
 			lfa.setStakeholderBrief(a.getStakeholderBrief());
 			lfa.setOnBoardingKitDelivery(a.getOnBoardingKitDelivery());
 			lfa.setPrimaRestitution(a.getPrimaRestitution());
-			//
 			lfa.setGdsUnit(a.getGdsUnit());
 			lfa.setTecnologia(a.getTecnologia());
 			lfa.setServerManager(a.getServerManager());
+			//
+			lfa.setSoloCMS(a.getSoloCMS());
+			lfa.setMacchina(a.getMacchina());
+			lfa.setNoteOnboarding(a.getNoteOnboarding());
 			//
 			if(lfa.getIdPreUpdate() != null) {
 				lfa.setIdPreUpdate(lista.get(0));
