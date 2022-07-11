@@ -140,7 +140,6 @@ public class ApplicazioneRest {
 			lfa.setFase(a.getFase());
 			lfa.setAfpStatus(a.getAfpStatus());
 			lfa.setPubblicatoDashboard(a.getPubblicatoDashboard());
-			//
 			lfa.setNoteAppOwner(a.getNoteAppOwner());
 			lfa.setJiraautomationActivation(a.getJiraautomationActivation());
 			lfa.setRepoAvailability(a.getRepoAvailability());
@@ -153,7 +152,6 @@ public class ApplicazioneRest {
 			lfa.setBusinessCriticality(a.getBusinessCriticality());
 			lfa.setDevMethodology(a.getDevMethodology());
 			lfa.setProvider(a.getProvider());
-			//
 			if(lfa.getIdPreUpdate() != null) {
 				lfa.setIdPreUpdate(lista.get(0));
 			}
