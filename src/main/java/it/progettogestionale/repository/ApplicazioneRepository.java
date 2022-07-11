@@ -24,6 +24,6 @@ public interface ApplicazioneRepository extends CrudRepository<Applicazione, Int
 	
 	@Modifying
 	@Transactional
-	@Query(value = "SELECT idlogapp FROM LogFileApp WHERE fk_idapp = ?1 ORDER BY data DESC LIMIT 1", nativeQuery = true)
-	public List<Integer> lastDate(int id);
+	@Query(value = "SELECT idlogapp FROM LogFileApp l WHERE l.fk_idapp = ?1 ORDER BY data DESC LIMIT 1", nativeQuery = true)
+	public Integer lastDate(int id);
 }

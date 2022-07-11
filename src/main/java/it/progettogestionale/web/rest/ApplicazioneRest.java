@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import it.progettogestionale.dto.generic.ApplicazioneDTO;
@@ -118,21 +117,21 @@ public class ApplicazioneRest {
 		Applicazione a = appRe.findById(modifica.getIdApplicazione()).get();
 		Utente u = utenteRepo.findById(modifica.getIdUtente()).get();
 		LogFileApp lfa = new LogFileApp();
-		List<Integer> lista = appRe.lastDate(a.getIdApplicazione());
+		Integer lista = appRe.lastDate(a.getIdApplicazione());
 		if(a.getIdApplicazione() != null) {
 			lfa.setData(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
 			lfa.setUtente(u);
 			lfa.setApplicazione(a);
 			lfa.setNome_App(a.getNome_App());
 			//tutti i set di logfileapp tranne idpreupdate
-			lfa.setIdPreUpdate(lista.get(0));
+			System.out.println(appRe.lastDate(a.getIdApplicazione()));
+			System.out.println(lista);
 		}
 		appRe.save(a);
 		LogFileAppDTO pluto = new LogFileAppDTO(lfa);
 		logRepo.save(lfa);
 		return new ResponseEntity<LogFileAppDTO>(pluto, HttpStatus.CREATED);
 	}
-
 	
 //	@DeleteMapping("/delete/{id}")
 //	public Applicazione delete(@PathVariable("id") Integer id) {
