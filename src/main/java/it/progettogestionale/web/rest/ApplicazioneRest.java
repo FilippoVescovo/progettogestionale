@@ -117,16 +117,15 @@ public class ApplicazioneRest {
 		Applicazione a = appRe.findById(modifica.getIdApplicazione()).get();
 		Utente u = utenteRepo.findById(modifica.getIdUtente()).get();
 		LogFileApp lfa = new LogFileApp();
-		List<LogFileApp> lista = appRe.lastDate(a.getIdApplicazione());
+		Integer lista = appRe.lastDate(a.getIdApplicazione());
 		if(a.getIdApplicazione() != null) {
 			lfa.setData(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
 			lfa.setUtente(u);
 			lfa.setApplicazione(a);
 			lfa.setNome_App(a.getNome_App());
 			//tutti i set di logfileapp tranne idpreupdate
-			for(LogFileApp x : lista) {
-				lfa.setIdPreUpdate(x.getIdLogApp());
-			}
+			System.out.println(appRe.lastDate(a.getIdApplicazione()));
+			System.out.println(lista);
 		}
 		appRe.save(a);
 		LogFileAppDTO pluto = new LogFileAppDTO(lfa);
