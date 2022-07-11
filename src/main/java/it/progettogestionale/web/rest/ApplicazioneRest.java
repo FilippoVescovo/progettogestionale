@@ -117,7 +117,7 @@ public class ApplicazioneRest {
 		Applicazione a = appRe.findById(modifica.getIdApplicazione()).get();
 		Utente u = utenteRepo.findById(modifica.getIdUtente()).get();
 		LogFileApp lfa = new LogFileApp();
-		Integer lista = appRe.lastDate(a.getIdApplicazione());
+		LogFileApp lista = appRe.lastDate(a.getIdApplicazione());
 		if(a.getIdApplicazione() != null) {
 			lfa.setData(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
 			lfa.setUtente(u);
