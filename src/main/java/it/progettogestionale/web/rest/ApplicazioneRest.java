@@ -131,7 +131,9 @@ public class ApplicazioneRest {
 			lfa.setUtente(u);
 			lfa.setApplicazione(a);
 			lfa.setNome_App(a.getNome_App());
-			lfa.setIdPreUpdate(lista.get(0));
+			if(lfa.getIdPreUpdate() != null) {
+				lfa.setIdPreUpdate(lista.get(0));
+			}
 		}
 		appRe.save(a);
 		LogFileAppDTO pluto = new LogFileAppDTO(lfa);
