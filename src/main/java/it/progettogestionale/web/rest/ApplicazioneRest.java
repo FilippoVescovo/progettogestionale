@@ -131,10 +131,13 @@ public class ApplicazioneRest {
 			lfa.setUtente(u);
 			lfa.setApplicazione(a);
 			lfa.setNome_App(a.getNome_App());
-			//
 			lfa.setApmCode(a.getApmCode());
 			lfa.setInsertedInCastProgram(a.getInsertedInCastProgram());
 			lfa.setStakeholderEngagement(a.getStakeholderEngagement());
+			//
+			lfa.setStakeholderBrief(a.getStakeholderBrief());
+			lfa.setOnBoardingKitDelivery(a.getOnBoardingKitDelivery());
+			lfa.setPrimaRestitution(a.getPrimaRestitution());
 			//
 			if(lfa.getIdPreUpdate() != null) {
 				lfa.setIdPreUpdate(lista.get(0));
