@@ -131,6 +131,11 @@ public class ApplicazioneRest {
 			lfa.setUtente(u);
 			lfa.setApplicazione(a);
 			lfa.setNome_App(a.getNome_App());
+			//
+			lfa.setApmCode(a.getApmCode());
+			lfa.setInsertedInCastProgram(a.getInsertedInCastProgram());
+			lfa.setStakeholderEngagement(a.getStakeholderEngagement());
+			//
 			if(lfa.getIdPreUpdate() != null) {
 				lfa.setIdPreUpdate(lista.get(0));
 			}
