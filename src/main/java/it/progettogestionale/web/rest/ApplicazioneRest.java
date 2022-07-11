@@ -134,10 +134,13 @@ public class ApplicazioneRest {
 			lfa.setApmCode(a.getApmCode());
 			lfa.setInsertedInCastProgram(a.getInsertedInCastProgram());
 			lfa.setStakeholderEngagement(a.getStakeholderEngagement());
-			//
 			lfa.setStakeholderBrief(a.getStakeholderBrief());
 			lfa.setOnBoardingKitDelivery(a.getOnBoardingKitDelivery());
 			lfa.setPrimaRestitution(a.getPrimaRestitution());
+			//
+			lfa.setGdsUnit(a.getGdsUnit());
+			lfa.setTecnologia(a.getTecnologia());
+			lfa.setServerManager(a.getServerManager());
 			//
 			if(lfa.getIdPreUpdate() != null) {
 				lfa.setIdPreUpdate(lista.get(0));
