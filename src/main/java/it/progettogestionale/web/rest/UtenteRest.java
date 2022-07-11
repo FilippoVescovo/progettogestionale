@@ -118,16 +118,16 @@ public class UtenteRest {
 		utenteRepo.save(alfonso);
 	}
 	
-	@PutMapping("/rendimodificatore")
-	public void rendiModificatore(@RequestBody Utente u) {
-		Utente alfonso = utenteRepo.findById(u.getIdUtente()).get();
+	@PutMapping("/rendimodificatore/{id}")
+	public void rendiModificatore(@PathVariable("id") Integer id) {
+		Utente alfonso = utenteRepo.findById(id).get();
 		alfonso.setRuolo(true);
 		utenteRepo.save(alfonso);
 	}
 	
-	@PutMapping("/rendivisualizzatore")
-	public void rendiVisualizzatore(@RequestBody Utente u) {
-		Utente alfonso = utenteRepo.findById(u.getIdUtente()).get();
+	@PutMapping("/rendivisualizzatore/{id}")
+	public void rendiVisualizzatore(@PathVariable("id") Integer id) {
+		Utente alfonso = utenteRepo.findById(id).get();
 		alfonso.setRuolo(false);
 		utenteRepo.save(alfonso);
 	}
