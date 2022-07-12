@@ -3,13 +3,14 @@ package it.progettogestionale.dto.generic;
 import java.math.BigDecimal;
 import java.sql.Date;
 import java.sql.Time;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import it.progettogestionale.repository.AppOwnerRepository;
-import it.progettogestionale.repository.ApplicazioneRepository;
 import it.progettogestionale.web.model.AppOwner;
 import it.progettogestionale.web.model.Applicazione;
 import it.progettogestionale.web.model.LogFileApp;
@@ -36,12 +37,7 @@ public class ApplicazioneDTO {
 	private List<Integer> idLogFileRescan;
 	private String nomeOwner;
 	private String emailOwner;
-	
-	@Autowired
-	private ApplicazioneRepository appRe;
-	@Autowired
-	private AppOwnerRepository appOwnerRe;
-	
+
 	
 	public ApplicazioneDTO() {}
 
@@ -90,18 +86,14 @@ public class ApplicazioneDTO {
 		idLogFileRescan = l.getLogFile().stream().map(LogFileRescan::getIdLogRescan).collect(Collectors.toList());
 		try {
 			nomeOwner = l.getOwners().stream().map(AppOwner::getNome).findFirst().get();
-		} catch (Exception e) {
-			
+		}catch (Exception e) {
 			nomeOwner = "sconosciuto";
 		}
 		try {
-			emailOwner=  l.getOwners().stream().map(AppOwner::getEmail).findFirst().get();
-		} catch (Exception e) {
+			emailOwner = l.getOwners().stream().map(AppOwner::getEmail).findFirst().get();
+		}catch (Exception e) {
 			emailOwner = "sconosciuto";
 		}
-		
-				 
-	
 	}
 
 	

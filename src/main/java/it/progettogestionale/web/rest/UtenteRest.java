@@ -72,6 +72,7 @@ public class UtenteRest {
 		}catch(NullPointerException e) {
 			u.setEmail(u.getEmail());
 			u.setAccesso(true);
+			u.setRuolo(false);
 		}
 		return ResponseEntity.ok(utenteRepo.save(u));
 //		return utenteRepo.save(u);
@@ -121,7 +122,11 @@ public class UtenteRest {
 	@PutMapping("/rendimodificatore/{id}")
 	public void rendiModificatore(@PathVariable("id") Integer id) {
 		Utente alfonso = utenteRepo.findById(id).get();
-		alfonso.setRuolo(true);
+		if(alfonso.getRuolo() == false) {
+			alfonso.setRuolo(true);
+		}else {
+			alfonso.setRuolo(false);
+		}
 		utenteRepo.save(alfonso);
 	}
 	
