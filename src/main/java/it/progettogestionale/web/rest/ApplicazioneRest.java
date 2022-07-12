@@ -110,7 +110,11 @@ public class ApplicazioneRest {
 		if(a.isExist() == null) {
 			a.setExist(true);
 		}
-		return appRe.save(a);
+		appRe.save(a);
+		if(a.getOwners() == null) {
+			appRe.inserimentoMonitoraggio(a.getIdApplicazione(), 1);
+		}
+		return appRe.findById(a.getIdApplicazione()).get();
 	}
 	
 	//metodo di modifica esatto
