@@ -129,6 +129,6 @@ public class UtenteRest {
 	public void rendiVisualizzatore(@PathVariable("id") Integer id) {
 		Utente alfonso = utenteRepo.findById(id).get();
 		alfonso.setRuolo(false);
-		utenteRepo.save(alfonso);
+		utenteRepo.save(alfonso); 
 	}
 }
