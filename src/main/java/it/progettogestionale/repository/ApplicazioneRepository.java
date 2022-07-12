@@ -24,4 +24,9 @@ public interface ApplicazioneRepository extends CrudRepository<Applicazione, Int
 	
 	@Query(value = "SELECT idlogapp FROM LogFileApp WHERE fk_idapp = ?1 ORDER BY data DESC LIMIT 1", nativeQuery = true)
 	public List<Integer> lastDate(int id);
+	
+	@Query(value = "SELECT fk_idappowner FROM monitoraggio WHERE fk_idapplicazione = ?1 ", nativeQuery = true)
+	public Integer recuperoIdAppOwner (int id);
+	
+	
 }

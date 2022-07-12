@@ -3,7 +3,9 @@ package it.progettogestionale.web.rest;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,9 +21,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import it.progettogestionale.dto.generic.ApplicazioneDTO;
 import it.progettogestionale.dto.generic.LogFileAppDTO;
+import it.progettogestionale.repository.AppOwnerRepository;
 import it.progettogestionale.repository.ApplicazioneRepository;
 import it.progettogestionale.repository.LogFileAppRepository;
 import it.progettogestionale.repository.UtenteRepository;
+import it.progettogestionale.web.model.AppOwner;
 import it.progettogestionale.web.model.Applicazione;
 import it.progettogestionale.web.model.LogFileApp;
 import it.progettogestionale.web.model.Utente;
@@ -41,6 +45,8 @@ public class ApplicazioneRest {
 	private LogFileAppRepository logRepo;
 	@Autowired
 	private UtenteRepository utenteRepo;
+	@Autowired
+	private AppOwnerRepository appOwnerRepo;
 	
 	@GetMapping("/getbyid/{id}")
 	public ApplicazioneDTO getById(@PathVariable("id") Integer id) {
@@ -103,6 +109,7 @@ public class ApplicazioneRest {
 		if(a.isExist() == null) {
 			a.setExist(true);
 		}
+			
 		return appRe.save(a);
 	}
 	

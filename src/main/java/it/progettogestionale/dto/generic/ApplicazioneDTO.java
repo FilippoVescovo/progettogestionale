@@ -6,6 +6,10 @@ import java.sql.Time;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import it.progettogestionale.repository.AppOwnerRepository;
+import it.progettogestionale.repository.ApplicazioneRepository;
 import it.progettogestionale.web.model.AppOwner;
 import it.progettogestionale.web.model.Applicazione;
 import it.progettogestionale.web.model.LogFileApp;
@@ -30,6 +34,13 @@ public class ApplicazioneDTO {
 	private List<Integer> idOwners;	
 	private List<Integer> idLogFileApp;
 	private List<Integer> idLogFileRescan;
+	private String nomeOwner;
+	private String emailOwner;
+	
+	@Autowired
+	private ApplicazioneRepository appRe;
+	@Autowired
+	private AppOwnerRepository appOwnerRe;
 	
 	
 	public ApplicazioneDTO() {}
@@ -77,7 +88,20 @@ public class ApplicazioneDTO {
 		idOwners = l.getOwners().stream().map(AppOwner::getIdAppOwner).collect(Collectors.toList());
 		idLogFileApp = l.getLogFiles().stream().map(LogFileApp::getIdLogApp).collect(Collectors.toList());
 		idLogFileRescan = l.getLogFile().stream().map(LogFileRescan::getIdLogRescan).collect(Collectors.toList());
+		try {
+			nomeOwner = l.getOwners().stream().map(AppOwner::getNome).findFirst().get();
+		} catch (Exception e) {
 			
+			nomeOwner = "sconosciuto";
+		}
+		try {
+			emailOwner=  l.getOwners().stream().map(AppOwner::getEmail).findFirst().get();
+		} catch (Exception e) {
+			emailOwner = "sconosciuto";
+		}
+		
+				 
+	
 	}
 
 	
@@ -407,5 +431,21 @@ public class ApplicazioneDTO {
 
 	public void setIdLogFileRescan(List<Integer> idLogFileRescan) {
 		this.idLogFileRescan = idLogFileRescan;
+	}
+
+	public String getNomeOwner() {
+		return nomeOwner;
+	}
+
+	public void setNomeOwner(String nomeOwner) {
+		this.nomeOwner = nomeOwner;
+	}
+
+	public String getEmailOwner() {
+		return emailOwner;
+	}
+
+	public void setEmailOwner(String emailOwner) {
+		this.emailOwner = emailOwner;
 	}
 }
