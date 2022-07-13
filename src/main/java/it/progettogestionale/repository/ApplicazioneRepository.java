@@ -33,6 +33,4 @@ public interface ApplicazioneRepository extends CrudRepository<Applicazione, Int
 	@Query(value = "INSERT INTO monitoraggio (fk_idapplicazione, fk_idappowner) VALUES (?1, ?2)", nativeQuery = true)
 	public void inserimentoMonitoraggio(int idapplicazione, int idappowner);
 	
-	@Query(value = "SELECT idlogrescan FROM logfilerescan WHERE fk_idrescan = ?1 ORDER BY idlogrescan DESC LIMIT 1", nativeQuery = true)
-	public List<Integer> lastRescan (int id);
 }

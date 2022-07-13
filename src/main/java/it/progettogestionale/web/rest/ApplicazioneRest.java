@@ -31,6 +31,7 @@ import it.progettogestionale.web.model.AppOwner;
 import it.progettogestionale.web.model.Applicazione;
 import it.progettogestionale.web.model.LogFileApp;
 import it.progettogestionale.web.model.LogFileRescan;
+import it.progettogestionale.web.model.Rescan;
 import it.progettogestionale.web.model.Utente;
 
 @RestController
@@ -176,34 +177,6 @@ public class ApplicazioneRest {
 		LogFileAppDTO pluto = new LogFileAppDTO(lfa);
 		logRepo.save(lfa);
 		return new ResponseEntity<LogFileAppDTO>(pluto, HttpStatus.CREATED);
-	}
-	
-	@PostMapping("/rescan")
-	public ResponseEntity<LogFileRescanDTO> modificaApp (@RequestBody RescanDTO modifica){
-		Applicazione a = appRe.findById(modifica.getApplicazione()).get();
-		AppOwner ao = ownerRepo.findById(modifica.getAppOwner()).get();
-		LogFileRescan lfr = new LogFileRescan();
-		List<Integer> lista = appRe.lastRescan(a.getIdApplicazione());
-		if(a.getIdApplicazione() != null) {
-			lfr.setData(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
-			lfr.setnRescan(modifica.getnRescan()+1);
-			lfr.setOngoing(modifica.getOnGoing());
-			lfr.setArchive(modifica.getArchive());
-			lfr.setRkd(modifica.getRkd());
-			lfr.setAfpe(modifica.getAfpe());
-			lfr.setNewOb(modifica.getNewOb());
-			lfr.setPy(modifica.getPy());
-			lfr.setYtd(modifica.getYtd());
-			lfr.setYoyRolling(modifica.getYoyRolling());
-			lfr.setLast_Rescan(modifica.getLast_Rescan());
-			if(lfr.getIdPreUpdate() != null) {
-				lfr.setIdPreUpdate(lista.get(0));
-			}
-		}
-		appRe.save(a);
-		LogFileRescanDTO lfrDTO = new LogFileRescanDTO(lfr);
-		rescanRepo.save(lfr);
-		return new ResponseEntity<LogFileRescanDTO>(lfrDTO, HttpStatus.CREATED);
 	}
 	
 	

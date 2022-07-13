@@ -51,7 +51,7 @@ public class LogFileRescan implements Serializable{
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "fk_idUtente")
 //	@JsonBackReference
-	private Utente utente;
+	private AppOwner appOwner;
 	
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "fk_idRescan")
@@ -63,7 +63,7 @@ public class LogFileRescan implements Serializable{
 	
 	public LogFileRescan(Integer idLogRescan, LocalDateTime data, Integer nRescan, Boolean ongoing, Boolean archive, Integer newOb,
 			Integer py, Integer ytd, String afpe, String yoyRolling, String last_Rescan, Date rkd, Integer idPreUpdate,
-			Utente utente, Rescan rescan) {
+			AppOwner appOwner, Rescan rescan) {
 		this.idLogRescan = idLogRescan;
 		this.data = data;
 		this.nRescan = nRescan;
@@ -77,7 +77,7 @@ public class LogFileRescan implements Serializable{
 		this.last_Rescan = last_Rescan;
 		this.rkd = rkd;
 		this.idPreUpdate = idPreUpdate;
-		this.utente = utente;
+		this.appOwner = appOwner;
 		this.rescan = rescan;
 	}
 	
@@ -160,12 +160,14 @@ public class LogFileRescan implements Serializable{
 	public void setIdPreUpdate(Integer idPreUpdate) {
 		this.idPreUpdate = idPreUpdate;
 	}
-	public Utente getUtente() {
-		return utente;
+	public AppOwner getAppOwner() {
+		return appOwner;
 	}
-	public void setUtente(Utente utente) {
-		this.utente = utente;
+
+	public void setAppOwner(AppOwner appOwner) {
+		this.appOwner = appOwner;
 	}
+
 	public Rescan getRescan() {
 		return rescan;
 	}
@@ -184,12 +186,12 @@ public class LogFileRescan implements Serializable{
 	
 	@Override
 	public String toString() {
-		return "LogFileRescan [getIdLogRescan()= " + getIdLogRescan() + ", getData()= " + getData() + ", getnRescan()= "
-				+ getnRescan() + ", isOngoing()= " + isOngoing() + ", isArchive()= " + isArchive() + ", getNewOb()= "
-				+ getNewOb() + ", getPy()= " + getPy() + ", getYtd()= " + getYtd() + ", getAfpe()= " + getAfpe()
-				+ ", getYoyRolling()= " + getYoyRolling() + ", getLast_Rescan()= " + getLast_Rescan() + ", getRkd()= "
-				+ getRkd() + ", getIdPreUpdate()= " + getIdPreUpdate() + ", getUtente()= " + getUtente()
-				+ ", getRescan()= " + getRescan() + ", getOngoing()= " + getOngoing() + ", getArchive()= " + getArchive()
+		return "LogFileRescan [getIdLogRescan()=" + getIdLogRescan() + ", getData()=" + getData() + ", getnRescan()="
+				+ getnRescan() + ", isOngoing()=" + isOngoing() + ", isArchive()=" + isArchive() + ", getNewOb()="
+				+ getNewOb() + ", getPy()=" + getPy() + ", getYtd()=" + getYtd() + ", getAfpe()=" + getAfpe()
+				+ ", getYoyRolling()=" + getYoyRolling() + ", getLast_Rescan()=" + getLast_Rescan() + ", getRkd()="
+				+ getRkd() + ", getIdPreUpdate()=" + getIdPreUpdate() + ", getAppOwner()=" + getAppOwner()
+				+ ", getRescan()=" + getRescan() + ", getOngoing()=" + getOngoing() + ", getArchive()=" + getArchive()
 				+ "]";
 	}
 }

@@ -19,7 +19,7 @@ public class LogFileRescanDTO {
 	private String last_Rescan;
 	private Date rkd;
 	private Integer idPreUpdate;
-	private Integer utente;
+	private Integer appOwner;
 	private Integer rescan;
 	
 	
@@ -38,7 +38,7 @@ public class LogFileRescanDTO {
 		last_Rescan = lfr.getLast_Rescan();
 		rkd = lfr.getRkd();
 		idPreUpdate = lfr.getIdPreUpdate();
-		utente = lfr.getUtente().getIdUtente();
+		appOwner = lfr.getAppOwner().getIdAppOwner();
 		rescan = lfr.getRescan().getIdRescan();
 	}
 	
@@ -139,12 +139,12 @@ public class LogFileRescanDTO {
 		this.idPreUpdate = idPreUpdate;
 	}
 
-	public Integer getUtente() {
-		return utente;
+	public Integer getAppOwner() {
+		return appOwner;
 	}
 
-	public void setUtente(Integer utente) {
-		this.utente = utente;
+	public void setAppOwner(Integer appOwner) {
+		this.appOwner = appOwner;
 	}
 
 	public Integer getRescan() {
