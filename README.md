@@ -1342,3 +1342,5 @@ INSERT INTO "monitoraggio" VALUES
     
     ALTER TABLE utente ADD COLUMN accesso boolean DEFAULT false;
     
+    ALTER TABLE logfilerescan ALTER COLUMN data TYPE timestamp;
+    
