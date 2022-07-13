@@ -37,7 +37,7 @@ public class LogFileRescanController {
 		LogFileRescan lfr = new LogFileRescan();
 		Utente u = utenteService.getById(2);
 		Rescan r = rescanService.getById(6);
-		lfr.setUtente(u);
+//		lfr.setUtente(u);
 		lfr.setRescan(r);
 		lfr.setnRescan(5);
 		logFileRescanService.add(lfr);
