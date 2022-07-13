@@ -1,5 +1,8 @@
 package it.progettogestionale.web.rest;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,9 +38,13 @@ public class AppOwnerRest {
 	}
 	
 	@GetMapping("/getall")
-	public ResponseEntity<GetAppOwnerResponseDTO> getAll(){
+	public ResponseEntity<List<AppOwnerDTO>> getAll(){
 		Iterable<AppOwner> i = appRe.findAll();
-		return ResponseEntity.status(HttpStatus.OK).body(new GetAppOwnerResponseDTO(i));
+		List<AppOwnerDTO> aoDTO = new ArrayList<>();
+		for(AppOwner ao : i) {
+			aoDTO.add(new AppOwnerDTO(ao));
+		}
+		return ResponseEntity.status(HttpStatus.OK).body(aoDTO);
 	}
 	
 	@PostMapping("/save")

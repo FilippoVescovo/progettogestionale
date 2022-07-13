@@ -1,12 +1,13 @@
 package it.progettogestionale.dto.generic;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
 
 import it.progettogestionale.web.model.LogFileRescan;
 
 public class LogFileRescanDTO {
 	
-	private Date data;
+	private LocalDateTime data;
 	private Integer nRescan;
 	private Boolean ongoing;
 	private Boolean archive;
@@ -42,11 +43,11 @@ public class LogFileRescanDTO {
 	}
 	
 	
-	public Date getData() {
+	public LocalDateTime getData() {
 		return data;
 	}
 
-	public void setData(Date data) {
+	public void setData(LocalDateTime data) {
 		this.data = data;
 	}
 

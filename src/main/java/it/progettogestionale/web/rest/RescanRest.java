@@ -1,5 +1,8 @@
 package it.progettogestionale.web.rest;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -44,11 +47,15 @@ public class RescanRest {
 //		return rescanRepo.findAll();
 //	}
 	
-//	@GetMapping("/getallrescan")
-//	public ResponseEntity<GetRescanResponseDTO> getAllRescan(){
-//		Iterable<Rescan> rescans = rescanRepo.findAll();
-//		return ResponseEntity.status(HttpStatus.OK).body(new GetRescanResponseDTO(rescans));
-//	}
+	@GetMapping("/getallrescan")
+	public ResponseEntity<List<RescanDTO>> getAllRescan(){
+		Iterable<Rescan> rescans = rescanRepo.findAll();
+		List<RescanDTO> reDTO = new ArrayList<>();
+		for(Rescan r : rescans) {
+			reDTO.add(new RescanDTO(r));
+		}
+		return ResponseEntity.status(HttpStatus.OK).body(reDTO);
+	}
 	
 	@GetMapping("/getrescanbyid/{id}")
 	public RescanDTO getRescanById(@PathVariable("id") Integer id ) {

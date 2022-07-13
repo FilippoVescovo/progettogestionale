@@ -2,6 +2,7 @@ package it.progettogestionale.web.model;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.time.LocalDateTime;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -23,7 +24,7 @@ public class LogFileRescan implements Serializable{
 	private Integer idLogRescan;
 	
 	@Column(name = "data")
-	private Date data;
+	private LocalDateTime data;
 	@Column(name = "nrescan")
 	private Integer nRescan;
 	@Column(name = "ongoing")
@@ -60,7 +61,7 @@ public class LogFileRescan implements Serializable{
 	
 	public LogFileRescan() {}
 	
-	public LogFileRescan(Integer idLogRescan, Date data, Integer nRescan, Boolean ongoing, Boolean archive, Integer newOb,
+	public LogFileRescan(Integer idLogRescan, LocalDateTime data, Integer nRescan, Boolean ongoing, Boolean archive, Integer newOb,
 			Integer py, Integer ytd, String afpe, String yoyRolling, String last_Rescan, Date rkd, Integer idPreUpdate,
 			Utente utente, Rescan rescan) {
 		this.idLogRescan = idLogRescan;
@@ -87,10 +88,10 @@ public class LogFileRescan implements Serializable{
 	public void setIdLogRescan(Integer idLogRescan) {
 		this.idLogRescan = idLogRescan;
 	}
-	public Date getData() {
+	public LocalDateTime getData() {
 		return data;
 	}
-	public void setData(Date data) {
+	public void setData(LocalDateTime data) {
 		this.data = data;
 	}
 	public Integer getnRescan() {
