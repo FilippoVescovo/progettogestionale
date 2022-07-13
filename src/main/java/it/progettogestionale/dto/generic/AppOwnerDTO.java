@@ -18,6 +18,7 @@ import it.progettogestionale.web.model.Rescan;
 
 public class AppOwnerDTO {
 	
+	private Integer idAppOwner;
 	private String nome;
 	private String cognome;
 	private String email;
@@ -29,7 +30,7 @@ public class AppOwnerDTO {
 	public AppOwnerDTO() {}
 
 	public AppOwnerDTO(AppOwner a) {
-		
+		idAppOwner = a.getIdAppOwner();
 		nome = a.getNome();
 		cognome = a.getCognome();
 		email = a.getEmail();
@@ -37,6 +38,15 @@ public class AppOwnerDTO {
 		dsUnit = a.getDsUnit();
 		idAppOwners = a.getAppOwners().stream().map(Rescan::getIdRescan).collect(Collectors.toList());;
 		idApplicazione = a.getApplicazione().stream().map(Applicazione::getIdApplicazione).collect(Collectors.toList());;
+	}
+	
+	
+	public Integer getIdAppOwner() {
+		return idAppOwner;
+	}
+
+	public void setIdAppOwner(Integer idAppOwner) {
+		this.idAppOwner = idAppOwner;
 	}
 
 	public String getNome() {
