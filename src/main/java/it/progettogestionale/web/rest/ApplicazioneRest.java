@@ -4,7 +4,9 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import it.progettogestionale.dto.generic.AppOwnerDTO;
 import it.progettogestionale.dto.generic.ApplicazioneDTO;
 import it.progettogestionale.dto.generic.LogFileAppDTO;
 import it.progettogestionale.dto.generic.LogFileRescanDTO;
@@ -116,10 +119,17 @@ public class ApplicazioneRest {
 		if(a.isExist() == null) {
 			a.setExist(true);
 		}
-		appRe.save(a);
-		if(a.getOwners() == null) {
-			appRe.inserimentoMonitoraggio(a.getIdApplicazione(), 1);
+		Iterable<AppOwner> owners = ownerRepo.findAll();
+		Set<AppOwner> setAo = new HashSet<>();
+		for(AppOwner x : owners) {
+			if(a.getOwners() == null) appRe.inserimentoMonitoraggio(a.getIdApplicazione(), 1);
+			else setAo.add(x);
 		}
+		a.setOwners(setAo);
+		appRe.save(a);
+//		if(a.getOwners() == null) {
+//			appRe.inserimentoMonitoraggio(a.getIdApplicazione(), 1);
+//		}
 		return appRe.findById(a.getIdApplicazione()).get();
 	}
 	
