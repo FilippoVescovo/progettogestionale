@@ -16,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -42,6 +43,8 @@ public class Applicazione implements Serializable{
 	private Boolean done;
 	@Column(name = "exist")
 	private Boolean exist;
+	@Transient
+	private Integer intero;
 	@Column
 	private String nome_App, apmCode, insertedInCastProgram, stakeholderEngagement,
 	stakeholderBrief, onBoardingKitDelivery, primaRestitution, ownerOnboarding, ownerAFP, gdsUnit, tecnologia, serverManager,
@@ -74,7 +77,7 @@ public class Applicazione implements Serializable{
 	public Applicazione() {}
 	
 	public Applicazione(Integer idApplicazione, Integer nodoConsole, Time launchingMeetingDataGatheringStarting,
-			BigDecimal avgAnalysisTime, Date automationEnablingDate, Boolean done, Boolean exist, String nome_App,
+			BigDecimal avgAnalysisTime, Date automationEnablingDate, Boolean done, Boolean exist, Integer intero, String nome_App,
 			String apmCode, String insertedInCastProgram, String stakeholderEngagement, String stakeholderBrief,
 			String onBoardingKitDelivery, String primaRestitution, String ownerOnboarding, String ownerAFP,
 			String gdsUnit, String tecnologia, String serverManager, String soloCMS, String macchina,
@@ -90,6 +93,7 @@ public class Applicazione implements Serializable{
 		this.automationEnablingDate = automationEnablingDate;
 		this.done = done;
 		this.exist = exist;
+		this.intero = intero;
 		this.nome_App = nome_App;
 		this.apmCode = apmCode;
 		this.insertedInCastProgram = insertedInCastProgram;
@@ -174,6 +178,15 @@ public class Applicazione implements Serializable{
 	public void setExist(Boolean exist) {
 		this.exist = exist;
 	}
+	
+	public Integer getIntero() {
+		return intero;
+	}
+
+	public void setIntero(Integer intero) {
+		this.intero = intero;
+	}
+
 	public String getNome_App() {
 		return nome_App;
 	}

@@ -114,9 +114,9 @@ public class ApplicazioneRest {
 //		return appRe.save(a);
 //	}
 	
-	@PostMapping("/save/{id}") //update e insert con save
-	public Applicazione save(@RequestBody Applicazione a, @PathVariable("id") Integer id) {
-		AppOwner owner = ownerRepo.findById(id).get();
+	@PostMapping("/save") //update e insert con save
+	public Applicazione save(@RequestBody Applicazione a) {
+		AppOwner owner = ownerRepo.findById(a.getIntero()).get();
 		
 		if(a.isExist() == null) {
 			a.setExist(true);
