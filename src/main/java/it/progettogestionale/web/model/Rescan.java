@@ -45,12 +45,12 @@ public class Rescan implements Serializable{
 	@Column(name = "rkd")
 	private Date rkd;
 	
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REMOVE}, fetch = FetchType.LAZY)
 	@JoinColumn(name = "FK_idApplicazione")
 //	@JsonBackReference
 	private Applicazione applicazione;
 	
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REMOVE}, fetch = FetchType.LAZY)
 	@JoinColumn(name = "FK_idAppOwner")
 //	@JsonBackReference
 	private AppOwner appOwner;

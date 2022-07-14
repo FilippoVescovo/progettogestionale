@@ -80,34 +80,33 @@ public class RescanRest {
 		return rescanRepo.save(r);
 	}
 	
-//	@PostMapping("/rescan")
-//	public ResponseEntity<RescanDTO> rescan(@RequestBody RescanDTO modifica){
-//		Applicazione a = appRe.findById(modifica.getApplicazione()).get();
-//		AppOwner ao = ownerRepo.findById(modifica.getAppOwner()).get();
-//		Rescan r = new Rescan();
-//		List<Integer> lista = rescanRepo.lastRescan(a.getIdApplicazione());
-//		if(a.getIdApplicazione() != null) {
-//			r.setnRescan(lista.get(1) + 1);
-//			r.setOnGoing(modifica.getOnGoing());
-//			r.setArchive(modifica.getArchive());
-//			r.setRkd(modifica.getRkd());
-//			r.setAfpe(modifica.getAfpe());
-//			r.setNewOb(modifica.getNewOb());
-//			r.setPy(modifica.getPy());
-//			r.setYtd(modifica.getYtd());
-//			r.setYoyRolling(modifica.getYoyRolling());
-//			r.setLast_Rescan(modifica.getLast_Rescan());
-//			r.setApplicazione(a);
-//			r.setAppOwner(ao);
-//			r.setExist(modifica.getExist());
-//		}
-//		rescanRepo.save(r);
-//		RescanDTO rDTO = new RescanDTO(r);
-//		logRescan(rDTO);
-//		return new ResponseEntity<RescanDTO>(rDTO, HttpStatus.CREATED);
-//	}
-//	
-//	
+	@PostMapping("/rescan")
+	public ResponseEntity<RescanDTO> rescan(@RequestBody RescanDTO crea){
+		Applicazione app = appRe.findById(crea.getApplicazione()).get();
+		AppOwner owner = ownerRepo.findById(crea.getAppOwner()).get();
+		Rescan r = new Rescan();
+		List<Integer> lista = rescanRepo.lastRescan(app.getIdApplicazione());
+		if(app.getIdApplicazione() != null) {
+			r.setnRescan(lista.get(0) + 1);
+			r.setOnGoing(crea.getOnGoing());
+			r.setArchive(crea.getArchive());
+			r.setRkd(crea.getRkd());
+			r.setAfpe(crea.getAfpe());
+			r.setNewOb(crea.getNewOb());
+			r.setPy(crea.getPy());
+			r.setYtd(crea.getYtd());
+			r.setYoyRolling(crea.getYoyRolling());
+			r.setLast_Rescan(crea.getLast_Rescan());
+			r.setApplicazione(app);
+			r.setAppOwner(owner);
+			r.setExist(crea.getExist());
+		}
+		RescanDTO rdto = new RescanDTO(r);
+		rescanRepo.save(r);
+		return new ResponseEntity<RescanDTO>(rdto, HttpStatus.CREATED);
+	}
+	
+
 //	public LogFileRescanDTO logRescan(RescanDTO r){
 //		LogFileRescan lfr = new LogFileRescan();
 //		List<Integer> lista = rescanRepo.lastLog(lfr.getIdLogRescan());

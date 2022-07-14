@@ -1,12 +1,9 @@
 package it.progettogestionale.web.rest;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,21 +17,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import it.progettogestionale.dto.generic.AppOwnerDTO;
 import it.progettogestionale.dto.generic.ApplicazioneDTO;
 import it.progettogestionale.dto.generic.LogFileAppDTO;
-import it.progettogestionale.dto.generic.LogFileRescanDTO;
-import it.progettogestionale.dto.generic.RescanDTO;
 import it.progettogestionale.repository.AppOwnerRepository;
 import it.progettogestionale.repository.ApplicazioneRepository;
 import it.progettogestionale.repository.LogFileAppRepository;
-import it.progettogestionale.repository.LogFileRescanRepository;
 import it.progettogestionale.repository.UtenteRepository;
 import it.progettogestionale.web.model.AppOwner;
 import it.progettogestionale.web.model.Applicazione;
 import it.progettogestionale.web.model.LogFileApp;
-import it.progettogestionale.web.model.LogFileRescan;
-import it.progettogestionale.web.model.Rescan;
 import it.progettogestionale.web.model.Utente;
 
 @RestController
@@ -54,8 +45,6 @@ public class ApplicazioneRest {
 	private UtenteRepository utenteRepo;
 	@Autowired
 	private AppOwnerRepository ownerRepo;
-	@Autowired
-	private LogFileRescanRepository rescanRepo;
 	
 	
 	@GetMapping("/getbyid/{id}")
@@ -117,16 +106,12 @@ public class ApplicazioneRest {
 	@PostMapping("/save") //update e insert con save
 	public Applicazione save(@RequestBody Applicazione a) {
 		AppOwner owner = ownerRepo.findById(a.getIntero()).get();
-		
 		if(a.isExist() == null) {
 			a.setExist(true);
 		}
-		
 		appRe.save(a);
-		
 		Applicazione app = appRe.findById(a.getIdApplicazione()).get();
 		appRe.inserimentoMonitoraggio(app.getIdApplicazione(), owner.getIdAppOwner());
-		
 		return a;
 	}
 	
