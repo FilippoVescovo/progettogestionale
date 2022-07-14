@@ -114,23 +114,20 @@ public class ApplicazioneRest {
 //		return appRe.save(a);
 //	}
 	
-	@PostMapping("/save") //update e insert con save
-	public Applicazione save(@RequestBody Applicazione a) {
+	@PostMapping("/save/{id}") //update e insert con save
+	public Applicazione save(@RequestBody Applicazione a, @PathVariable("id") Integer id) {
+		AppOwner owner = ownerRepo.findById(id).get();
+		
 		if(a.isExist() == null) {
 			a.setExist(true);
 		}
-		Iterable<AppOwner> owners = ownerRepo.findAll();
-		Set<AppOwner> setAo = new HashSet<>();
-		for(AppOwner x : owners) {
-			if(a.getOwners() == null) appRe.inserimentoMonitoraggio(a.getIdApplicazione(), 1);
-			else setAo.add(x);
-		}
-		a.setOwners(setAo);
+		
 		appRe.save(a);
-//		if(a.getOwners() == null) {
-//			appRe.inserimentoMonitoraggio(a.getIdApplicazione(), 1);
-//		}
-		return appRe.findById(a.getIdApplicazione()).get();
+		
+		Applicazione app = appRe.findById(a.getIdApplicazione()).get();
+		appRe.inserimentoMonitoraggio(app.getIdApplicazione(), owner.getIdAppOwner());
+		
+		return a;
 	}
 	
 	//metodo di modifica esatto
