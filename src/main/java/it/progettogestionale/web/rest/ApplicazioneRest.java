@@ -126,8 +126,6 @@ public class ApplicazioneRest {
 	
 	@DeleteMapping("/rimuoviowner/{idApp}/{idOwner}")
 	public void rimozioneOwner(@PathVariable("idApp") Integer idApp, @PathVariable("idOwner") Integer idOwner) {
-		AppOwner owner = ownerRepo.findById(idApp).get();
-		Applicazione app = appRe.findById(idOwner).get();
 		appRe.rimozioneOwner(idApp, idOwner);
 	}
 	
