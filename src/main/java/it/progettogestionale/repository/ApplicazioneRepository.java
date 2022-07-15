@@ -33,4 +33,9 @@ public interface ApplicazioneRepository extends CrudRepository<Applicazione, Int
 	@Query(value = "INSERT INTO monitoraggio (fk_idapplicazione, fk_idappowner) VALUES (?1, ?2)", nativeQuery = true)
 	public void inserimentoMonitoraggio(int idapplicazione, int idappowner);
 	
+	@Modifying
+	@Transactional
+	@Query(value = "DELETE FROM monitoraggio WHERE fk_idapplicazione = ?1 AND fk_idappowner = ?2", nativeQuery = true)
+	public void rimozioneOwner(int idapplicazione, int idappowner);
+	
 }

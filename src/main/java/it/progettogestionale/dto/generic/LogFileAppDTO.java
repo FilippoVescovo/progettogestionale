@@ -35,6 +35,7 @@ public class LogFileAppDTO {
 			provider;
 	private Integer idUtente;
 	private Integer idApplicazione;
+	private Integer intero;
 
 	public LogFileAppDTO() {
 	}
@@ -81,6 +82,17 @@ public class LogFileAppDTO {
 		provider = l.getProvider();
 		idUtente = l.getUtente().getIdUtente();
 		idApplicazione = l.getApplicazione().getIdApplicazione();
+		intero = l.getIntero();
+	}
+	
+	
+
+	public Integer getIntero() {
+		return intero;
+	}
+
+	public void setIntero(Integer intero) {
+		this.intero = intero;
 	}
 
 	public Integer getIdLogApp() {

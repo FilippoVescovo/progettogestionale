@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -115,12 +116,30 @@ public class ApplicazioneRest {
 		return a;
 	}
 	
+	@PostMapping("/aggiuntaappowner")
+	public Applicazione aggiuntaOwner(@RequestBody Applicazione a) {
+		AppOwner owner = ownerRepo.findById(a.getIntero()).get();
+		Applicazione app = appRe.findById(a.getIdApplicazione()).get();
+		appRe.inserimentoMonitoraggio(app.getIdApplicazione(), owner.getIdAppOwner());
+		return a;
+	}
+	
+	@DeleteMapping("/rimuoviowner/{idApp}/{idOwner}")
+	public void rimozioneOwner(@PathVariable("idApp") Integer idApp, @PathVariable("idOwner") Integer idOwner) {
+		AppOwner owner = ownerRepo.findById(idApp).get();
+		Applicazione app = appRe.findById(idOwner).get();
+		appRe.rimozioneOwner(idApp, idOwner);
+	}
+	
 	//metodo di modifica esatto
 	@PostMapping("/modificaapp")
 	public ResponseEntity<LogFileAppDTO> modificaApp (@RequestBody LogFileAppDTO modifica){
 		Applicazione a = appRe.findById(modifica.getIdApplicazione()).get();
 		Utente u = utenteRepo.findById(modifica.getIdUtente()).get();
+		AppOwner appOwner = ownerRepo.findById(modifica.getIntero()).get();
+		
 		LogFileApp lfa = new LogFileApp();
+		
 		List<Integer> lista = appRe.lastDate(a.getIdApplicazione());
 		if(a.getIdApplicazione() != null) {
 			lfa.setData(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
@@ -165,6 +184,7 @@ public class ApplicazioneRest {
 				lfa.setIdPreUpdate(lista.get(0));
 			}
 		}
+		appRe.inserimentoMonitoraggio(a.getIdApplicazione(), appOwner.getIdAppOwner());
 		appRe.save(a);
 		LogFileAppDTO pluto = new LogFileAppDTO(lfa);
 		logRepo.save(lfa);

@@ -16,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "logfileapp")
@@ -39,6 +40,8 @@ public class LogFileApp implements Serializable{
 	private Boolean done;
 	@Column(name="idpreupdate")
 	private Integer idPreUpdate;
+	@Transient
+	private Integer intero;
 	@Column
 	private String nome_App, apmCode, insertedInCastProgram, stakeholderEngagement,
 	stakeholderBrief, onBoardingKitDelivery, primaRestitution, ownerOnboarding, ownerAFP, gdsUnit, tecnologia, serverManager,
@@ -68,7 +71,7 @@ public class LogFileApp implements Serializable{
 			String jiraautomationActivation, String repoAvailability, String automationStatus, String automationNotes,
 			String greenItIndex, String onboardingKitClosing, String sourceCodeFinalDelivery, String linkConfluence,
 			String businessCriticality, String devMethodology, String provider, Utente utente,
-			Applicazione applicazione) {
+			Applicazione applicazione, Integer intero) {
 		this.idLogApp = idLogApp;
 		this.data = data;
 		this.nodoConsole = nodoConsole;
@@ -109,6 +112,7 @@ public class LogFileApp implements Serializable{
 		this.provider = provider;
 		this.utente = utente;
 		this.applicazione = applicazione;
+		this.intero = intero;
 	}
 	
 	//costruttore con att not null
@@ -360,9 +364,14 @@ public class LogFileApp implements Serializable{
 	public void setApplicazione(Applicazione applicazione) {
 		this.applicazione = applicazione;
 	}
-	
 	public Boolean getDone() {
 		return done;
+	}
+	public Integer getIntero() {
+		return intero;
+	}
+	public void setIntero(Integer intero) {
+		this.intero = intero;
 	}
 
 	@Override

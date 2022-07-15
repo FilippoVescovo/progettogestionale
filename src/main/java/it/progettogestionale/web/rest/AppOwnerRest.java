@@ -49,6 +49,7 @@ public class AppOwnerRest {
 	
 	@PostMapping("/save")
 	public AppOwner save(@RequestBody AppOwner a) {
+		a.setDsUnit("NULL");
 		return appRe.save(a);
 	}
 	
