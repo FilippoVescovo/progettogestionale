@@ -2,6 +2,7 @@ package it.progettogestionale.web.rest;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -64,12 +65,33 @@ public class UtenteRest {
 //		metodo sbagliato per l'eliminazione tramite id ma che potrebbe tornare utile se si volessero eliminare più utenti insieme selezionado il parametro di riferimento
 //	}
 	
+	public boolean passwordCheck(String pass) {
+		if(pass.matches("^(?!.* )(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{7,16}$")) {
+			return true;
+		}
+		return false;
+	}
+	
 	@PostMapping("/save") //il save aggiunge e modifica
 	public ResponseEntity<Utente> save(@RequestBody Utente u) {
 		Utente alfonso = utenteRepo.findByEmail(u.getEmail());
 		try {
 			if(alfonso.getEmail().equals(u.getEmail())) return ResponseEntity.status(HttpStatus.IM_USED).build();
 		}catch(NullPointerException e) {
+			if(passwordCheck(u.getPassword())) {
+				int key = 5;
+				String cripto = u.getPassword();
+				char[] passCriptata = cripto.toCharArray();
+				List<String> cri = new ArrayList<>();
+				for(char c : passCriptata) {
+					c += key;
+					cri.add(Character.toString(c));
+				}
+				String pass = cri.stream().collect(Collectors.joining());
+				u.setPassword(pass);
+			}else {
+				return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).build();
+			}
 			u.setEmail(u.getEmail());
 			u.setAccesso(true);
 			u.setRuolo(false);
@@ -101,7 +123,16 @@ public class UtenteRest {
 		Utente alfonso = utenteRepo.findByEmail(u.getEmail());
 		UtenteDTO utente = new UtenteDTO(alfonso);
 		try {
-			if( alfonso.getEmail().equals(u.getEmail()) && alfonso.getPassword().equals(u.getPassword()) ) {
+			int key = -5;
+			String cripto = u.getPassword();
+			char[] passCriptata = cripto.toCharArray();
+			List<String> cri = new ArrayList<>();
+			for(char c : passCriptata) {
+				c -= key;
+				cri.add(Character.toString(c));
+			}
+			String pass = cri.stream().collect(Collectors.joining());
+			if( alfonso.getEmail().equals(u.getEmail()) && alfonso.getPassword().equals(pass) ) {
 				alfonso.setAccesso(true);
 				utenteRepo.save(alfonso);
 				return new ResponseEntity<UtenteDTO>(utente, HttpStatus.OK);

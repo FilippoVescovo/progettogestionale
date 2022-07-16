@@ -1,5 +1,7 @@
 package it.progettogestionale.web.rest;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -90,7 +92,7 @@ public class RescanRest {
 			r.setnRescan(lista.get(0) + 1);
 			r.setOnGoing(crea.getOnGoing());
 			r.setArchive(crea.getArchive());
-			r.setRkd(crea.getRkd());
+			r.setRkd(Date.valueOf(LocalDate.now()));
 			r.setAfpe(crea.getAfpe());
 			r.setNewOb(crea.getNewOb());
 			r.setPy(crea.getPy());
