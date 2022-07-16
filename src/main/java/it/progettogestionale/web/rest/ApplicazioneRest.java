@@ -134,7 +134,11 @@ public class ApplicazioneRest {
 	public ResponseEntity<LogFileAppDTO> modificaApp (@RequestBody LogFileAppDTO modifica){
 		Applicazione a = appRe.findById(modifica.getIdApplicazione()).get();
 		Utente u = utenteRepo.findById(modifica.getIdUtente()).get();
-		AppOwner appOwner = ownerRepo.findById(modifica.getIntero()).get();
+		
+		if(modifica.getIntero() != null) {
+			AppOwner appOwner = ownerRepo.findById(modifica.getIntero()).get();
+			appRe.inserimentoMonitoraggio(a.getIdApplicazione(), appOwner.getIdAppOwner());
+		}
 		
 		LogFileApp lfa = new LogFileApp();
 		
@@ -182,7 +186,7 @@ public class ApplicazioneRest {
 				lfa.setIdPreUpdate(lista.get(0));
 			}
 		}
-		appRe.inserimentoMonitoraggio(a.getIdApplicazione(), appOwner.getIdAppOwner());
+		
 		appRe.save(a);
 		LogFileAppDTO pluto = new LogFileAppDTO(lfa);
 		logRepo.save(lfa);
