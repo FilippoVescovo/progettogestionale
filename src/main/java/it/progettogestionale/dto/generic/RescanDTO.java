@@ -1,6 +1,7 @@
 package it.progettogestionale.dto.generic;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 import it.progettogestionale.web.model.Rescan;
 
@@ -17,7 +18,7 @@ public class RescanDTO {
 	private Boolean onGoing;
 	private Boolean archive;
 	private Boolean exist;
-	private Date rkd;
+	private LocalDate rkd;
 	private Integer applicazione;
 	private Integer appOwner;
 	
@@ -36,12 +37,14 @@ public class RescanDTO {
 		onGoing = r.isOnGoing();
 		archive = r.isArchive();
 		exist = r.isExist();
-		rkd = r.getRkd();
+		rkd = convertToLocalDateViaSqlDate(r.getRkd());
 		if(r.getApplicazione() != null) applicazione = r.getApplicazione().getIdApplicazione();
 		if(r.getAppOwner() != null) appOwner = r.getAppOwner().getIdAppOwner();
 	}
 	
-	
+	public LocalDate convertToLocalDateViaSqlDate(Date dateToConvert) {
+	    return new java.sql.Date(dateToConvert.getTime()).toLocalDate();
+	}
 	
 	public Integer getIdRescan() {
 		return idRescan;
@@ -131,11 +134,11 @@ public class RescanDTO {
 		this.exist = exist;
 	}
 
-	public Date getRkd() {
+	public LocalDate getRkd() {
 		return rkd;
 	}
 
-	public void setRkd(Date rkd) {
+	public void setRkd(LocalDate rkd) {
 		this.rkd = rkd;
 	}
 
