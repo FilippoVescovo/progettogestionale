@@ -24,10 +24,12 @@ import it.progettogestionale.repository.AppOwnerRepository;
 import it.progettogestionale.repository.ApplicazioneRepository;
 import it.progettogestionale.repository.LogFileRescanRepository;
 import it.progettogestionale.repository.RescanRepository;
+import it.progettogestionale.repository.UtenteRepository;
 import it.progettogestionale.web.model.AppOwner;
 import it.progettogestionale.web.model.Applicazione;
 import it.progettogestionale.web.model.LogFileRescan;
 import it.progettogestionale.web.model.Rescan;
+import it.progettogestionale.web.model.Utente;
 
 @RestController
 @RequestMapping("/rescanrest")
@@ -46,6 +48,8 @@ public class RescanRest {
 	private AppOwnerRepository ownerRepo;
 	@Autowired
 	private LogFileRescanRepository logRepo;
+	@Autowired
+	private UtenteRepository utenteRepo;
 	
 //	@GetMapping("rescan/{id}")
 //	public Rescan getRescan(@PathVariable("id") Integer id) {
@@ -86,6 +90,7 @@ public class RescanRest {
 	public ResponseEntity<RescanDTO> rescan(@RequestBody RescanDTO crea){
 		Applicazione app = appRe.findById(crea.getApplicazione()).get();
 		AppOwner owner = ownerRepo.findById(crea.getAppOwner()).get();
+		Utente u = utenteRepo.findById(crea.getIntero()).get();
 		Rescan r = new Rescan();
 		List<Integer> lista = rescanRepo.lastRescan(app.getIdApplicazione());
 		if(app.getIdApplicazione() != null) {
@@ -99,15 +104,41 @@ public class RescanRest {
 			r.setYtd(crea.getYtd());
 			r.setYoyRolling(crea.getYoyRolling());
 			r.setLast_Rescan(crea.getLast_Rescan());
+			r.setIntero(crea.getIntero());
 			r.setApplicazione(app);
 			r.setAppOwner(owner);
 			r.setExist(crea.getExist());
 		}
 		RescanDTO rdto = new RescanDTO(r);
 		rescanRepo.save(r);
+		creaLog(r);
 		return new ResponseEntity<RescanDTO>(rdto, HttpStatus.CREATED);
 	}
 	
+	public LogFileRescanDTO creaLog(Rescan r) {
+		LogFileRescan lfr = new LogFileRescan();
+		Utente u = utenteRepo.findById(r.getIntero()).get();
+		List<Integer> lista = rescanRepo.lastLog(r.getIdRescan());
+		lfr.setData(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
+		lfr.setUtente(u);
+		lfr.setRescan(rescanRepo.findById(r.getIdRescan()).get());
+		lfr.setnRescan(r.getnRescan());
+		lfr.setOngoing(r.getOnGoing());
+		lfr.setArchive(r.getArchive());
+		lfr.setRkd(r.getRkd());
+		lfr.setAfpe(r.getAfpe());
+		lfr.setNewOb(r.getNewOb());
+		lfr.setPy(r.getPy());
+		lfr.setYtd(r.getYtd());
+		lfr.setYoyRolling(r.getYoyRolling());
+		lfr.setLast_Rescan(r.getLast_Rescan());
+		if(lfr.getIdPreUpdate() != null) {
+			lfr.setIdPreUpdate(lista.get(0));
+		}
+		logRepo.save(lfr);
+		LogFileRescanDTO lfrDTO = new LogFileRescanDTO(lfr);
+		return lfrDTO;
+	}
 
 //	public LogFileRescanDTO logRescan(RescanDTO r){
 //		LogFileRescan lfr = new LogFileRescan();

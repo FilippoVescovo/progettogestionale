@@ -19,6 +19,7 @@ public class RescanDTO {
 	private Boolean archive;
 	private Boolean exist;
 	private LocalDate rkd;
+	private Integer intero;
 	private Integer applicazione;
 	private Integer appOwner;
 	
@@ -38,6 +39,7 @@ public class RescanDTO {
 		archive = r.isArchive();
 		exist = r.isExist();
 		rkd = convertToLocalDateViaSqlDate(r.getRkd());
+		intero = r.getIntero();
 		if(r.getApplicazione() != null) applicazione = r.getApplicazione().getIdApplicazione();
 		if(r.getAppOwner() != null) appOwner = r.getAppOwner().getIdAppOwner();
 	}
@@ -140,6 +142,14 @@ public class RescanDTO {
 
 	public void setRkd(LocalDate rkd) {
 		this.rkd = rkd;
+	}
+	
+	public Integer getIntero() {
+		return intero;
+	}
+
+	public void setIntero(Integer intero) {
+		this.intero = intero;
 	}
 
 	public Integer getApplicazione() {

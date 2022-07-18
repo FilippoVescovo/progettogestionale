@@ -48,13 +48,13 @@ public class LogFileRescan implements Serializable{
 	@Column(name = "idpreupdate")
 	private Integer idPreUpdate;
 	
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
 	@JoinColumn(name = "fk_idUtente")
 //	@JsonBackReference
 //	private AppOwner appOwner;
 	private Utente utente;
 	
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
 	@JoinColumn(name = "fk_idRescan")
 //	@JsonBackReference
 	private Rescan rescan;

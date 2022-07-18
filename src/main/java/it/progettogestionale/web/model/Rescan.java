@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "rescan")
@@ -44,6 +45,8 @@ public class Rescan implements Serializable{
 	private Boolean exist;
 	@Column(name = "rkd")
 	private Date rkd;
+	@Transient
+	private Integer intero;
 	
 	@ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REMOVE}, fetch = FetchType.LAZY)
 	@JoinColumn(name = "FK_idApplicazione")
@@ -59,7 +62,7 @@ public class Rescan implements Serializable{
 	public Rescan() {}
 	
 	public Rescan(Integer idRescan, Integer nRescan, Integer newOb, Integer py, Integer ytd, String afpe, String yoyRolling,
-			String last_Rescan, Boolean onGoing, Boolean archive, Boolean exist, Date rkd, Applicazione applicazione,
+			String last_Rescan, Boolean onGoing, Boolean archive, Boolean exist, Date rkd, Integer intero, Applicazione applicazione,
 			AppOwner appOwner) {
 		this.idRescan = idRescan;
 		this.nRescan = nRescan;
@@ -73,6 +76,7 @@ public class Rescan implements Serializable{
 		this.archive = archive;
 		this.exist = exist;
 		this.rkd = rkd;
+		this.intero = intero;
 		this.applicazione = applicazione;
 		this.appOwner = appOwner;
 	}
@@ -150,6 +154,13 @@ public class Rescan implements Serializable{
 	public void setRkd(Date rkd) {
 		this.rkd = rkd;
 	}
+	public Integer getIntero() {
+		return intero;
+	}
+	public void setIntero(Integer intero) {
+		this.intero = intero;
+	}
+
 	public Applicazione getApplicazione() {
 		return applicazione;
 	}
