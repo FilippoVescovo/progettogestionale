@@ -1,9 +1,12 @@
 package it.progettogestionale.web.rest;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,6 +27,7 @@ import it.progettogestionale.repository.AppOwnerRepository;
 import it.progettogestionale.repository.ApplicazioneRepository;
 import it.progettogestionale.repository.LogFileAppRepository;
 import it.progettogestionale.repository.UtenteRepository;
+import it.progettogestionale.web.excel.AppExcelExport;
 import it.progettogestionale.web.model.AppOwner;
 import it.progettogestionale.web.model.Applicazione;
 import it.progettogestionale.web.model.LogFileApp;
@@ -222,4 +226,17 @@ public class ApplicazioneRest {
 			appRe.recuperoApp(id);
 		}
 	}
+	
+	@GetMapping("/excelexport")
+	public void excelExport(HttpServletResponse response) throws IOException {
+		response.setContentType("application/octet-stream");
+		String headerKey = "Content-Disposition";
+		String headerValue = "attachment; filename = Info_Applicazioni.xlsx";
+		
+		response.setHeader(headerKey, headerValue);
+		List<Applicazione> lista = (List<Applicazione>) appRe.findAll();
+		AppExcelExport aee = new AppExcelExport(lista);
+		aee.export(response);
+	}
+	
 }
